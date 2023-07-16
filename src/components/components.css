@@ -1,0 +1,36 @@
+
+.leftMenu {
+    width: 280px;
+    height: 100vh;
+    border-right: 1px dashed rgb(233, 236, 238);
+    position: relative;
+  }
+
+  .leftMenuMinimize {
+    position: relative;
+    width: 95px;
+    height: 100vh;
+    border-right: 1px dashed rgb(233, 236, 238);
+  }
+  .triangle{
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    border-bottom-left-radius: 3.5px;
+    clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    border: 1px solid rgba(145, 158, 171, 0.12);
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.8);
+    top: -6.5px;
+    transform: rotate(135deg);
+    right: 20px;
+  }
+  .mBg{
+    background-image: url('../assets/img/blur.png');
+    background-repeat: no-repeat, no-repeat;
+    background-position: right top, left bottom;
+    background-size: 50%, 50%;
+    transition: opacity 297ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 198ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    transform-origin: 200px 0px 0px;
+  }
