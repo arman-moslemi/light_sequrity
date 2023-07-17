@@ -25,6 +25,19 @@
     transform: rotate(135deg);
     right: 20px;
 }
+.triangleRight {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    border-bottom-left-radius: 3.5px;
+    clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    border: 1px solid rgba(145, 158, 171, 0.12);
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.8);
+    top: 10px;
+    transform: rotate(230deg);
+    right: -10px;
+}
 .mBg {
     background-image: url('../assets/img/blur.png');
     background-repeat: no-repeat, no-repeat;
@@ -47,3 +60,8 @@
 .react-tabs__tab:focus-visible{
     border:none !important;
 }
+input[type=checkbox] {
+    accent-color: #00a76f;
+    height: 16px;
+    width: 16px;
+  }

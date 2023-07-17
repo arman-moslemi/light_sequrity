@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import ObjectTable from "./ObjectTable";
+import AllObjectTable from "./AllObjectTable";
+import InProcessObjectTable from "./InProcessObjectTable";
+import ClosedObjectTable from "./ClosedObjectTable";
 import 'react-tabs/style/react-tabs.css';
 
 const ObjectTabs = () => {
@@ -36,13 +38,13 @@ const ObjectTabs = () => {
                 </TabList>
 
                 <TabPanel>
-                    <ObjectTable/>
+                    <AllObjectTable/>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 1</h2>
+                    <InProcessObjectTable/>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <ClosedObjectTable/>
                 </TabPanel>
             </Tabs>
         
