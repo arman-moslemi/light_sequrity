@@ -18,7 +18,7 @@ export const truncate = (str, len) => {
     return str;
 };
 
-const ClosedObjectTable = () => {
+const CompletedObjectTable = () => {
     const [showAction,
         setShowAction] = useState(false);
     const [showDelete,setShowDelete] = useState (false);
@@ -302,4 +302,4 @@ const ClosedObjectTable = () => {
     )
 }
 
-export default ClosedObjectTable;
+export default CompletedObjectTable;

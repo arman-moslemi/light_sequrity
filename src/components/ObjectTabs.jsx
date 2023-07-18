@@ -2,7 +2,7 @@ import React from "react";
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import AllObjectTable from "./AllObjectTable";
 import InProcessObjectTable from "./InProcessObjectTable";
-import ClosedObjectTable from "./ClosedObjectTable";
+import CompletedObjectTable from "./ClosedObjectTable";
 import 'react-tabs/style/react-tabs.css';
 
 const ObjectTabs = () => {
@@ -29,7 +29,7 @@ const ObjectTabs = () => {
                     </Tab>
                     <Tab
                         className="py-4 px-1 mx-4 focus-visible:border-0 focus-visible:outline-none flex items-center text-[#637381] font-medium">
-                        <span >Closed</span>
+                        <span >Completed</span>
                         <div
                             className="w-[25px] h-[25px] rounded-md bg-[#ffe4dd] flex justify-center items-center ml-2 text-[#b71d18] text-xs">
                             4
@@ -44,7 +44,7 @@ const ObjectTabs = () => {
                     <InProcessObjectTable/>
                 </TabPanel>
                 <TabPanel>
-                    <ClosedObjectTable/>
+                    <CompletedObjectTable/>
                 </TabPanel>
             </Tabs>
         
