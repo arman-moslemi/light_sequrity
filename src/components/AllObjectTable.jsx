@@ -6,7 +6,7 @@ import Eye from "../assets/icon/eye";
 import Pencil from "../assets/icon/pencil";
 import {Link} from "react-router-dom";
 import Img1 from "../assets/img/objectLogo.png"
-import { ChevronRightIcon,ChevronLeftIcon } from "@heroicons/react/24/solid";
+import {ChevronRightIcon, ChevronLeftIcon} from "@heroicons/react/24/solid";
 export const truncate = (str, len) => {
     // console.log("truncate", str, str.length, len);
     if (str.length > len && str.length > 0) {
@@ -28,7 +28,8 @@ const AllObjectTable = () => {
         setShowDelete] = useState(false);
     const [showDelModal,
         setShowDelModal] = React.useState(false);
-        const [showEditModal,setShowEditModal] = React.useState(false);
+    // const [showEditModal,
+    //     setShowEditModal] = React.useState(false);
     const handleCheckBoxChecked = () => {
 
         console.log('The checkbox was toggled');
@@ -40,16 +41,19 @@ const AllObjectTable = () => {
         setShowDelModal(!showDelModal);
         setShowAction(!showAction)
     }
-    const editM = ()=>{
-        setShowEditModal(true);
-        setShowAction(false)
-    }
+    // const editM = () => {
+    //     setShowEditModal(true);
+    //     setShowAction(false)
+    // }
     const tableRow = [
         {
             id: '1',
             number: '1',
             title: <div className="flex items-center">
-                <img src={Img1} alt="objectImg" className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
                 <span className="font-medium text-[#000]">
                     Tirajhe Complex
                 </span>
@@ -69,7 +73,7 @@ const AllObjectTable = () => {
                                 <div className="triangleRight"></div>
                                 <div
                                     className="z-50 w-[135px] h-auto  bg-white shadow-whiteShodow  rounded-lg mBg">
-                                     <Link
+                                    <Link
                                         to={'/'}
                                         className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
 
@@ -79,15 +83,15 @@ const AllObjectTable = () => {
                                         </span>
 
                                     </Link>
-                                    <button
-                                        onClick={editM}
+                                    <Link to={'/editObject'}
+                                        
                                         className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
 
                                         <Pencil className="text-[#000] mr-3"/>
                                         <span className="font-medium text-[#000]">
                                             Edit
                                         </span>
-                                    </button>
+                                    </Link>
                                     <button
                                         onClick={actionMini}
                                         className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
@@ -97,7 +101,7 @@ const AllObjectTable = () => {
                                             Delete
                                         </span>
                                     </button>
-                                   
+
                                 </div>
                             </div>
                         : <></>}
@@ -107,11 +111,14 @@ const AllObjectTable = () => {
             id: '1',
             number: '2',
             title: <div className="flex items-center">
-            <img src={Img1} alt="objectImg" className="w-[34px] h-[34px] rounded-full mr-2"/>
-            <span className="font-medium text-[#000]">
-                Tirajhe Complex
-            </span>
-        </div>,
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
             status: <span className="text-[#b71d18]">Completed</span>,
@@ -129,11 +136,14 @@ const AllObjectTable = () => {
             id: '1',
             number: '3',
             title: <div className="flex items-center">
-            <img src={Img1} alt="objectImg" className="w-[34px] h-[34px] rounded-full mr-2"/>
-            <span className="font-medium text-[#000]">
-                Tirajhe Complex
-            </span>
-        </div>,
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
             status: <span className="text-[#b71d18]">Completed</span>,
@@ -151,11 +161,14 @@ const AllObjectTable = () => {
             id: '1',
             number: '4',
             title: <div className="flex items-center">
-            <img src={Img1} alt="objectImg" className="w-[34px] h-[34px] rounded-full mr-2"/>
-            <span className="font-medium text-[#000]">
-                Tirajhe Complex
-            </span>
-        </div>,
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
             status: <span className="text-green">In Progress</span>,
@@ -173,11 +186,14 @@ const AllObjectTable = () => {
             id: '1',
             number: '5',
             title: <div className="flex items-center">
-            <img src={Img1} alt="objectImg" className="w-[34px] h-[34px] rounded-full mr-2"/>
-            <span className="font-medium text-[#000]">
-                Tirajhe Complex
-            </span>
-        </div>,
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
             status: <span className="text-[#b71d18]">Completed</span>,
@@ -370,50 +386,59 @@ const AllObjectTable = () => {
                     </div>
                 </div>
             </div>
-            {showEditModal
-                                ? <> <div
-                                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                                    <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
+            {/* {showEditModal
+                ? <> <div
+                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
 
-                                        <div
-                                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+                        <div
+                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
 
-                                            <div className="flex items-centers justify-left  rounded-t">
+                            <div className="flex items-centers justify-left  rounded-t">
 
-                                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
-                                                    Delete
-                                                </span>
+                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+                                    Edit Object
+                                </span>
 
-                                            </div>
+                            </div>
 
-                                            <div className="relative flex-auto">
-                                                <p
-                                                    className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
-                                                    Are you sure want to delete
-                                                    <span>20</span>
-                                                    items?
-                                                </p>
-                                            </div>
+                            <div class="flex flex-wrap  mt-6">
+                                <div class="w-full  px-3 mb-6 flex flex-col">
+                                    <label
+                                        class="font-bold text-[#000] mb-3"
+                                        for="title">
+                                       Title
+                                    </label>
+                                    <input
+                                        class="bg-white  border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                        id="title"
+                                        type="text"
+                                        placeholder="Tirajhe Complex"/>
+                                  
+                                </div>
+                              
+                            </div>
 
-                                            <div
-                                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b">
-                                                <button
-                                                    className="text-white bg-[#cd053d] hover:shadow-hoverShadow hover:bg-hoverDelBack shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                    type="button"
-                                                    onClick={() => setShowEditModal(false)}>
-                                                    Delete
-                                                </button>
-                                                <button
-                                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                    type="button"
-                                                    onClick={() => setShowEditModal(false)}>
-                                                    Cancel
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> < div className = "opacity-25 fixed inset-0 z-40 bg-black" > </div> </>
-                  :null}
+                            <div
+                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b">
+                                <button
+                                    className="text-white bg-[#cd053d] hover:shadow-hoverShadow hover:bg-hoverDelBack shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => setShowEditModal(false)}>
+                                    Delete
+                                </button>
+                                <button
+                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => setShowEditModal(false)}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> < div className = "opacity-25 fixed inset-0 z-40 bg-black" > </div>
+                 </>
+                  :null} */}
         </div>
     )
 }

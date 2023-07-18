@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Object from "../pages/Objects/Object";
+import EditObject from "../pages/EditObject/EditObject";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -10,6 +11,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/object" element={< Object />}/>
+            </Routes>
+            <Routes>
+                <Route path="/editObject" element={<EditObject/>}/>
             </Routes>
         </BrowserRouter>
     )

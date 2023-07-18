@@ -3,7 +3,9 @@ import TrashGreen from "../assets/icon/trashGreen";
 import Bullet from "../assets/icon/verticalBullet";
 import Trash from "../assets/icon/trash";
 import Eye from "../assets/icon/eye";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import Img1 from "../assets/img/objectLogo.png"
+import Pencil from "../assets/icon/pencil";
 export const truncate = (str, len) => {
     // console.log("truncate", str, str.length, len);
     if (str.length > len && str.length > 0) {
@@ -21,23 +23,35 @@ export const truncate = (str, len) => {
 const CompletedObjectTable = () => {
     const [showAction,
         setShowAction] = useState(false);
-    const [showDelete,setShowDelete] = useState (false);
-    const [showDelModal, setShowDelModal] = React.useState(false);
-    const handleCheckBoxChecked = () => { 
-    
-        console.log('The checkbox was toggled'); 
+    const [showDelete,
+        setShowDelete] = useState(false);
+    const [showDelModal,
+        setShowDelModal] = React.useState(false);
+
+    const handleCheckBoxChecked = () => {
+
+        console.log('The checkbox was toggled');
         setShowDelete(!showDelete);
-        
-      }; 
-      const actionMini = () =>{
-         setShowDelModal(!showDelModal);
-         setShowAction(!showAction)
-      }
+
+    };
+    const actionMini = () => {
+        setShowDelModal(true);
+        setShowAction(false)
+    }
+
     const tableRow = [
         {
             id: '1',
-            number: '#1605',
-            title: 'Tirajhe Complex',
+            number: '1',
+            title: <div className="flex items-center">
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
 
@@ -54,22 +68,34 @@ const CompletedObjectTable = () => {
                                 <div
                                     className="z-50 w-[135px] h-auto  bg-white shadow-whiteShodow  rounded-lg mBg">
 
-                                    <button onClick={actionMini} className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
+                                    <Link
+                                        to={'/'}
+                                        className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
+
+                                        <Eye className="text-[#000] mr-3"/>
+                                        <span className="font-medium text-[#000]">
+                                            View
+                                        </span>
+
+                                    </Link>
+                                    <Link
+                                        to={'/editObject'}
+                                        className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
+
+                                        <Pencil className="text-[#000] mr-3"/>
+                                        <span className="font-medium text-[#000]">
+                                            Edit
+                                        </span>
+                                    </Link>
+                                    <button
+                                        onClick={actionMini}
+                                        className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
 
                                         <Trash className="text-[#b71d18] mr-3"/>
                                         <span className="font-medium text-[#b71d18]">
                                             Delete
                                         </span>
                                     </button>
-                                    <Link to={'/'} className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
-
-                                        
-                                        <Eye className="text-[#000] mr-3"/>
-                                        <span className="font-medium text-[#000]">
-                                            View
-                                        </span>
-                                     
-                                    </Link>
                                 </div>
                             </div>
                         : <></>}
@@ -77,8 +103,16 @@ const CompletedObjectTable = () => {
 
         }, {
             id: '1',
-            number: '#1605',
-            title: 'Tirajhe Complex',
+            number: '2',
+            title: <div className="flex items-center">
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
 
@@ -94,8 +128,16 @@ const CompletedObjectTable = () => {
 
         }, {
             id: '1',
-            number: '#1605',
-            title: 'Tirajhe Complex',
+            number: '3',
+            title: <div className="flex items-center">
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
 
@@ -111,8 +153,16 @@ const CompletedObjectTable = () => {
 
         }, {
             id: '1',
-            number: '#1605',
-            title: 'Tirajhe Complex',
+            number: '4',
+            title: <div className="flex items-center">
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
 
@@ -128,8 +178,16 @@ const CompletedObjectTable = () => {
 
         }, {
             id: '1',
-            number: '#1605',
-            title: 'Tirajhe Complex',
+            number: '5',
+            title: <div className="flex items-center">
+                <img
+                    src={Img1}
+                    alt="objectImg"
+                    className="w-[34px] h-[34px] rounded-full mr-2"/>
+                <span className="font-medium text-[#000]">
+                    Tirajhe Complex
+                </span>
+            </div>,
             address: truncate("Ashrafi St,Laleh Blv,No 125", 30),
             registerDate: '2023/05/05',
 
@@ -153,8 +211,7 @@ const CompletedObjectTable = () => {
                     type="checkbox"
                     value=""
                     id="checkBoxDelete"
-                    onChange={handleCheckBoxChecked}
-                    />
+                    onChange={handleCheckBoxChecked}/>
 
             </div>
         </td>
@@ -176,12 +233,11 @@ const CompletedObjectTable = () => {
         <div className="">
 
             <div className="  w-full overflow-x-auto whitespace-nowrap ">
-                {
-                    showDelete ? 
-                    <div className="w-full bg-[#c8fad6] h-9 flex items-center px-4 justify-between">
-                       
-                     <div className="flex items-center">
-                     <div class=" block">
+                {showDelete
+                    ? <div className="w-full bg-[#c8fad6] h-9 flex items-center px-4 justify-between">
+
+                            <div className="flex items-center">
+                                <div class=" block">
                                     <input
                                         className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                                         type="checkbox"
@@ -193,69 +249,65 @@ const CompletedObjectTable = () => {
                                 <p className="text-green font-Bold text-base ml-5">
                                     1 Selected
                                 </p>
-                       
+
+                            </div>
+                            <button
+                                className="w-[30px] h-[30px] flex justify-center items-center rounded-full hover:bg-greenHover mr-2"
+                                data-te-toggle="tooltip"
+                                data-te-placement="bottom"
+                                data-te-ripple-init
+                                data-te-ripple-color="#637381"
+                                title="delete"
+                                onClick={() => setShowDelModal(true)}>
+                                <TrashGreen/>
+                            </button>
+                            {showDelModal
+                                ? <> <div
+                                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                                    <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
+
+                                        <div
+                                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+
+                                            <div className="flex items-centers justify-left  rounded-t">
+
+                                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+                                                    Delete
+                                                </span>
+
+                                            </div>
+
+                                            <div className="relative flex-auto">
+                                                <p
+                                                    className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
+                                                    Are you sure want to delete
+                                                    <span>20</span>
+                                                    items?
+                                                </p>
+                                            </div>
+
+                                            <div
+                                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b">
+                                                <button
+                                                    className="text-white bg-[#cd053d] hover:shadow-hoverShadow hover:bg-hoverDelBack shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                    type="button"
+                                                    onClick={() => setShowDelModal(false)}>
+                                                    Delete
+                                                </button>
+                                                <button
+                                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                    type="button"
+                                                    onClick={() => setShowDelModal(false)}>
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> < div className = "opacity-25 fixed inset-0 z-40 bg-black" > </div> </>
+                  :null}
                         </div>
-                        <button className="w-[30px] h-[30px] flex justify-center items-center rounded-full hover:bg-greenHover mr-2"
-                        data-te-toggle="tooltip"
-                        data-te-placement="bottom"
-                        data-te-ripple-init
-                        data-te-ripple-color="#637381"
-                        title="delete"
-                        onClick={() => setShowDelModal(true)} 
-                        >
-                        <TrashGreen/>
-                        </button>
-                        {showDelModal ?
-                  <>
-                   <div
-                   className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                 >
-                   <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
-                    
-                     <div className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
-                  
-                       <div className="flex items-centers justify-left  rounded-t">
-                        
-                         <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
-                         Delete
-                         </span>
-                      
-                       </div>
-                       
-                       <div className="relative flex-auto">
-                         <p className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
-                         Are you sure want to delete <span>20</span> items?
-                         </p>
-                       </div>
-                      
-                       <div className="flex items-center justify-end  border-solid border-slate-200 rounded-b">
-                         <button
-                           className="text-white bg-[#cd053d] hover:shadow-hoverShadow hover:bg-hoverDelBack shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                           type="button"
-                           onClick={() => setShowDelModal(false)}
-                         >
-                          Delete
-                         </button>
-                         <button
-                           className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                           type="button"
-                           onClick={() => setShowDelModal(false)}
-                         >
-                           Cancel
-                         </button>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                 
-                  </>
-                  :null
-               }
-                    </div>
-                    :
-                    null
-                }
+                    : null
+}
                 <table class="table-auto w-full">
                     <thead
                         className="bg-hoverBackground h-14 rounded-t-2xl w-full whitespace-nowrap overflow-x-scroll"
@@ -298,6 +350,7 @@ const CompletedObjectTable = () => {
                 </table>
 
             </div>
+
         </div>
     )
 }
