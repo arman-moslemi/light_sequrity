@@ -1,7 +1,7 @@
-import React ,{useState} from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
-const ObjectTitleSection = () => {
-    const [showNewModal,setShowNewModal] = useState(false);
+const EachObjectTitleSection = () => {
+    // const [showNewModal,setShowNewModal] = useState(false);
     return (
         <div className="flex justify-between items-center mt-8  mx-4">
             <div>
@@ -17,14 +17,14 @@ const ObjectTitleSection = () => {
                         .
                     </p>
                     <p className="font-medium text-sm text-[#000]">
-                        Object
+                        Tirajhe Complex
                     </p>
                 </div>
             </div>
-            <Link  to={'/addObject'} className="flex items-center bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green" >
-                + New Object
+            <Link  to={'/'} className="flex items-center bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green" >
+                + New Mission
             </Link>
-            {
+            {/* {
                 showNewModal ? 
                 <>
                 <div
@@ -72,10 +72,10 @@ const ObjectTitleSection = () => {
                </>
                 :
                 null
-            }
+            } */}
         </div>
 
     )
 }
 
-export default ObjectTitleSection;
+export default EachObjectTitleSection;

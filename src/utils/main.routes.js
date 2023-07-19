@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Object from "../pages/Objects/Object";
 import EditObject from "../pages/EditObject/EditObject";
 import AddObject from "../pages/AddObject/AddObject";
+import EachObject from "../pages/EachObject/EachObject";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -18,6 +19,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/addObject" element={<AddObject/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/eachObject" element={<EachObject/>}/>
             </Routes>
         </BrowserRouter>
     )

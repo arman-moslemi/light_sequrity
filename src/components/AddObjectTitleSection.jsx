@@ -31,9 +31,9 @@ const AddObjectTitleSection = () => {
             </div>
             <button onClick={()=>setShowNewModal(true)} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
           
-                      <span className="mr-3 text-base font-bold font-IRsans text-white text-left hover:text-green">
+                      
                     + Add
-                      </span>
+                   
             </button>
             {
                 showNewModal ? 
