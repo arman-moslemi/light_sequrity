@@ -30,8 +30,8 @@ const EditObjectTitleSection = () => {
                 </div>
             </div>
             <button onClick={()=>setShowNewModal(true)} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
-            <WhiteCheck className="mr-2 w-6 h-6 text-white"/>
-                      <span className="mr-3 text-base font-bold font-IRsans text-white text-left">
+            <WhiteCheck className="mr-2 w-6 h-6 text-white hover:text-green"/>
+                      <span className="mr-3 text-base font-bold font-IRsans text-white text-left hover:text-green">
                       Save
                       </span>
             </button>
@@ -47,7 +47,7 @@ const EditObjectTitleSection = () => {
                
                     <div className="flex items-centers justify-left  rounded-t border-b border-b-borderGray pb-2">
                       
-                      <WhiteCheck className="mr-2 w-6 h-6 text-white"/>
+                      
                       <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
                       Save
                       </span>
@@ -56,17 +56,17 @@ const EditObjectTitleSection = () => {
                     
                     <div className="relative flex-auto">
                       <p className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
-                      Are you sure want to delete <span>20</span> items?
+                      Your edits have been successfully saved !
                       </p>
                     </div>
                    
                     <div className="flex items-center justify-end  border-solid border-slate-200 rounded-b">
                       <button
-                        className="text-white bg-[#cd053d] hover:shadow-hoverShadow hover:bg-hoverDelBack shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
                         onClick={() => setShowNewModal(false)}
                       >
-                       Delete
+                       save
                       </button>
                       <button
                         className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
