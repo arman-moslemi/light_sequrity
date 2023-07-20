@@ -22,31 +22,30 @@ const EditObj = () => {
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="title">
         Title
       </label>
-      <input class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="title" type="text" placeholder="Tirajhe Complex"/>
+      <input class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="title" type="text" placeholder=""/>
       
     </div>
     <div className="flex">
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="status">
-        status
-      </label>
-    
-                    
+        Status
+      </label> 
 
                         <select
                             id="statusSelect"
                             name="statusSelect"
                             className="w-full bg-white rounded-sm border border-borderGray py-3 px-4">
-                            <option value="active">In Process</option>
-                            <option value="complete">Completed</option>
-                           
+                            <option value="Active">Active</option>
+                            <option value="DeActive">DeActive</option>
+                            <option value="Delete">Delete</option>
+                            <option value="Expired">Expired</option> 
                         </select>
 
                
     </div>
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
-        telephone number
+        Telephone Number
       </label>
       <input class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
       
@@ -54,7 +53,7 @@ const EditObj = () => {
  </div>
     <div class="w-full  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="address">
-        address
+        Address
       </label>
       <input class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="address" type="text" placeholder="Ashrafi HW,boustan St,No 123"/>
       
@@ -62,14 +61,14 @@ const EditObj = () => {
  <div className="flex">
  <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="start-date">
-        start date
+        Start Date
       </label>
       <input class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="start-date" type="text" placeholder="7/19/2023"/>
       
     </div>
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
-        end date
+        End Date
       </label>
       <input class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="end-date" type="text" placeholder="5/19/2023"/>
       
@@ -82,7 +81,7 @@ const EditObj = () => {
     </div> */}
     <div className="w-full mb-7 px-3 mt-6">
     <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="description">
-        description
+        Description
       </label>
     <textarea class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="
     Security management for the entry of people from the west door of Tiraje shopping center
@@ -91,8 +90,7 @@ const EditObj = () => {
     </div>
     <div className="w-full mb-7 px-3 mt-6 flex flex-wrap">
         <div className="flex flex-row mr-5 mb-2">
-            <label>has Coffee Machin?</label>
-        <div class=" block ml-2">
+        <div class=" block ml-2" style={{marginTop:'2px',marginRight:'5px'}}>
                 <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
@@ -101,10 +99,11 @@ const EditObj = () => {
                    />
 
             </div>
+            <label>Coffee Machin</label>
+       
         </div>
         <div className="flex flex-row mr-5 mb-2">
-            <label>has Vending Machine?</label>
-        <div class=" block ml-2">
+        <div class=" block ml-2"  style={{marginTop:'2px',marginRight:'5px'}}>
                 <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
@@ -113,10 +112,11 @@ const EditObj = () => {
                    />
 
             </div>
+            <label>Vending Machine</label>
+        
         </div>
         <div className="flex flex-row mr-5 mb-2">
-            <label>has Buffet?</label>
-        <div class=" block ml-2">
+        <div class=" block ml-2"  style={{marginTop:'2px',marginRight:'5px'}}>
                 <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
@@ -125,10 +125,11 @@ const EditObj = () => {
                    />
 
             </div>
+            <label>Buffet</label>
+        
         </div>
         <div className="flex flex-row mr-5 mb-2">
-            <label>has Microwave?</label>
-        <div class=" block ml-2">
+        <div class=" block ml-2"  style={{marginTop:'2px',marginRight:'5px'}}>
                 <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
@@ -137,10 +138,11 @@ const EditObj = () => {
                    />
 
             </div>
+            <label>Microwave</label>
+        
         </div>
         <div className="flex flex-row mr-5 mb-2">
-            <label>has Security Room?</label>
-        <div class=" block ml-2">
+        <div class=" block ml-2" style={{marginTop:'2px',marginRight:'5px'}}>
                 <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
@@ -149,6 +151,8 @@ const EditObj = () => {
                    />
 
             </div>
+            <label>Security Room</label>
+        
         </div>
    
     </div>
