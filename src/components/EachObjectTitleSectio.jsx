@@ -18,7 +18,7 @@ const EachObjectTitleSection = () => {
             </Link>
 
             <div className="flex items-center">
-                <Link to={'/'}>
+                <Link to={'/editObject'}>
                     <div className="flex items-center">
                         <Pencil className="w-[40px]"/>
                         <span className="text-[#000] text-sm font-bold">
