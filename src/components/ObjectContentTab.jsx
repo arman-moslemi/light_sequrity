@@ -74,7 +74,7 @@ const ObjectContentTab = () => {
                 </div>
             </div>
             <div className="w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-10">
-                
+
                 <ul>
                     <li className="flex mb-5 items-center">
                         <StatusIcon/>
@@ -83,7 +83,7 @@ const ObjectContentTab = () => {
                                 Status
                             </span>
                             <span className="text-green  text-sm font-semibold">
-                                
+
                                 Active
                             </span>
                         </div>
@@ -95,7 +95,7 @@ const ObjectContentTab = () => {
                                 Start Date
                             </span>
                             <span className="text-[#000] font-semibold text-sm">
-                                
+
                                 2023/11/11
                             </span>
                         </div>
@@ -107,21 +107,21 @@ const ObjectContentTab = () => {
                                 End Date
                             </span>
                             <span className="text-[#000] font-semibold text-sm">
-                                
+
                                 2023/12/11
                             </span>
                         </div>
                     </li>
-               
+
                     <li className="flex my-5 items-center">
                         <AddressIcon/>
                         <div className="flex flex-col ml-4">
                             <span className="text-[#7e8b97] font-medium text-base">
-                                
+
                                 Address
                             </span>
                             <span className="text-[#000] font-semibold text-sm">
-                                
+
                                 Ashrafi HW , Tirajhe Complex
                             </span>
                         </div>
@@ -133,7 +133,7 @@ const ObjectContentTab = () => {
                                 Phone Number
                             </span>
                             <span className="text-[#000] font-semibold text-sm">
-                                
+
                                 +989021564876
                             </span>
                         </div>

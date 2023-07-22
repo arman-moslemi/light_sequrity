@@ -15,11 +15,11 @@ module.exports = {
             green: '#00a76f',
             black: '#000',
             hoverDelBack: 'rgb(183, 29, 24)',
-            lightGreen:'rgba(0, 167, 111, 0.08)',
-            lightRed:'#fff2ee',
-            lightBlue:'#ebfafc',
-            lightOrange:'#fff2d6',
-            lightGray:'#f4f6f8'
+            lightGreen: 'rgba(0, 167, 111, 0.08)',
+            lightRed: '#fff2ee',
+            lightBlue: '#ebfafc',
+            lightOrange: '#fff2d6',
+            lightGray: '#f4f6f8'
         },
         fontFamily: {
             publicSansBold: 'PublicSans-Bold'

@@ -2,7 +2,7 @@ import React from "react";
 import LeftMenu from "../../components/LeftMenu";
 import Header from "../../components/Header";
 import EachObjectTitleSection from "../../components/EachObjectTitleSectio";
-import EachObjectDetail from "../../components/EachObjectDetail";
+
 import EachObjectTabs from "../../components/EachObjectTabs";
 const EachObject = () => {
 
