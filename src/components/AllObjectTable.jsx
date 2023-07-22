@@ -74,7 +74,7 @@ const AllObjectTable = () => {
                                 <div
                                     className="z-50 w-[135px] h-auto  bg-white shadow-whiteShodow  rounded-lg mBg">
                                     <Link
-                                        to={'/'}
+                                        to={'/eachObject'}
                                         className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
 
                                         <Eye className="text-[#000] mr-3"/>

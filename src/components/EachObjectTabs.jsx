@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import ObjectContentTab from './ObjectContentTab';
 const EachObjectTabs = () => {

@@ -6,7 +6,7 @@ const EachObjectTitleSection = () => {
     // const [showNewModal,setShowNewModal] = useState(false);
     return (
         <div className="flex justify-between items-center mt-8  mx-4">
-            <Link to={'/'}>
+            <Link to={'/object'}>
                 <div className="flex">
                     <ChevronLeftIcon className="w-[20px] mr-4"/>
                     <p className="font-bold text-sm text-[#000]">
