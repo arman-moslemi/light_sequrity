@@ -65,6 +65,11 @@ input[type=checkbox] {
     height: 16px;
     width: 16px;
   }
+
+  .largeCheckBox{
+    width:20px !important;
+    height: 20px !important;
+  }
   /* width */
 ::-webkit-scrollbar {
     width: 10px;
