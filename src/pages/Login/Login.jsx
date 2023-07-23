@@ -50,7 +50,7 @@ const Login = () => {
                             <Eye/>
                         </button>
                     </div>
-                    <Link to={'/'} className="font-semibold text-[#000] text-sm border-b border-dashed border-green hover:text-green">
+                    <Link to={'/'} className="pb-2 font-semibold text-[#000] text-sm border-b border-dashed border-green hover:text-green">
                         Forget Password?
                     </Link>
                     <button className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-gradient-to-r from-[#54df97] to-[#008a5c] text-white mt-5 hover:bg-green transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
