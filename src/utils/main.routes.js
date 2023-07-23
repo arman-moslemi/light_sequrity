@@ -5,6 +5,7 @@ import Object from "../pages/Objects/Object";
 import EditObject from "../pages/EditObject/EditObject";
 import AddObject from "../pages/AddObject/AddObject";
 import EachObject from "../pages/EachObject/EachObject";
+import Login from "../pages/Login/Login";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -22,6 +23,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/eachObject" element={<EachObject/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/login" element={<Login/>}/>
             </Routes>
         </BrowserRouter>
     )
