@@ -3,6 +3,8 @@ import Pdf from "../assets/icon/pdf";
 import ImgIcon from "../assets/icon/image";
 import VideoIcon from "../assets/icon/video";
 import VoiceIcon from "../assets/icon/voice";
+import BluePencil from "../assets/icon/bluePencil";
+import Trash from "../assets/icon/trash";
 const ObjectInstructionTab = () => {
 
     return (
@@ -28,9 +30,9 @@ const ObjectInstructionTab = () => {
             
 
              <ul className="mt-6">
-                <li className="py-2 flex items-center border-b-2 border-borderGray border-dashed">
+                <li className="py-8 flex items-start border-b-2 border-borderGray border-dashed">
                 <input
-                    className="largeCheckBox mr-5 text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                    className="largeCheckBox mr-5 mt-[10px] text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
                     value=""
                     id="checkBoxOne"
@@ -51,12 +53,7 @@ const ObjectInstructionTab = () => {
                             instruction.pdf
                             </span>
                         </div>
-                        <div className="mr-4 h-8 my-1 px-4 bg-lightBlue rounded-full flex justify-center items-center ">
-                          <ImgIcon/>
-                          <span className="text-[#00b8d9] font-bold text-sm ml-2">
-                            image.png
-                            </span>
-                        </div>
+                   
                         <div className="mr-4 h-8 my-1 px-4 bg-lightBlue rounded-full flex justify-center items-center ">
                           <ImgIcon/>
                           <span className="text-[#00b8d9] font-bold text-sm ml-2">
@@ -77,11 +74,18 @@ const ObjectInstructionTab = () => {
                         </div>
                     </div>
                     </div>
-                   
+                    <div className="flex items-center">
+                        <button className="mr-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#8beaf7] w-[35px] h-[35px] rounded-full bg-lightBlue  flex items-center justify-center">
+                            <BluePencil/>
+                        </button>
+                        <button className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#ffc5b3] w-[35px] h-[35px] rounded-full bg-lightRed  flex items-center justify-center">
+                            <Trash/>
+                        </button>
+                    </div>
                 </li>
-                <li className="py-2 flex items-center border-b-2 border-borderGray border-dashed">
+                <li className="py-8 flex items-start border-b-2 border-borderGray border-dashed">
                 <input
-                    className="largeCheckBox mr-5 text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                    className="largeCheckBox mr-5 mt-[10px] text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
                     value=""
                     id="checkBoxOne"
@@ -106,11 +110,18 @@ const ObjectInstructionTab = () => {
                      
                     </div>
                     </div>
-                   
+                    <div className="flex items-center">
+                        <button className="mr-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#8beaf7] w-[35px] h-[35px] rounded-full bg-lightBlue  flex items-center justify-center">
+                            <BluePencil/>
+                        </button>
+                        <button className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#ffc5b3] w-[35px] h-[35px] rounded-full bg-lightRed  flex items-center justify-center">
+                            <Trash/>
+                        </button>
+                    </div>
                 </li>
-                <li className="py-2 flex items-center border-b-2 border-borderGray border-dashed">
+                <li className="py-8 flex items-start border-b-2 border-borderGray border-dashed">
                 <input
-                    className="largeCheckBox mr-5 text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                    className="largeCheckBox mr-5 mt-[10px] text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
                     value=""
                     id="checkBoxOne"
@@ -146,7 +157,14 @@ const ObjectInstructionTab = () => {
                       
                     </div>
                     </div>
-                   
+                    <div className="flex items-center">
+                        <button className="mr-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#8beaf7] w-[35px] h-[35px] rounded-full bg-lightBlue  flex items-center justify-center">
+                            <BluePencil/>
+                        </button>
+                        <button className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#ffc5b3] w-[35px] h-[35px] rounded-full bg-lightRed  flex items-center justify-center">
+                            <Trash/>
+                        </button>
+                    </div>
                 </li>
              </ul>
          
