@@ -2,6 +2,7 @@ import React from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import ObjectContentTab from './ObjectContentTab';
 import ObjectInstructionTab from './ObjectInstructionTab';
+import ObjectCapabilityTab from './ObjectCapabiltyTab';
 const EachObjectTabs = () => {
 
     return (
@@ -17,14 +18,20 @@ const EachObjectTabs = () => {
                     <span >Instructions</span>
 
                 </Tab>
+
                 <Tab
                     className="py-4 px-1 mx-4 focus-visible:border-0 focus-visible:outline-none flex items-center text-[#637381] font-medium">
-                    <span >Shifts</span>
+                    <span >Required Capability</span>
 
                 </Tab>
                 <Tab
                     className="py-4 px-1 mx-4 focus-visible:border-0 focus-visible:outline-none flex items-center text-[#637381] font-medium">
-                    <span >Requirement</span>
+                    <span >Equipment</span>
+
+                </Tab>
+                <Tab
+                    className="py-4 px-1 mx-4 focus-visible:border-0 focus-visible:outline-none flex items-center text-[#637381] font-medium">
+                    <span >Shifts</span>
 
                 </Tab>
                 <Tab
@@ -39,6 +46,9 @@ const EachObjectTabs = () => {
             </TabPanel>
             <TabPanel>
                 <ObjectInstructionTab/>
+            </TabPanel>
+            <TabPanel>
+                <ObjectCapabilityTab/>
             </TabPanel>
             <TabPanel></TabPanel>
             <TabPanel></TabPanel>
