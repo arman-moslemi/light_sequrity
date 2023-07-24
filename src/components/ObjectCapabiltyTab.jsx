@@ -1,27 +1,29 @@
 import React from "react";
-import Pdf from "../assets/icon/pdf";
-import ImgIcon from "../assets/icon/image";
-import VideoIcon from "../assets/icon/video";
-import VoiceIcon from "../assets/icon/voice";
-import BluePencil from "../assets/icon/bluePencil";
-import Trash from "../assets/icon/trash";
+
 const ObjectCapabilityTab = () => {
 
     return (
-        <div className="p-4">
+        <div className="flex p-4">
             <div
-                className="w-[100%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
+                 className="w-[69%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
                        <div className=" border-b-2 border-borderGray pb-4">
-                    
+                       <div className="flex justify-between items-center">
                         <span className="text-[#000] font-bold text-xl">
-                            Object Required Capability
+                        Object Required Capability
                         </span>
+                        <button
+                     
+                            className="w-max px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            + Submit
+                        </button>
+                    </div>
+                    
                      
                 
                     <div className="h-9"></div>
                     <span className="text-[#000] font-bold text-base">
-                        *     You can choose from the list below the abilities needed for this mission and you
-            need to specify a priority for each one.
+                        *     You can choose the abilities required for this mission from the list below
+Or add the ability that you are considering and that is not in the list, then a priority should be specified for each one.
                     </span>
 
                 </div>
@@ -151,7 +153,61 @@ const ObjectCapabilityTab = () => {
                     </li>
                 </ul>
                 </div>
+                <div className="w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
 
+<span className="font-bold text-green text-base">
+    Add Object Required Capability
+</span>
+<div class="w-full mt-6">
+    <label
+        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
+        for="title">
+        <span>
+        Object Required Capability Title
+        </span>
+        <span className="text-hoverDelBack mx-1">
+            *
+        </span>
+    </label>
+    <input
+        required="true"
+        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="text"
+        placeholder="Type Instruction Title..."/>
+
+</div>
+
+<div className="w-full  mt-6">
+<div className="flex items-center">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                               Priority : 
+                                </span>
+                        <select
+                            id="statusSelect"
+                            name="statusSelect"
+                            className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option> 
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option> 
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            
+</select>
+                        </div>
+    <button
+    
+        className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+        + Add Capability To The List
+    </button>
+</div>
+</div>
         
         </div>
     )

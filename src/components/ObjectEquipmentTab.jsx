@@ -15,8 +15,7 @@ const ObjectEquipmentTab = () =>{
             
                 <div className="h-9"></div>
                 <span className="text-[#000] font-bold text-base">
-                    *     You can choose from the list below the abilities needed for this mission and you
-        need to specify a priority for each one.
+                    *     You can choose the equipment from the list below, specify the quantity and whether or not this equipment is consumable.
                 </span>
 
             </div>
@@ -32,7 +31,7 @@ const ObjectEquipmentTab = () =>{
                     <div>
                         <div className="flex flex-col">
                             <span className="font-bold text-[#000] text-base">
-                            Having a bachelor's degree
+                            Paper Cup
                             </span>
                  
                         </div>
@@ -40,26 +39,10 @@ const ObjectEquipmentTab = () =>{
                     </div>
                  </div>
                     <div className="flex items-center">
-                    <span className="font-bold text-[#000] text-base mr-2">
-                           Priority : 
-                            </span>
-                    <select
-                        id="statusSelect"
-                        name="statusSelect"
-                        className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option> 
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option> 
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        
-</select>
+                   <div className="flex">
+                    
+                   </div>
+                   
                     </div>
                 </li>
                 <li
