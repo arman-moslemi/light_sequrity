@@ -13,12 +13,21 @@ const Login = () => {
 
         setPasswordShown(!passwordShown);
       };
+      
       const [user,setUser]=useState()
       const [erUser,setErUser]=useState(false)
       const [pass,setPass]=useState()
       const [erPass,setErPass]=useState(false)
       const [isShown, setIsShown] = useState(false);
       const [snipper, setSnipper] = useState(false);
+      const handleClick = event => {
+
+        setIsShown(!isShown);
+    
+    
+      };
+      let navigate = useNavigate();
+
       const login=()=>{
         if(!pass||!user){
             if(!pass){
@@ -32,10 +41,7 @@ const Login = () => {
           setErPass(false)
           setErUser(false)
         console.log(pass)
-    // if(validateCaptcha(captcha)==false||!user || !pass){
-    //   handleClick()
-    // }
-    // else{
+  
       setSnipper(true)
       axios
       .post(apiUrl + "Users/Login",{
@@ -49,25 +55,28 @@ const Login = () => {
     
     if (response.request.status == 200) {
       const cookies = new Cookies();
-    // cookies.set('token',response.data.token, { path: '/' })
+    cookies.set('token',response.data.accessToken, { path: '/' })
     // cookies.set('ID',response.data.id, { path: '/' })
       // console.log(response.data.token)
     setSnipper(false)
-   
+   navigate("/")
     }
     else{
-    //   handleClick()
+      alert(123)
+      handleClick()
       setSnipper(false)
     
     }})
     .catch(function (error) {
     console.log(error);
+    handleClick()
+
     setSnipper(false)
     
     });
     
     
-    //   }
+      
     
       }}
     return (
@@ -91,6 +100,12 @@ const Login = () => {
                         className="block appearance-none  w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         onChange={(e)=>setUser(e.target.value)}
                         />
+                        {
+                          erUser?
+<p>Please fill username</p>
+                          :
+                          null
+                        }
 
                 </div>
                 <div class="w-full  px-3 mt-6">
@@ -109,6 +124,12 @@ const Login = () => {
                             onChange={(e)=>setPass(e.target.value)}
 
                             />
+                                 {
+                          erPass?
+<p>Please fill password</p>
+                          :
+                          null
+                        }
                         <button onClick={togglePassword}>
                             <Eye/>
                         </button>
@@ -119,6 +140,49 @@ const Login = () => {
                     <button onClick={()=>login()} className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-gradient-to-r from-[#54df97] to-[#008a5c] text-white mt-5 hover:bg-green transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                         Login
                     </button>
+                    {isShown ?
+   <>
+   <div
+   className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+ >
+   <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
+    
+     <div className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+  
+       <div className="flex items-centers justify-left  rounded-t border-b border-b-borderGray pb-2">
+         
+         
+         <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+        Notice
+         </span>
+      
+       </div>
+       
+       <div className="relative flex-auto">
+         <p className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
+         Username or Password is incorrect !
+         </p>
+       </div>
+       <div className="flex items-center justify-end  border-solid border-slate-200 rounded-b">
+                      <button
+                        className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => handleClick()}
+                      >
+                       Ok
+                      </button>
+                   
+                    </div>
+     </div>
+   </div>
+ </div>
+ <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+ 
+  </>
+  :
+  null
+
+      }
                 </div>
             </div>
         </div>
