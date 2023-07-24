@@ -19,7 +19,8 @@ module.exports = {
             lightRed: '#fff2ee',
             lightBlue: '#ebfafc',
             lightOrange: '#fff2d6',
-            lightGray: '#f4f6f8'
+            lightGray: '#f4f6f8',
+            red:'#f50100'
         },
         fontFamily: {
             publicSansBold: 'PublicSans-Bold'
