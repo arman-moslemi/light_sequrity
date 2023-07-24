@@ -3,6 +3,7 @@ import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import ObjectContentTab from './ObjectContentTab';
 import ObjectInstructionTab from './ObjectInstructionTab';
 import ObjectCapabilityTab from './ObjectCapabiltyTab';
+import ObjectEquipmentTab from './ObjectEquipmentTab';
 const EachObjectTabs = () => {
 
     return (
@@ -50,7 +51,9 @@ const EachObjectTabs = () => {
             <TabPanel>
                 <ObjectCapabilityTab/>
             </TabPanel>
-            <TabPanel></TabPanel>
+            <TabPanel>
+                <ObjectEquipmentTab/>
+            </TabPanel>
             <TabPanel></TabPanel>
             <TabPanel></TabPanel>
         </Tabs>
