@@ -3,9 +3,9 @@ import React from "react";
 const ObjectEquipmentTab = () =>{
 
     return(
-        <div className="p-4">
+        <div className="flex p-4">
         <div
-            className="w-[100%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
+                 className="w-[69%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
                    <div className=" border-b-2 border-borderGray pb-4">
                 
                     <span className="text-[#000] font-bold text-xl">
@@ -38,12 +38,31 @@ const ObjectEquipmentTab = () =>{
                    
                     </div>
                  </div>
-                    <div className="flex items-center">
-                   <div className="flex">
-                    
-                   </div>
-                   
-                    </div>
+                 <div className="flex items-center justify-between">
+                        <div className="flex mr-2">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                               Total Count :  
+                                </span>
+                                <input
+        required="true"
+        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="number"
+        placeholder="0"/>
+
+                        </div>
+                        <div className="flex">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Consumable :  
+                                </span>
+                                <input
+                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                        type="checkbox"
+                        value=""
+                        id="checkBoxOne"/>
+        
+                        </div>
+                        </div>
                 </li>
                 <li
                     className="py-8 flex items-center justify-between border-b-2 border-borderGray border-dashed">
@@ -63,28 +82,31 @@ const ObjectEquipmentTab = () =>{
                         </div>
                       
                     </div>
-                    <div className="flex items-center">
-                    <span className="font-bold text-[#000] text-base mr-2">
-                           Priority : 
-                            </span>
-                    <select
-                        id="statusSelect"
-                        name="statusSelect"
-                        className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option> 
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option> 
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        
-</select>
-                    </div>
+                    <div className="flex items-center justify-between">
+                        <div className="flex mr-2">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Total Count :
+                                </span>
+                                <input
+        required="true"
+        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="number"
+        placeholder="0"/>
+
+                        </div>
+                        <div className="flex">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Consumable :  
+                                </span>
+                                <input
+                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                        type="checkbox"
+                        value=""
+                        id="checkBoxOne"/>
+        
+                        </div>
+                        </div>
                 </li>
                 <li
                     className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
@@ -104,33 +126,93 @@ const ObjectEquipmentTab = () =>{
                   
                     </div>
                  </div>
-                    <div className="flex items-center">
-                    <span className="font-bold text-[#000] text-base mr-2">
-                           Priority : 
-                            </span>
-                    <select
-                        id="statusSelect"
-                        name="statusSelect"
-                        className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option> 
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option> 
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        
-</select>
-                    </div>
+                 <div className="flex items-center justify-between">
+                        <div className="flex mr-2">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Total Count : 
+                                </span>
+                                <input
+        required="true"
+        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="number"
+        placeholder="0"/>
+
+                        </div>
+                        <div className="flex">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Consumable :  
+                                </span>
+                                <input
+                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                        type="checkbox"
+                        value=""
+                        id="checkBoxOne"/>
+        
+                        </div>
+                        </div>
                 </li>
             </ul>
             </div>
 
+            <div className="w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
+
+<span className="font-bold text-green text-base">
+    Add Object Equipment
+</span>
+<div class="w-full mt-6">
+    <label
+        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
+        for="title">
+        <span>
+        Object Equipment Title
+        </span>
+        <span className="text-hoverDelBack mx-1">
+            *
+        </span>
+    </label>
+    <input
+        required="true"
+        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="text"
+        placeholder="Type Instruction Title..."/>
+
+</div>
+
+<div className="w-full  mt-6">
+
+                        <div className="flex my-4">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Total Count :
+                                </span>
+                                <input
+        required="true"
+        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="number"
+        placeholder="0"/>
+
+                        </div>
+                        <div className="flex my-4">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Consumable :  
+                                </span>
+                                <input
+                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                        type="checkbox"
+                        value=""
+                        id="checkBoxOne"/>
+        
+                        </div>
+                   
+    <button
     
+        className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+        + Add Object Equipment To The List
+    </button>
+</div>
+</div>
     </div>
     )
 }
