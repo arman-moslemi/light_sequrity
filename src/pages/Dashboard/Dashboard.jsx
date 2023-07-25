@@ -8,7 +8,7 @@ const Dashboard = () => {
             <LeftMenu/>
             <div className="w-full">
                 <Header className="w-[90%] mx-auto"/>
-                <p>hello</p>
+                <p>hello</p>  
             </div>
 
         </div>
