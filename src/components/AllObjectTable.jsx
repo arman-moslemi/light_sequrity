@@ -21,13 +21,15 @@ export const truncate = (str, len) => {
     return str;
 };
 
-const AllObjectTable = () => {
+const AllObjectTable = ({data}) => {
     const [showAction,
         setShowAction] = useState(false);
     const [showDelete,
         setShowDelete] = useState(false);
     const [showDelModal,
-        setShowDelModal] = React.useState(false);
+        setShowDelModal] = useState(false);
+    const [id,
+        setID] =useState();
     // const [showEditModal,
     //     setShowEditModal] = React.useState(false);
     const handleCheckBoxChecked = () => {
@@ -41,11 +43,11 @@ const AllObjectTable = () => {
         setShowDelModal(!showDelModal);
         setShowAction(!showAction)
     }
-    // const editM = () => {
-    //     setShowEditModal(true);
-    //     setShowAction(false)
-    // }
-    const tableRow = [
+    const showAct = (id) => {
+    setID(id)
+    setShowAction(!showAction)
+    }
+    const tableRow2 = [
         {
             id: '1',
             number: '1',
@@ -209,7 +211,7 @@ const AllObjectTable = () => {
 
         }
     ]
-    const tableBody = tableRow.map((tableRow) => <tr key={tableRow.id} className="border-b border-b-borderGray">
+    const tableBody = data?.map((tableRow,index) => <tr key={tableRow.objectId} className="border-b border-b-borderGray">
         <td className="py-4 pl-4">
             <div class=" block">
                 <input
@@ -221,7 +223,7 @@ const AllObjectTable = () => {
 
             </div>
         </td>
-        <td className="py-4 text-sm text-center">{tableRow.number}</td>
+        <td className="py-4 text-sm text-center">{index+1}</td>
         <td className="py-4 text-sm text-left ">
 
             {tableRow.title}
@@ -230,10 +232,51 @@ const AllObjectTable = () => {
         <td className="py-4 text-sm text-left">{tableRow.address}</td>
         <td className="py-4 text-sm text-left">{tableRow.registerDate}</td>
         <td className="py-4 text-sm text-left">{tableRow.status}</td>
-        <td className="py-4 text-sm text-left">{tableRow.telephone}</td>
+        <td className="py-4 text-sm text-left">{tableRow.telephoneNumber}</td>
         <td className="py-4 text-sm text-left">{tableRow.assigner}</td>
         <td className="py-4 text-sm text-left">{tableRow.lastUpdate}</td>
-        <td className="py-4 text-sm text-center">{tableRow.action}</td>
+        <td className="py-4 text-sm text-center"><div className="relative">
+                    < button onClick={() => showAct(tableRow.objectId)}>
+                        <Bullet/>
+                    </button>
+                    {showAction &&  id==tableRow.objectId
+                        ? <div className="z-50  absolute  right-[55px] top-[2px]">
+                                <div className="triangleRight"></div>
+                                <div
+                                    className="z-50 w-[135px] h-auto  bg-white shadow-whiteShodow  rounded-lg mBg">
+                                    <Link
+                                        to={'/eachObject'}
+                                        className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
+
+                                        <Eye className="text-[#000] mr-3"/>
+                                        <span className="font-medium text-[#000]">
+                                            View
+                                        </span>
+
+                                    </Link>
+                                    <Link to={'/editObject'}
+                                        
+                                        className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
+
+                                        <Pencil className="text-[#000] mr-3"/>
+                                        <span className="font-medium text-[#000]">
+                                            Edit
+                                        </span>
+                                    </Link>
+                                    <button
+                                        onClick={actionMini}
+                                        className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
+
+                                        <Trash className="text-[#b71d18] mr-3"/>
+                                        <span className="font-medium text-[#b71d18]">
+                                            Delete
+                                        </span>
+                                    </button>
+
+                                </div>
+                            </div>
+                        : <></>}
+                </div></td>
     </tr>)
     return (
         <div className="">

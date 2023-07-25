@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import {apiUrl} from "../../commons/inFormTypes";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {axiosReq} from "../../commons/axiosReq";
 
 const Login = () => {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -28,7 +29,7 @@ const Login = () => {
       };
       let navigate = useNavigate();
 
-      const login=()=>{
+      const login=async()=>{
         if(!pass||!user){
             if(!pass){
               setErPass(true)
@@ -40,7 +41,6 @@ const Login = () => {
         else{
           setErPass(false)
           setErUser(false)
-        console.log(pass)
   
       setSnipper(true)
       axios
@@ -50,14 +50,13 @@ const Login = () => {
         grant_Type:"password"
       })
     .then(function (response) {
-      console.log(123456)
-      console.log(response)
+ 
     
     if (response.request.status == 200) {
       const cookies = new Cookies();
     cookies.set('token',response.data.accessToken, { path: '/' })
-    // cookies.set('ID',response.data.id, { path: '/' })
-      // console.log(response.data.token)
+   getUser()
+
     setSnipper(false)
    navigate("/")
     }
@@ -79,6 +78,16 @@ const Login = () => {
       
     
       }}
+
+      const getUser=async()=>{
+        const user = await axiosReq("Users/Profile");
+        // console.log(555)
+        // console.log(user)
+        const cookies = new Cookies();
+        cookies.set('ID',user.agency?.agencyId, { path: '/' })
+        cookies.set('Name',user.agency?.name, { path: '/' })
+return user;
+      }
     return (
                   <div
             className="w-full h-screen bg-[#f4f4f4] pt-24">
