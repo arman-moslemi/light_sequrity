@@ -85,7 +85,7 @@ const AllObjectTable = ({data}) => {
                                         </span>
 
                                     </Link>
-                                    <Link to={'/editObject'}
+                                    <Link to={'/editObject/'}
                                         
                                         className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
 
@@ -254,7 +254,7 @@ const AllObjectTable = ({data}) => {
                                         </span>
 
                                     </Link>
-                                    <Link to={'/editObject'}
+                                    <Link to={'/editObject/'+tableRow.objectId}
                                         
                                         className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
 
