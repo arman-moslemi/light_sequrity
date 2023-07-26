@@ -55,7 +55,7 @@ const ObjectTabs = () => {
                         <span >In process</span>
                         <div
                             className="w-[25px] h-[25px] rounded-md bg-[#dbf6e5] flex justify-center items-center ml-2 text-green text-xs">
-                            6
+                            {data?.filter(x=>x.isCompleted!=true)?.length}
                         </div>
                     </Tab>
                     <Tab
@@ -63,19 +63,19 @@ const ObjectTabs = () => {
                         <span >Completed</span>
                         <div
                             className="w-[25px] h-[25px] rounded-md bg-[#ffe4dd] flex justify-center items-center ml-2 text-[#b71d18] text-xs">
-                            4
+                            {data?.filter(x=>x.isCompleted==true)?.length}
                         </div>
                     </Tab>
                 </TabList>
 
                 <TabPanel>
-                    <AllObjectTable data={data}/>
+                    <AllObjectTable data={data} reCheck={reCheck} setRecheck={setRecheck}/>
                 </TabPanel>
                 <TabPanel>
-                    <InProcessObjectTable data={data?.filter(x=>x.status=="")}/>
+                    <InProcessObjectTable data={data?.filter(x=>x.isCompleted!=true)}reCheck={reCheck} setRecheck={setRecheck}/>
                 </TabPanel>
                 <TabPanel>
-                    <CompletedObjectTable data={data?.filter(x=>x.status=="")}/>
+                    <CompletedObjectTable data={data?.filter(x=>x.isCompleted==true)}reCheck={reCheck} setRecheck={setRecheck}/>
                 </TabPanel>
             </Tabs>
         
