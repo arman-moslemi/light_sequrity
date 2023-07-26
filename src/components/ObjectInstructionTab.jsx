@@ -15,23 +15,43 @@ const ObjectInstructionTab = () => {
     return (
         <div className="flex p-4">
 
-            <div className="w-[69%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
+            <div className="w-[69%] md:w-[98%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
                 <div className=" border-b-2 border-borderGray pb-4">
                     <div className="flex justify-between items-center">
                         <span className="text-[#000] font-bold text-xl">
                             Object Instructions
                         </span>
+                        <div className="flex md-sm:hidden">
                         <button
                         onClick={() => setShowSuccessModal(true)}
-                            className="w-max px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            className="w-max md:x-2p px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                             + Assign Instruction
                         </button>
+                        <button
+                        onClick={() => setShowSuccessModal(true)}
+                            className="hidden md:block  md:ml-1 w-max px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            + Add Instruction
+                        </button>
+                        </div>
+        
                     </div>
-                    <div className="h-9"></div>
+                    <div className="h-7 md-sm:h-4"></div>
                     <span className="text-[#000] font-bold text-base">
                         * You can choose your instruction from the list below or add your desired
                         instruction to this job position.
                     </span>
+                    <div className=" hidden md-sm:flex sm-xs:flex-col">
+                        <button
+                        onClick={() => setShowSuccessModal(true)}
+                            className="w-max md:x-2p sm-xs:px-3 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            + Assign Instruction
+                        </button>
+                        <button
+                        onClick={() => setShowSuccessModal(true)}
+                            className="hidden md:block  md:ml-1 sm-xs:ml-0 sm-xs:mt-1 sm-xs:pr-7 sm-xs:pl-3 w-max px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            + Add Instruction
+                        </button>
+                        </div>
 
                 </div>
 
@@ -194,7 +214,7 @@ const ObjectInstructionTab = () => {
                 </ul>
 
             </div>
-            <div className="w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
+            <div className="md:hidden w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
 
                 <span className="font-bold text-green text-base">
                     Add Instruction

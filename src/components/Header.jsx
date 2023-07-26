@@ -14,7 +14,7 @@ const Header = () => {
         setShowBox] = useState(false);
     return (
         <div
-            className=" h-20 bg-white shadow-grayShadow backdrop-blur mx-4 mt-5 rounded-xl flex justify-between items-center px-10">
+            className=" h-20 bg-white shadow-grayShadow backdrop-blur mx-4 mt-5 md:mx-1 rounded-xl flex justify-between items-center px-10 sm:px-3">
           <div className="flex items-center">
             <button className="hidden lg:block mr-[10px]">
                 <HamburgerMenu/>

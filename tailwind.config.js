@@ -28,7 +28,9 @@ module.exports = {
         screens: {
             'lg': {'max': '1200px'},
             'md': {'max': '846px'},
+            'md-sm': {'max': '703px'},
             'sm': {'max': '600px'},
+            'sm-xs': {'max': '482px'},
             'xs': {'max': '400px'},
         },
         boxShadow: {
