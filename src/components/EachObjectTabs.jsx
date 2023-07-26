@@ -6,11 +6,12 @@ import ObjectCapabilityTab from './ObjectCapabiltyTab';
 import ObjectEquipmentTab from './ObjectEquipmentTab';
 import ObjectShiftTab from './ObjectShiftTab';
 import CalendarObj from './CalendarObj';
+
 const EachObjectTabs = () => {
 
     return (
         <Tabs>
-            <TabList className="w-full flex  px-4 pt-2 ">
+            <TabList className="w-full flex  px-4 pt-2 pb-2 overflow-x-auto">
                 <Tab
                     className="py-4 px-1 mx-4 focus-visible:border-0 focus-visible:outline-none flex items-center text-[#637381] font-medium ">
                     <span >Object Content</span>

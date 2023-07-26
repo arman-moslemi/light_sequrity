@@ -29,7 +29,7 @@ const EachObjectTitleSection = () => {
                 <select
                     id="statusSelect"
                     name="statusSelect"
-                    className="w-[100px] ml-4 bg-[#212b36] rounded-lg border border-borderGray py-2 px-3 text-white">
+                    className="w-[100px] ml-4 bg-[#212b36] rounded-lg border border-borderGray py-2 px-2 text-white">
                     <option value="Active">Draft</option>
                     <option value="DeActive">Published</option>
 

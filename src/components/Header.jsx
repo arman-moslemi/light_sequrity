@@ -6,7 +6,8 @@ import DashboardMenuIcon from "../assets/icon/dashboardMenu";
 import UserMenuIcon from "../assets/icon/userMenu";
 import './components.css';
 import {Link} from "react-router-dom";
-import Avatar from "../assets/img/avatar.jpg"
+import Avatar from "../assets/img/avatar.jpg";
+import HamburgerMenu from "../assets/icon/hamburger";
 const Header = () => {
 
     const [showBox,
@@ -14,9 +15,14 @@ const Header = () => {
     return (
         <div
             className=" h-20 bg-white shadow-grayShadow backdrop-blur mx-4 mt-5 rounded-xl flex justify-between items-center px-10">
-            <button>
+          <div className="flex items-center">
+            <button className="hidden lg:block mr-[10px]">
+                <HamburgerMenu/>
+            </button>
+          <button>
                 <MagnifyingGlassIcon className="w-[25px] h-[25px] text-[#637381]"/>
             </button>
+          </div>
             <div className="flex">
                 <div className="relative">
                     <Alert className="w-[32px] h-[32px] mr-5"/>
