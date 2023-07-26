@@ -4,6 +4,9 @@ import ObjectContentTab from './ObjectContentTab';
 import ObjectInstructionTab from './ObjectInstructionTab';
 import ObjectCapabilityTab from './ObjectCapabiltyTab';
 import ObjectEquipmentTab from './ObjectEquipmentTab';
+import ObjectShiftTab from './ObjectShiftTab';
+// import CalendarObj from './CalendarObj';
+import ObjectPlanningTab from './ObjectPlanningTab';
 const EachObjectTabs = () => {
 
     return (
@@ -54,8 +57,12 @@ const EachObjectTabs = () => {
             <TabPanel>
                 <ObjectEquipmentTab/>
             </TabPanel>
-            <TabPanel></TabPanel>
-            <TabPanel></TabPanel>
+            <TabPanel>
+                <ObjectShiftTab/>
+            </TabPanel>
+            <TabPanel>
+                <ObjectPlanningTab/>
+            </TabPanel>
         </Tabs>
     )
 
