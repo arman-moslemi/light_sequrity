@@ -34,8 +34,7 @@ const InProcessObjectTable = ({ data,reCheck,setRecheck }) => {
         setShowDelModal] = useState(false);
     const [id,
         setID] = useState();
-    // const [showEditModal,
-    //     setShowEditModal] = React.useState(false);
+
     const handleCheckBoxChecked = () => {
 
         console.log('The checkbox was toggled');
