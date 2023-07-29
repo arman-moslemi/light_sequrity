@@ -113,17 +113,117 @@ const ObjectPlanningTab =()=> {
                                        Select Employee
                                     </label>
                                 
-                        <select
-                        required="true"
-                            id="statusSelect"
-                            name="statusSelect"
-                            className="w-full bg-white rounded-sm border border-borderGray py-3 px-4">
-                                <option value="none" selected disabled hidden>Select An Employee</option>
-                            <option value="e1">Ali Modanlou</option>
-                            <option value="e2">Sohrab Pakzad</option>
-                            <option value="e3">Amir Karimi</option>
-                            <option value="e4">Sam Mehraban</option>
-                        </select>
+                     <div className="flex flex-wrap">
+
+                        <div className="w-[50%] border-b border-b-borderGray">
+                            <div className="flex items-center my-2">
+                     
+              <input
+                required="true"
+                className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                type="checkbox"
+                value=""
+                id="vendingMachine"
+                
+
+              />
+              <img src={Img1} className="w-[40px] h-[40px] rounded-full ml-2 mr-2" alt="avatar"/>
+              <span >Ali Modanlou</span>
+
+           
+                            </div>
+                        </div>
+                        <div className="w-[50%] border-b border-b-borderGray">
+                            <div className="flex items-center my-2">
+                     
+              <input
+                required="true"
+                className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                type="checkbox"
+                value=""
+                id="vendingMachine"
+                
+
+              />
+              <img src={Img1} className="w-[40px] h-[40px] rounded-full ml-2 mr-2" alt="avatar"/>
+              <span >Ali Modanlou</span>
+
+           
+                            </div>
+                        </div>
+                        <div className="w-[50%] border-b border-b-borderGray">
+                            <div className="flex items-center my-2">
+                     
+              <input
+                required="true"
+                className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                type="checkbox"
+                value=""
+                id="vendingMachine"
+                
+
+              />
+              <img src={Img1} className="w-[40px] h-[40px] rounded-full ml-2 mr-2" alt="avatar"/>
+              <span >Ali Modanlou</span>
+
+           
+                            </div>
+                        </div>
+                        <div className="w-[50%] border-b border-b-borderGray">
+                            <div className="flex items-center my-2">
+                     
+              <input
+                required="true"
+                className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                type="checkbox"
+                value=""
+                id="vendingMachine"
+                
+
+              />
+              <img src={Img1} className="w-[40px] h-[40px] rounded-full ml-2 mr-2" alt="avatar"/>
+              <span >Ali Modanlou</span>
+
+           
+                            </div>
+                        </div>
+                        <div className="w-[50%] border-b border-b-borderGray">
+                            <div className="flex items-center my-2">
+                     
+              <input
+                required="true"
+                className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                type="checkbox"
+                value=""
+                id="vendingMachine"
+                
+
+              />
+              <img src={Img1} className="w-[40px] h-[40px] rounded-full ml-2 mr-2" alt="avatar"/>
+              <span >Ali Modanlou</span>
+
+           
+                            </div>
+                        </div>
+                        <div className="w-[50%] border-b border-b-borderGray">
+                            <div className="flex items-center my-2">
+                     
+              <input
+                required="true"
+                className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                type="checkbox"
+                value=""
+                id="vendingMachine"
+                
+
+              />
+              <img src={Img1} className="w-[40px] h-[40px] rounded-full ml-2 mr-2" alt="avatar"/>
+              <span >Ali Modanlou</span>
+
+           
+                            </div>
+                        </div>
+                     </div>
                                   
                                 </div>
                                 <div class="w-full  px-3 my-3 flex flex-col">
@@ -139,10 +239,10 @@ const ObjectPlanningTab =()=> {
                             name="statusSelect"
                             className="w-full bg-white rounded-sm border border-borderGray py-3 px-4">
                                 <option value="none" selected disabled hidden>Select The Shift</option>
-                            <option value="e1">S1 - daily - 8:00 - 12:00</option>
-                            <option value="e2">Sohrab Pakzad</option>
-                            <option value="e3">Amir Karimi</option>
-                            <option value="e4">Sam Mehraban</option>
+                            <option value="s1">S1 - daily - 8:00 - 12:00</option>
+                            <option value="s2">S2 - daily - 8:00 - 12:00</option>
+                            <option value="s3">S3 - daily - 8:00 - 12:00</option>
+                            <option value="s4">S4 - daily - 8:00 - 12:00</option>
                         </select>
                                   
                                 </div>
