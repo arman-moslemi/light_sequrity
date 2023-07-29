@@ -18,25 +18,25 @@ const ObjectTabs = () => {
     
       auth();
     }, [reCheck]);
-    const auth=async()=>{
+     const auth=async()=>{
       const cookies = new Cookies();
-      var token= cookies.get('token');
-      console.log(token)
+    var token= cookies.get('token');
+       console.log(token)
       if(!token){
-       navigate("/login");
+        navigate("/login");
       }else{
   
-     GetData()
+      GetData()
   
       }
-    };
-    const GetData=async()=>{
-     console.log(1234)
-     const cookies = new Cookies();
+     };
+     const GetData=async()=>{
+console.log(1234)
+   const cookies = new Cookies();
      var id= cookies.get('ID');
-    const dataUser = await axiosReq("Objects/"+id+"/objects/Active");
+     const dataUser = await axiosReq("Objects/"+id+"/objects/Active");
     console.log(dataUser)
-  setData(dataUser)
+   setData(dataUser)
     }
     return (
         <div className="rounded-2xl  shadow-tableShadow mt-5 mx-4">

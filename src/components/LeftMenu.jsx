@@ -17,7 +17,7 @@ const LeftMenu =(props) =>{
         setLeftMenustyle(!leftMenustyle);
       };
     return(
-        <div className={leftMenustyle ? "leftMenu transition-all ease-in-out duration-5000" : "leftMenuMinimize transition-all ease-in-out duration-5000"} >
+        <div className={leftMenustyle ? "leftMenu transition-all ease-in-out duration-5000 lg:hidden" : "leftMenuMinimize transition-all ease-in-out duration-5000 lg:hidden"} >
 
                 <button onClick={changeStyle} className="changeWidth flex justify-center items-center rounded-full h-[26px] w-[26px] border border-borderGray border-dashed absolute -right-3 top-8 bg-white">
                 {
