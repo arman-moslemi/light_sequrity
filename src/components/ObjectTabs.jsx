@@ -14,30 +14,30 @@ const ObjectTabs = () => {
     const [reCheck, setRecheck] = useState(false);
     let navigate = useNavigate();
   
-//     useEffect(() => {
+    useEffect(() => {
     
-//       auth();
-//     }, [reCheck]);
-//     const auth=async()=>{
-//       const cookies = new Cookies();
-//       var token= cookies.get('token');
-//       console.log(token)
-//       if(!token){
-//        navigate("/login");
-//       }else{
+      auth();
+    }, [reCheck]);
+     const auth=async()=>{
+      const cookies = new Cookies();
+    var token= cookies.get('token');
+       console.log(token)
+      if(!token){
+        navigate("/login");
+      }else{
   
-//      GetData()
+      GetData()
   
-//       }
-//     };
-//     const GetData=async()=>{
-//      console.log(1234)
-//      const cookies = new Cookies();
-//      var id= cookies.get('ID');
-//     const dataUser = await axiosReq("Objects/"+id+"/objects/Active");
-//     console.log(dataUser)
-//   setData(dataUser)
-//     }
+      }
+     };
+     const GetData=async()=>{
+console.log(1234)
+   const cookies = new Cookies();
+     var id= cookies.get('ID');
+     const dataUser = await axiosReq("Objects/"+id+"/objects/Active");
+    console.log(dataUser)
+   setData(dataUser)
+    }
     return (
         <div className="rounded-2xl  shadow-tableShadow mt-5 mx-4">
             <Tabs>
