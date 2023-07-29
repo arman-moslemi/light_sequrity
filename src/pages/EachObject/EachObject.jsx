@@ -8,7 +8,7 @@ const EachObject = () => {
 
     return (
         <div className="flex">
-            <LeftMenu/>
+            <LeftMenu />
             <div className="w-full px-4">
                 <Header className="w-[90%] mx-auto"/>
                 <EachObjectTitleSection className="mb-6"/>
