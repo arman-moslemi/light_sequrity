@@ -113,7 +113,7 @@ const ObjectPlanningTab =()=> {
                                        Select Employee
                                     </label>
                                 
-                     <div className="flex flex-wrap">
+                     <div className="flex flex-wrap h-40 overflow-y-auto">
 
                         <div className="w-[50%] border-b border-b-borderGray">
                             <div className="flex items-center my-2">
