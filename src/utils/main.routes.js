@@ -6,6 +6,7 @@ import EditObject from "../pages/EditObject/EditObject";
 import AddObject from "../pages/AddObject/AddObject";
 import EachObject from "../pages/EachObject/EachObject";
 import Login from "../pages/Login/Login";
+import Questions from "../pages/Questions/Questions";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -26,6 +27,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/login" element={<Login/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/questions" element={<Questions/>}/>
             </Routes>
         </BrowserRouter>
     )

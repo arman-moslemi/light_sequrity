@@ -2,6 +2,7 @@ import React ,{useState} from "react";
 import {ReactComponent as Logo} from "../assets/icon/logo.svg"
 import Bag from "../assets/icon/bag";
 import DashboardIcon from "../assets/icon/dashboard";
+import QuestionIcon from "../assets/icon/question";
 import { Link ,useLocation } from "react-router-dom";
 import { ChevronLeftIcon,ChevronRightIcon } from '@heroicons/react/24/solid';
 import './components.css';
@@ -44,7 +45,7 @@ const LeftMenu =(props) =>{
                        "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
                        : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
                        <DashboardIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="" ? "#00a76f" : "#637381"}/>
-                        <span className={splitLocation[1] ==="" ? "  text-activeText" : " font-medium text-base text-[#919eab]"}>
+                        <span className={splitLocation[1] ==="" ? "  text-activeText font-bold" : " font-semibold text-base text-[#919eab]"}>
                            Dashboard
                         </span>
                        </Link>
@@ -58,8 +59,22 @@ const LeftMenu =(props) =>{
                        "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
                        : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
                        <Bag className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="object" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="object" ? "#00a76f" : "#637381"}/>
-                        <span className={splitLocation[1] ==="object" ? "  text-activeText " : " font-medium text-base text-[#919eab]"}>
+                        <span className={splitLocation[1] ==="object" ? "  text-activeText font-bold" : " font-semibold text-base text-[#919eab]"}>
                            Object
+                        </span>
+                       </Link>
+                    </li>
+                    <li className="my-1">
+                    <Link to={'/questions'} className={leftMenustyle && splitLocation[1] ==="questions"   ?
+                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
+                       leftMenustyle && splitLocation[1]!=="questions" ?
+                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
+                       !leftMenustyle &&  splitLocation[1] ==="questions"?
+                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
+                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
+                       <QuestionIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="questions" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="questions" ? "#00a76f" : "#637381"}/>
+                        <span className={splitLocation[1] ==="questions" ? "  text-activeText font-bold " : " font-semibold text-base text-[#919eab]"}>
+                       Questions
                         </span>
                        </Link>
                     </li>
