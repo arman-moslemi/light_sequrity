@@ -1,9 +1,6 @@
 import React from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import ObjectContentTab from './ObjectContentTab';
-import ObjectInstructionTab from './ObjectInstructionTab';
-import ObjectCapabilityTab from './ObjectCapabiltyTab';
-import ObjectEquipmentTab from './ObjectEquipmentTab';
+
 import ObjectShiftTab from './ObjectShiftTab';
 // import CalendarObj from './CalendarObj';
 import ObjectPlanningTab from './ObjectPlanningTab';

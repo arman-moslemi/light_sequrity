@@ -7,6 +7,7 @@ import AddObject from "../pages/AddObject/AddObject";
 import EachObject from "../pages/EachObject/EachObject";
 import Login from "../pages/Login/Login";
 import Questions from "../pages/Questions/Questions";
+import AgencyList from "../pages/AgencyList/AgencyList";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -30,6 +31,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/questions" element={<Questions/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/agencyList" element={<AgencyList/>}/>
             </Routes>
         </BrowserRouter>
     )
