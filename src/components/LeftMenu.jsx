@@ -3,6 +3,7 @@ import {ReactComponent as Logo} from "../assets/icon/logo.svg"
 import Bag from "../assets/icon/bag";
 import DashboardIcon from "../assets/icon/dashboard";
 import QuestionIcon from "../assets/icon/question";
+import AgencyIcon from "../assets/icon/agencyIcon";
 import { Link ,useLocation } from "react-router-dom";
 import { ChevronLeftIcon,ChevronRightIcon } from '@heroicons/react/24/solid';
 import './components.css';
@@ -36,7 +37,7 @@ const LeftMenu =(props) =>{
                     Agency
                 </span>
                 <ul className="my-2">
-                    <li className="my-1" >
+                    <li className="my-5" >
                     <Link to={'/'} className={leftMenustyle && splitLocation[1] ===""   ?
                        "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
                        leftMenustyle && splitLocation[1]!=="" ?
@@ -50,7 +51,7 @@ const LeftMenu =(props) =>{
                         </span>
                        </Link>
                     </li>
-                    <li className="my-1">
+                    <li className="my-5">
                     <Link to={'/object'} className={leftMenustyle && splitLocation[1] ==="object"   ?
                        "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
                        leftMenustyle && splitLocation[1]!=="object" ?
@@ -64,7 +65,7 @@ const LeftMenu =(props) =>{
                         </span>
                        </Link>
                     </li>
-                    <li className="my-1">
+                    <li className="my-5">
                     <Link to={'/questions'} className={leftMenustyle && splitLocation[1] ==="questions"   ?
                        "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
                        leftMenustyle && splitLocation[1]!=="questions" ?
@@ -75,6 +76,20 @@ const LeftMenu =(props) =>{
                        <QuestionIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="questions" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="questions" ? "#00a76f" : "#637381"}/>
                         <span className={splitLocation[1] ==="questions" ? "  text-activeText font-bold " : " font-semibold text-base text-[#919eab]"}>
                        Questions
+                        </span>
+                       </Link>
+                    </li>
+                    <li className="my-5">
+                    <Link to={'/agencyList'} className={leftMenustyle && splitLocation[1] ==="agencyList"   ?
+                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
+                       leftMenustyle && splitLocation[1]!=="agencyList" ?
+                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
+                       !leftMenustyle &&  splitLocation[1] ==="agencyList"?
+                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
+                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
+                       <AgencyIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                        <span className={splitLocation[1] ==="agencyList" ? "  text-activeText font-bold " : " font-semibold text-base text-[#919eab]"}>
+                       Agency List
                         </span>
                        </Link>
                     </li>
