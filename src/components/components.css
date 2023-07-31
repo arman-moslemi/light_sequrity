@@ -142,7 +142,9 @@ input[type=checkbox] {
     position: relative;
     overflow-y: auto;
   }
-  
+  .rbc-month-row{
+    overflow: auto !important;
+  }
   .react-responsive-modal-closeButton {
     position: absolute;
     top: 14px;

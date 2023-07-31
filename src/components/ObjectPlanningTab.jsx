@@ -51,6 +51,14 @@ const ObjectPlanningTab =()=> {
                 .toDate(),
             employeeName: "Sohrab Pakzad",
             shift:"s2"
+        },
+        {
+            start: moment().toDate(),
+            end: moment()
+                .add(0, "days")
+                .toDate(),
+            employeeName: "Sohrab Pakzad",
+            shift:"s2"
         }
     ]);
 
