@@ -1,12 +1,20 @@
 import React, { useMemo , useState} from "react";
-import {Calendar, momentLocalizer} from "react-big-calendar";
+import {Calendar, momentLocalizer,Navigate,dayjsLocalizer} from "react-big-calendar";
 import moment from "moment";
 import {Modal} from 'react-responsive-modal';
 import './components.css';
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Img1 from "../assets/img/avatar.jpg"
+import TimeGrid from 'react-big-calendar/lib/TimeGrid';
+import dayjs from 'dayjs'
+var minMax = require('dayjs/plugin/minMax')
+dayjs.extend(minMax)
+// dayjs.max(dayjs(), dayjs('2018-01-01'), dayjs('2018-01-05'))
+// dayjs.min([dayjs(), dayjs('2018-01-01'), dayjs('2019-01-05')])
+
 const localizer = momentLocalizer(moment);
+// const localizer = dayjsLocalizer(dayjs);
 function EventAgenda({ event }) {
     return (
       <span>
@@ -15,6 +23,7 @@ function EventAgenda({ event }) {
       </span>
     )
   }
+  
   function Event({ event }) {
     return (
      <div className="bg-mainColor flex items-center py-[5px] px-4 rounded-full justify-between my-[0px]">
@@ -50,45 +59,165 @@ const ObjectPlanningTab =()=> {
   
 
    const onClickButton = e => {
+       console.log(e)
        
     setOpenModal(true)
     }
    const onCloseModal = () => {
     setOpenModal(false)
     }
-   const  customSlotPropGetter = () => {
- 
-          return { }
+   const  customSlotPropGetter = (prop) => {
+ console.log(prop)
+          prop.disabled=true;
     
       }
-
-      const { components, defaultDate } = useMemo(
+      function MyWeek({
+        date,
+        localizer,
+        max = localizer.endOf(new Date(), 'day'),
+        min = localizer.startOf(new Date(), 'day'),
+        scrollToTime = localizer.startOf(new Date(), 'day'),
+        ...props
+      }) {
+        const currRange = useMemo(
+          () => MyWeek.range(date, { localizer }),
+          [date, localizer]
+        )
+      
+        return (
+          <TimeGrid
+            date={date}
+            eventOffset={15}
+            localizer={localizer}
+            max={max}
+            min={min}
+            
+            // style={{height:"40vh"}}
+            range={currRange}
+            // scrollToTime={scrollToTime}
+            {...props}
+          />
+          // <div>test</div>
+        )
+      }
+      
+      // MyWeek.propTypes = {
+      //   date: PropTypes.instanceOf(Date).isRequired,
+      //   localizer: PropTypes.object,
+      //   max: PropTypes.instanceOf(Date),
+      //   min: PropTypes.instanceOf(Date),
+      //   scrollToTime: PropTypes.instanceOf(Date),
+      // }
+      
+      MyWeek.range = (date, { localizer }) => {
+        const start = new Date;
+        const end =new Date(2023, 6,31);
+      
+        let current = start
+        const range = []
+      
+        while (localizer.lte(current, end, 'day')) {
+          range.push(current)
+          current = localizer.add(current, 1, 'day')
+        }
+      
+        return range
+      }
+      
+      MyWeek.navigate = (date, action, { localizer }) => {
+        switch (action) {
+          case Navigate.PREVIOUS:
+            return localizer.add(date, -7, 'day')
+      
+          case Navigate.NEXT:
+            return localizer.add(date, 7, 'day')
+      
+          default:
+            return date
+        }
+      }
+      
+      MyWeek.title = (date) => {
+        return `My awesome week: ${date.toLocaleDateString()}`
+      }
+      const ColoredDateCellWrapper = ({ children }) =>
+      React.cloneElement(React.Children.only(children), {
+        style: {
+          // backgroundColor: 'lightblue',
+        },
+      })
+      const { components, defaultDate,views,max,min } = useMemo(
         () => ({
           components: {
-            agenda: {
-              event: EventAgenda,
-            },
+            // agenda: {
+            //   event: EventAgenda,
+            // },
+            // timeSlotWrapper: ColoredDateCellWrapper,
+
             event: Event,
+            // month:{
+            //   dateHeader: (props) => (
+            //     <div>Custom Date Header</div>
+            //   )
+            //   ,
+          
+            // }
           },
-          defaultDate: new Date(2015, 3, 7),
+          views: {
+            month:true,
+            week: MyWeek,
+          },
+          max: dayjs().endOf('day').subtract(1, 'hours').toDate(),
+          min: new Date(2015, 3, 7),
+          defaultDate: new Date,
+
+          // defaultDate: new Date(2015, 3, 7),
         }),
         []
       )
+
+
+      const customDayPropGetter = (date) => {
+        // if (date.getDate() === 7 || date.getDate() === 15)
+        var startDate = new Date(2023, 6, 20)
+        var endDate   = new Date(2023, 6, 31)
+        var range = moment(date).isBetween(startDate, endDate);
+        if (!range)
+        
+          return {
+            style: {
+              // border: 'solid 3px ' + (date.getDate() === 7 ? '#faa' : '#afa'),
+              backgroundColor:"#d9d9d9",
+              // display: "block"
+              // display:'none'
+            },
+          }
+        else return {
+          
+        }
+      }
+  
         return (
             <div className="App">
                 <Calendar
                           components={components}
-                          slotPropGetter={customSlotPropGetter}
+                          // slotPropGetter={customSlotPropGetter}
                     selectable={true}
                     localizer={localizer}
-                    defaultDate={new Date()}
+                    // defaultDate={defaultDate}
                     defaultView="month"
-                    events={events}
-                    dayPropGetter={customSlotPropGetter}
+                    events={events}                    
+                    dayPropGetter={customDayPropGetter}
+                    views={views}
+                    // min={new Date(2015, 3, 7)}
+                    max={max}
+                    // startAccessor={"2023/07/25"}
+                    // endAccessor={new Date()}
                     style={{
-                    height: "100vh"
+                    height: "120vh"
                 }}
-                    onSelectSlot={onClickButton}/>
+                
+                    onSelectSlot={(e)=>onClickButton(e)}/>
                 <Modal open={openModal} onClose={onCloseModal} className="bg-mainColor">
                      
 

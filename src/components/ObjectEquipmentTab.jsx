@@ -1,7 +1,71 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
+import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
+import { axiosReq } from "../commons/axiosReq";
+import {useParams } from "react-router-dom";
 
 const ObjectEquipmentTab = () =>{
+    const [equ, setEqu] = useState();
+    const [title, setTitle] = useState();
+    const [totalCount, setTotal] = useState();
+    const [usedCount, setUsed] = useState();
+    const [isConsumable, setCons] = useState(false);
+    const params = useParams().id;
 
+    const [reCheck, setRecheck] = useState(false);
+    let navigate = useNavigate();
+
+    useEffect(() => {
+
+        auth();
+    }, [reCheck]);
+    const auth = async () => {
+        const cookies = new Cookies();
+        var token = cookies.get('token');
+        console.log(token)
+        if (!token) {
+            navigate("/login");
+        } else {
+
+            GetData()
+
+        }
+    };
+    const GetData = async () => {
+        console.log("AllEq")
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        console.log(id)
+        console.log(params)
+
+        const dataUser = await axiosReq("Objects/"+params+"/Equipments");
+        console.log(dataUser)
+
+        setEqu(dataUser)
+    }
+    const addEqu = async () => {
+        console.log("AllEq")
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        console.log(id)
+        const equi = await axiosReq("Objects/"+params+"/Equipments",{
+            agencyId:id,
+            title:title,
+            totalCount: totalCount,
+            usedCount: usedCount,
+            isConsumable: isConsumable
+        });
+        if (equi?.status == 200 || equi?.status == 204|| equi?.status == 201) {
+            // navigate("/tashakolRegister2",{
+            //   OrganizationID:data?.organizationId
+            // });
+            alert("Success")
+      setRecheck(!reCheck)
+          }
+          else {
+            alert("Please fill inputs")
+          }
+    }
     return(
         <div className="flex p-4">
         <div
@@ -20,138 +84,80 @@ const ObjectEquipmentTab = () =>{
 
             </div>
             <ul className="mt-6">
-                <li
-                    className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
-                 <div className="flex items-center">
-                 <input
-                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                        type="checkbox"
-                        value=""
-                        id="checkBoxOne"/>
-                    <div>
-                        <div className="flex flex-col">
-                            <span className="font-bold text-[#000] text-base">
-                            Paper Cup
-                            </span>
-                 
-                        </div>
-                   
-                    </div>
-                 </div>
-                 <div className="flex items-center justify-between">
-                        <div className="flex mr-2">
-                        <span className="font-bold text-[#000] text-base mr-2">
-                               Total Count :  
-                                </span>
-                                <input
-        required="true"
-        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
-        id="title"
-        type="number"
-        placeholder="0"/>
+                {
+                    equ?.map((item)=>{
+                        return(
+                            <li
+                            className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
+                         <div className="flex items-center">
+                         <input
+                                className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                                type="checkbox"
+                                value=""
+                                id="checkBoxOne"/>
+                            <div>
+                                <div className="flex flex-col">
+                                    <span className="font-bold text-[#000] text-base">
+                                    {item?.title}
+                                    </span>
+                         
+                                </div>
+                           
+                            </div>
+                         </div>
+                         <div className="flex items-center justify-between">
+                                <div className="flex mr-2">
+                                <span className="font-bold text-[#000] text-base mr-2">
+                                       Total Count :  
+                                        </span>
+                                        <input
+                required="true"
+                class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+                id="title"
+                type="number"
+                value={item?.totalCount}
+                disabled={true}
 
-                        </div>
-                        <div className="flex">
-                        <span className="font-bold text-[#000] text-base mr-2">
-                        Consumable :  
-                                </span>
-                                <input
-                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                        type="checkbox"
-                        value=""
-                        id="checkBoxOne"/>
+              />
         
-                        </div>
-                        </div>
-                </li>
-                <li
-                    className="py-8 flex items-center justify-between border-b-2 border-borderGray border-dashed">
-                <div className="flex items-center">
-                <input
-                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                        type="checkbox"
-                        value=""
-                        id="checkBoxOne"/>
-                    <div>
-                        <div className="flex flex-col">
-                            <span className="font-bold text-[#000] text-base">
-                            Height above 180
-                            </span>
-                    
-                        </div>
-                        </div>
-                      
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <div className="flex mr-2">
-                        <span className="font-bold text-[#000] text-base mr-2">
-                        Total Count :
-                                </span>
-                                <input
-        required="true"
-        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
-        id="title"
-        type="number"
-        placeholder="0"/>
+                                </div>
+                                <div className="flex mr-2">
+                                <span className="font-bold text-[#000] text-base mr-2">
+                                       Used Count :  
+                                        </span>
+                                        <input
+                required="true"
+                class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+                id="title"
+                type="number"
+                value={item?.usedCount}
+                disabled={true}
 
-                        </div>
-                        <div className="flex">
-                        <span className="font-bold text-[#000] text-base mr-2">
-                        Consumable :  
-                                </span>
-                                <input
-                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                        type="checkbox"
-                        value=""
-                        id="checkBoxOne"/>
+              />
         
-                        </div>
-                        </div>
-                </li>
-                <li
-                    className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
-                 <div className="flex items-center">
-                 <input
-                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                        type="checkbox"
-                        value=""
-                        id="checkBoxOne"/>
-                    <div>
-                        <div className="flex flex-col">
-                            <span className="font-bold text-[#000] text-base">
-                            Driving licence
-                            </span>
-                       
-                        </div>
+                                </div>
+                                <div className="flex">
+                                <span className="font-bold text-[#000] text-base mr-2">
+                                Consumable :  
+                                        </span>
+                                        <input
+                                className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                                type="checkbox"
+                                value=""
+                                disabled={true}
+                                checked={item?.isConsumable}
+                                id="checkBoxOne"/>
+                
+                                </div>
+                                </div>
+                        </li> 
+                        
+                        )
+                    })
                   
-                    </div>
-                 </div>
-                 <div className="flex items-center justify-between">
-                        <div className="flex mr-2">
-                        <span className="font-bold text-[#000] text-base mr-2">
-                        Total Count : 
-                                </span>
-                                <input
-        required="true"
-        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
-        id="title"
-        type="number"
-        placeholder="0"/>
-
-                        </div>
-                        <div className="flex">
-                        <span className="font-bold text-[#000] text-base mr-2">
-                        Consumable :  
-                                </span>
-                                <input
-                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                        type="checkbox"
-                        value=""
-                        id="checkBoxOne"/>
-        
-                        </div>
-                        </div>
-                </li>
+                }
+             
+              
             </ul>
             </div>
 
@@ -176,7 +182,9 @@ const ObjectEquipmentTab = () =>{
         class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
         id="title"
         type="text"
-        placeholder="Type Instruction Title..."/>
+        placeholder="Type Instruction Title..."
+        onChange={(e)=>setTitle(e.target.value)}
+        />
 
 </div>
 
@@ -191,7 +199,25 @@ const ObjectEquipmentTab = () =>{
         class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
         id="title"
         type="number"
-        placeholder="0"/>
+        placeholder="0"
+        onChange={(e)=>setTotal(e.target.value)}
+
+        />
+
+                        </div>
+                        <div className="flex my-4">
+                        <span className="font-bold text-[#000] text-base mr-2">
+                        Used Count :
+                                </span>
+                                <input
+        required="true"
+        class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+        id="title"
+        type="number"
+        placeholder="0"
+        onChange={(e)=>setUsed(e.target.value)}
+
+        />
 
                         </div>
                         <div className="flex my-4">
@@ -202,12 +228,15 @@ const ObjectEquipmentTab = () =>{
                         className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                         type="checkbox"
                         value=""
-                        id="checkBoxOne"/>
+                        id="checkBoxOne"
+                        onChange={(e)=>setCons(e.target.checked)}
+
+                        />
         
                         </div>
                    
     <button
-    
+    onClick={()=>addEqu()}
         className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
         + Add Object Equipment To The List
     </button>
