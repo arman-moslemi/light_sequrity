@@ -225,63 +225,7 @@ const ObjectInstructionTab = () => {
                         placeholder="Type Instruction Title..." />
 
                 </div>
-                <div class="w-full  mt-6">
-                    <label
-                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
-                        for="title">
-                        <span>
-                            Instruction Description
-                        </span>
-                        <span className="text-hoverDelBack mx-1">
-                            *
-                        </span>
-                    </label>
-                    <textarea
-                        rows="4"
-                        onChange={(e)=>setDes(e.target.value)}
-                        required="true"
-                        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="title"
-                        type="text"
-                        placeholder="Type Instruction Description..." />
-
-                </div>
-                <div className="w-full  mt-6">
-                    <label
-                        className=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2">
-                        Upload Files (picture,voice,video,file)
-                    </label>
-                    <label
-                        for="dropzone-file"
-                        className="mt-2 flex flex-col items-center justify-center w-[100%] md:w-full h-32 border border-borderGray border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                        <div
-                            className="flex flex-col items-center justify-center pt-5 pb-6 font-IRsans">
-                            <svg
-                                aria-hidden="true"
-                                class="w-8 h-8 mt-1 text-borderGray"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                            </svg>
-                            <p className="mb-0 text-xs text-gray-500 dark:text-gray-400">
-                                <span className="font-normal font-IRsans text-[#000]">Choose File</span>
-                            </p>
-
-                        </div>
-                        <input id="dropzone-file" type="file" className="hidden" />
-                    </label>
-                    <button
-                        onClick={() =>addInstru()}
-                        className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
-                        + Add Instruction
-                    </button>
-                </div>
+              
             </div>
             {showEditModal
                 ? <> <div
