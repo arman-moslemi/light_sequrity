@@ -83,11 +83,11 @@ const ObjectShiftTab = ({data}) => {
                         Object Shifts
                     </span>
 
-                    <div className="h-9"></div>
-                    <span className="text-[#000] font-bold text-base">
+                    <div className="h-7"></div>
+                    <p className="text-[#000] font-bold text-base text-justify">
                         *In this section, based on the type of shift, you can specify the time intervals
                         of each shift and assign it to this object.
-                    </span>
+                    </p>
 
                 </div>
                 <div className="flex justify-start flex-wrap w-full">
