@@ -247,7 +247,7 @@ const AllObjectTable = ({ data,reCheck,setRecheck }) => {
                     <div
                         className="z-50 w-[135px] h-auto  bg-white shadow-whiteShodow  rounded-lg mBg">
                         <Link
-                            to={'/eachObject'}
+                            to={'/eachObject/'+tableRow.objectId}
                             className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
 
                             <Eye className="text-[#000] mr-3" />

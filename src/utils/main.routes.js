@@ -24,7 +24,7 @@ const MainRoutes = (props) => {
                 <Route path="/addObject" element={<AddObject/>}/>
             </Routes>
             <Routes>
-                <Route path="/eachObject" element={<EachObject/>}/>
+                <Route path="/eachObject/:id" element={<EachObject/>}/>
             </Routes>
             <Routes>
                 <Route path="/login" element={<Login/>}/>
