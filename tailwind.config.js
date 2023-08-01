@@ -26,12 +26,15 @@ module.exports = {
             publicSansBold: 'PublicSans-Bold'
         },
         screens: {
+            'xl': {'max': '1300px'},
             'lg': {'max': '1200px'},
+            'lg-md': {'max': '1045px'},
             'md': {'max': '846px'},
             'md-sm': {'max': '703px'},
             'sm': {'max': '600px'},
             'sm-xs': {'max': '482px'},
             'xs': {'max': '400px'},
+            '2xs': {'max': '320px'},
         },
         boxShadow: {
             grayShadow: '0px 0px 15px 0px rgba(0,0,0,0.08)',
