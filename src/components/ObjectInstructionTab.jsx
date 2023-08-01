@@ -141,7 +141,7 @@ const ObjectInstructionTab = () => {
                                                 instruction.pdf
                                             </span>
                                         </button>
-        
+         
                                         <button
                                             className="mr-4 h-8 my-1 px-4 bg-lightBlue rounded-full flex justify-center items-center ">
                                             <ImgIcon />
