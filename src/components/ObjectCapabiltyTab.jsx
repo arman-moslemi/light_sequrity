@@ -1,10 +1,15 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
+import { useParams } from "react-router-dom";
+
 const ObjectCapabilityTab = ({ data }) => {
     const [cap, setCap] = useState([]);
+    const [title, setTitle] = useState();
+    const [prio, setPriority] = useState();
     const [usercap, setUserCap] = useState([]);
+    const params = useParams().id;
 
     const [reCheck, setRecheck] = useState(false);
     let navigate = useNavigate();
@@ -31,6 +36,58 @@ const ObjectCapabilityTab = ({ data }) => {
         console.log(dataUser)
 
         setCap(dataUser)
+        const capUser = await axiosReq("Objects/" + params + "/capabilities");
+        console.log(capUser)
+
+    }
+    const addCap = async () => {
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        console.log(id)
+        const equi = await axiosReq("Capability", {
+            agencyId: id,
+            name: title,
+            value: prio,
+            description: "",
+        });
+        if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+            // navigate("/tashakolRegister2",{
+            //   OrganizationID:data?.organizationId
+            // });
+            alert("Success")
+            setRecheck(!reCheck)
+        }
+        else {
+            alert("Please fill inputs")
+        }
+    }
+    const submitEqu = async (check, capid, perio) => {
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        console.log(id)
+        if (check == true) {
+            const equi = await axiosReq("Objects/" + params + "/capabilities", {
+                capabilities: [
+                    {
+                        objectId: params,
+                        capabilityId: capid,
+                        priority: perio,
+                    }
+                ]
+
+            });
+            if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+                // navigate("/tashakolRegister2",{
+                //   OrganizationID:data?.organizationId
+                // });
+                alert("Success")
+                setRecheck(!reCheck)
+            }
+            else {
+                console.log(equi?.Message)
+            }
+        }
+
     }
     return (
         <div className="flex p-4">
@@ -59,54 +116,59 @@ const ObjectCapabilityTab = ({ data }) => {
                 </div>
                 <ul className="mt-6">
                     {
-                        cap?.map((item)=>{
-                            return(
+                        cap?.map((item) => {
+                            return (
                                 <li
-                                className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
-                                <div className="flex items-center">
-                                    <input
-                                        className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                                        type="checkbox"
-                                        value=""
-                                        id="checkBoxOne" />
-                                    <div>
-                                        <div className="flex flex-col">
-                                            <span className="font-bold text-[#000] text-base">
-                                               {item?.name}
-                                            </span>
-        
+                                    className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
+                                    <div className="flex items-center">
+                                        <input
+                                            className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                                            type="checkbox"
+                                            value=""
+                                            id="checkBoxOne"
+                                            onChange={(e) => submitEqu(e.target.checked, item.capabilityId, prio)}
+
+                                        />
+                                        <div>
+                                            <div className="flex flex-col">
+                                                <span className="font-bold text-[#000] text-base">
+                                                    {item?.name}
+                                                </span>
+
+                                            </div>
+
                                         </div>
-        
                                     </div>
-                                </div>
-                                <div className="flex items-center">
-                                    <span className="font-bold text-[#000] text-base mr-2">
-                                        Priority :
-                                    </span>
-                                    <select
-                                        id="statusSelect"
-                                        name="statusSelect"
-                                        className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-        
-                                    </select>
-                                </div>
-                            </li>
+                                    <div className="flex items-center">
+                                        <span className="font-bold text-[#000] text-base mr-2">
+                                            Priority :
+                                        </span>
+                                        <select
+                                            id="statusSelect"
+                                            name="statusSelect"
+                                            value={item?.value}
+                                            onChange={(e) => setPriority(e.target.value)}
+                                            className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+
+                                        </select>
+                                    </div>
+                                </li>
                             )
                         })
                     }
-                  
-                   
+
+
                 </ul>
             </div>
             <div className="w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
@@ -130,6 +192,7 @@ const ObjectCapabilityTab = ({ data }) => {
                         class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="title"
                         type="text"
+                        onChange={(e) => setTitle(e.target.value)}
                         placeholder="Type Instruction Title..." />
 
                 </div>
@@ -158,7 +221,7 @@ const ObjectCapabilityTab = ({ data }) => {
                         </select>
                     </div>
                     <button
-
+                        onClick={() => addCap()}
                         className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                         + Add Capability To The List
                     </button>

@@ -38,17 +38,44 @@ const ObjectEquipmentTab = () =>{
         console.log(id)
         console.log(params)
 
-        const dataUser = await axiosReq("Objects/"+params+"/Equipments");
-        console.log(dataUser)
+        const datas = await axiosReq("Equipments");
+        console.log(datas)
 
-        setEqu(dataUser)
+        setEqu(datas.filter(x=>x.agencyId==id))
+        const equuser = await axiosReq("Objects/"+params+"/Equipments");
+        console.log(222)
+        console.log(equuser)
+
+        // setEqu(equuser)
+    }
+    const submitEqu = async (check,eqid) => {
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        console.log(id)
+        if(check==true){
+            const equi = await axiosReq("Objects/"+params+"/Equipments",{
+                objectId:params,
+                equipmentId:eqid,
+                needCount: 1,
+            });
+            if (equi?.status == 200 || equi?.status == 204|| equi?.status == 201) {
+                // navigate("/tashakolRegister2",{
+                //   OrganizationID:data?.organizationId
+                // });
+                alert("Success")
+          setRecheck(!reCheck)
+              }
+              else {
+console.log(equi?.Message)              }
+        }
+       
     }
     const addEqu = async () => {
         console.log("AllEq")
         const cookies = new Cookies();
         var id = cookies.get('ID');
         console.log(id)
-        const equi = await axiosReq("Objects/"+params+"/Equipments",{
+        const equi = await axiosReq("Equipments",{
             agencyId:id,
             title:title,
             totalCount: totalCount,
@@ -94,6 +121,7 @@ const ObjectEquipmentTab = () =>{
                                 className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                                 type="checkbox"
                                 value=""
+                                onChange={(e)=>submitEqu(e.target.checked,item.equipmentId)}
                                 id="checkBoxOne"/>
                             <div>
                                 <div className="flex flex-col">
