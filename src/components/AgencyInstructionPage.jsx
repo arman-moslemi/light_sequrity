@@ -39,12 +39,12 @@ const AgencyInstructionPage = ({ data }) => {
 
 
                     <div className="h-5"></div>
-                   <div className="flex items-center justify-between">
+                   <div className="flex items-center 719:flex-col 719:items-start justify-between">
                    <p className="text-[#000] font-bold 2xs:font-medium text-base text-justify">
                         *    You can add instruction in this section</p>
                     <button
                             onClick={() => setShowAddModal(true)}
-                            className=" lg-md:block w-max sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            className=" lg-md:block w-max 719:mt-4 sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                             + Add Instruction To The List
                         </button>
                    </div>
