@@ -9,6 +9,9 @@ import Login from "../pages/Login/Login";
 import Questions from "../pages/Questions/Questions";
 import AgencyList from "../pages/AgencyList/AgencyList";
 import EditAgency from "../pages/EditAgency/EditAgency";
+import AddAgency from "../pages/AddAgency/AddAgency";
+import AgencyCapability from "../pages/AgencyCapability/AgencyCapability";
+import AgencyInstruction from "../pages/AgencyInstruction/AgencyInstruction";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -38,6 +41,15 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/editAgency" element={<EditAgency/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/addAgency" element={<AddAgency/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/agencyCapability" element={<AgencyCapability/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/agencyInstruction" element={<AgencyInstruction/>}/>
             </Routes>
         </BrowserRouter>
     )

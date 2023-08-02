@@ -1,12 +1,11 @@
 
-import React,{useState} from "react";
+import React from "react";
 import LeftMenu from "../../components/LeftMenu";
 import Header from "../../components/Header";
-import { Link } from "react-router-dom";
-import {ChevronLeftIcon} from "@heroicons/react/24/solid";
-import AgencyListTable from "../../components/AgencyListTable";
-const AgencyList = () =>{
-    const [showNewModal,setShowNewModal] = useState(false);
+import AgencyInstructionPage from "../../components/AgencyInstructionPage";
+
+const AgencyCapability = () =>{
+   
     return(
         <div className="flex">
             <LeftMenu />
@@ -15,7 +14,7 @@ const AgencyList = () =>{
                 <div className="mt-8 mx-4 flex items-center justify-between">
             <div>
             <p className="font-bold text-lg text-[#000]">
-                   Agency List
+                   Agency Instruction
                 </p>
 
                 <div className="flex items-center ">
@@ -28,17 +27,18 @@ const AgencyList = () =>{
                     <p className="font-medium text-sm text-[#000]">
                         Agency
                     </p>
+                    <p className="font-medium text-3xl text-menuItem mx-3 mt-[-15px]">
+                        .
+                    </p>
+                    <p className="font-medium text-sm text-[#000]">
+                        Agency Instruction
+                    </p>
                 </div>
             </div>
-            <Link to={'/addAgency'} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
-          
-                      
-          + Add
          
-  </Link>
  
             </div>
-                <AgencyListTable/>
+                <AgencyInstructionPage/>
              
             </div>
 
@@ -46,4 +46,4 @@ const AgencyList = () =>{
     )
 }
 
-export default AgencyList;
+export default AgencyCapability;
