@@ -75,8 +75,8 @@ const ObjectShiftTab = ({data}) => {
                 }
        
     return (
-        <div className="flex p-4">
-            <div className="w-full  bg-white rounded-2xl shadow-object h-auto p-10">
+        <div className="flex p-4 xs:px-0">
+            <div className="w-full  bg-white rounded-2xl shadow-object h-auto p-10 xs:px-4 2xs:px-3">
                 <div className=" border-b-2 border-borderGray pb-4">
 
                     <span className="text-[#000] font-bold text-xl">
@@ -95,7 +95,7 @@ const ObjectShiftTab = ({data}) => {
                         shType?.map((item)=>{
                             return(
 <div
-                        className="w-[300px] bg-white rounded-2xl shadow-object h-max mr-5 my-5 p-5">
+                        className="w-[300px] bg-white rounded-2xl shadow-object h-max mr-5 my-5 p-5 sm-xs:mr-0 xs:px-2">
                         <div className="flex">
                             <span className="text-[#000] font-bold text-base mr-3">
                                 Shift Type :
