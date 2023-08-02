@@ -94,9 +94,9 @@ console.log(equi?.Message)              }
           }
     }
     return(
-        <div className="flex p-4">
+        <div className="flex p-4 sm:px-1">
         <div
-                 className="w-[69%] mr-[1%] bg-white rounded-2xl shadow-object h-auto p-10">
+                 className="w-[69%] lg-md:w-[100%] mr-[1%] sm:mr-0 bg-white rounded-2xl shadow-object h-auto p-10 md-sm:px-3">
                    <div className=" border-b-2 border-borderGray pb-4">
                 
                     <span className="text-[#000] font-bold text-xl">
@@ -104,10 +104,15 @@ console.log(equi?.Message)              }
                     </span>
                  
             
-                <div className="h-9"></div>
-                <span className="text-[#000] font-bold text-base">
+                <div className="h-4"></div>
+                <p className="text-[#000] font-bold text-base text-justify">
                     *     You can choose the equipment from the list below, specify the quantity and whether or not this equipment is consumable.
-                </span>
+                </p>
+                <button
+                onClick={()=>addEqu()}
+                className="hidden lg-md:block sm-xs:w-[100%] px-4 h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                + Add Object Equipment To The List
+                </button>
 
             </div>
             <ul className="mt-6">
@@ -115,7 +120,7 @@ console.log(equi?.Message)              }
                     equ?.map((item)=>{
                         return(
                             <li
-                            className="py-8 flex justify-between items-center border-b-2 border-borderGray border-dashed">
+                            className="py-8 flex xl:flex-col xl:items-start lg:flex-row md:flex-col md:items-start justify-between items-center border-b-2 border-borderGray border-dashed">
                          <div className="flex items-center">
                          <input
                                 className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
@@ -133,7 +138,7 @@ console.log(equi?.Message)              }
                            
                             </div>
                          </div>
-                         <div className="flex items-center justify-between">
+                         <div className="flex items-center justify-between xl:mt-4 lg:mt-0 md:mt-4">
                                 <div className="flex mr-2">
                                 <span className="font-bold text-[#000] text-base mr-2">
                                        Total Count :  
@@ -169,7 +174,7 @@ console.log(equi?.Message)              }
                                 Consumable :  
                                         </span>
                                         <input
-                                className="largeCheckBox mr-5  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                                className="largeCheckBox mr-5 sm:mr-1  text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                                 type="checkbox"
                                 value=""
                                 disabled={true}
@@ -189,7 +194,7 @@ console.log(equi?.Message)              }
             </ul>
             </div>
 
-            <div className="w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
+            <div className="lg-md:hidden w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
 
 <span className="font-bold text-green text-base">
     Add Object Equipment
