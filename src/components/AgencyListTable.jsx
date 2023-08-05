@@ -122,14 +122,14 @@ const AgencyListTable = () => {
                     id="checkBoxDelete"
                      />
          </td>
-      <td className="py-4 text-sm text-left font-IRsans ">{tableRow2.number}</td>
-      <td className="py-4 text-sm text-left font-IRsans">{tableRow2.name}</td>
-      <td className="py-4 text-sm text-left font-IRsans">{tableRow2.address}</td>
-      <td className="py-4 text-sm text-left font-IRsans" >{tableRow2.registerDate}</td>
-      <td className="py-4 text-sm text-left font-IRsans"  >{tableRow2.status}</td>
-      <td className="py-4 text-sm text-left font-IRsans">{tableRow2.expireDate}</td>
-      <td className="py-4 text-sm text-left font-IRsans">{tableRow2.edit}</td>
-      <td className="py-4 text-sm text-left font-IRsans">{tableRow2.delete}</td>
+      <td className="py-4 pl-9 text-sm text-left font-IRsans">{tableRow2.number}</td>
+      <td className="py-4 pl-2 pr-9 text-sm text-left font-IRsans">{tableRow2.name}</td>
+      <td className="py-4 px-5 text-sm text-left font-IRsans">{tableRow2.address}</td>
+      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.registerDate}</td>
+      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.status}</td>
+      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.expireDate}</td>
+      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.edit}</td>
+      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.delete}</td>
       </tr> 
     )
 
@@ -226,7 +226,8 @@ return (
 
             </table>
        </div>
-            <div className=" w-full flex justify-end py-8 px-8">
+            <div className=" w-full flex justify-end lg-md:justify-start py-4 px-8 xs:flex-col">
+                <div className="flex">
                 <p className="text-sm text-[#000] font-bold">
                     Row per pages :
                 </p>
@@ -243,16 +244,19 @@ return (
                     </select>
 
                 </form>
-                <p className="text-sm font-medium text-[#000] ml-4">
+                </div>
+                <div className="flex">
+                <p className="text-sm font-medium text-[#000] ml-4 mt-0 xs:ml-0 xs:mt-2">
                     11-15 of 20
                 </p>
-                <div className="flex items-center ml-4">
+                <div className="flex items-center ml-4 mt-0 xs:mt-2">
                     <button>
                         <ChevronLeftIcon className="text-[#000] w-[15px] h-[15px]" />
                     </button>
                     <button>
                         <ChevronRightIcon className="text-[#000] w-[15px] h-[15px]" />
                     </button>
+                </div>
                 </div>
             </div>
         </div>

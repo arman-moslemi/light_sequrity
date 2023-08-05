@@ -29,12 +29,12 @@ const AgencyInstruction = ({ data }) => {
 
 
                     <div className="h-5"></div>
-                   <div className="flex items-center justify-between">
+                   <div className="flex 770:flex-col 770:items-start items-center justify-between">
                    <p className="text-[#000] font-bold 2xs:font-medium text-base text-justify">
                         *    You can add required abilities in this section</p>
                     <button
                             onClick={() => setShowAddModal(true)}
-                            className=" lg-md:block w-max sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            className=" lg-md:block mt-0 770:mt-4 w-max sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                             + Add Capability To The List
                         </button>
                    </div>
@@ -42,18 +42,18 @@ const AgencyInstruction = ({ data }) => {
                 </div>
                <ul className="mt-6">
                 <li className="flex items-center w-full py-4 border-b border-dashed border-borderGray my-3">
-                    <span className="font-bold text-green mr-6">
+                    <span className="font-bold text-green mr-6 sm-xs:w-[11%]">
                         1 )
                     </span>
-                    <span className="font-semibold text-[#000] text-base">
+                    <span className="font-semibold text-[#000] text-base sm-xs:w-[89%]">
                     Having a second-level driver's license
                                                 </span>
                 </li>
                 <li className="flex items-center w-full py-4 border-b border-dashed border-borderGray my-3">
-                    <span className="font-bold text-green mr-6">
+                    <span className="font-bold text-green mr-6 sm-xs:w-[11%]">
                         2 )
                     </span>
-                    <span className="font-semibold text-[#000] text-base">
+                    <span className="font-semibold text-[#000] text-base sm-xs:w-[89%]">
                     Having a height above 180 cm
                                                 </span>
                 </li>

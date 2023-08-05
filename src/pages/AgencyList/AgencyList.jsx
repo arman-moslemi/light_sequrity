@@ -12,7 +12,7 @@ const AgencyList = () =>{
             <LeftMenu />
             <div className="w-full px-4">
                 <Header className="w-[90%] mx-auto"/>
-                <div className="mt-8 mx-4 flex items-center justify-between">
+                <div className="mt-8 mx-4 flex xs:flex-col xs:items-start items-center justify-between">
             <div>
             <p className="font-bold text-lg text-[#000]">
                    Agency List
@@ -30,7 +30,7 @@ const AgencyList = () =>{
                     </p>
                 </div>
             </div>
-            <Link to={'/addAgency'} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
+            <Link to={'/addAgency'} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center mt-0 xs:mt-6 xs:w-[100%] xs:justify-evenly" >
           
                       
           + Add

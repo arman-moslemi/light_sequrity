@@ -451,7 +451,7 @@ const TextQuestionsTab = ({data}) => {
                         </tbody>
 
                     </table >
-                    <div className=" w-full flex items-center xs:flex-col xs:items-start justify-end sm:justify-start py-8 px-8 xs:px-6">
+                    <div className=" w-full flex items-center xs:flex-col xs:items-start justify-end 719:justify-start py-8 px-8 xs:px-6">
                         <div className="flex">
                         <p className="text-sm text-[#000] font-bold">
                             Row per pages :
