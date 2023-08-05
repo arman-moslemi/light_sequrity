@@ -145,13 +145,13 @@ const LeftMenu =(props) =>{
                            </Link>
                         </li>
                         <li>
-                           <Link to={'/agencyList'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
+                           <Link to={'/agencyEquipment'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
                              {
-                              splitLocation[1] ==="agencyList" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
-                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                              splitLocation[1] ==="agencyEquipment" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyEquipment" ? "#00a76f" : "#637381"}/>
+                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyEquipment" ? "#00a76f" : "#637381"}/>
                               
                              }
-                             <span className={splitLocation[1] ==="agencyList" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
+                             <span className={splitLocation[1] ==="agencyEquipment" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
                        Equipment
                         </span>
                            </Link>

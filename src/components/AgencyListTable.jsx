@@ -207,14 +207,14 @@ return (
 
                             </div>
                         </th>
-                        <th className="text-black  text-left px-4   md:px-4">Number</th>
-                        <th className="text-black  text-left px-4   md:px-4">Agency Name</th>
-                        <th className="text-black  text-left px-4   md:px-4">Address</th>
-                        <th className="text-black  text-center px-4  md:px-4">Register date</th>
-                        <th className="text-black  text-center px-4  md:px-4">Status</th>
-                        <th className="text-black  text-center px-4   md:px-4">Expire date</th>
-                        <th className="text-black  text-center px-4  md:px-4">Edit</th>
-                        <th className="text-black  text-center px-4  md:px-4">Delete</th>
+                        <th className="text-black  text-left    md:px-3">Number</th>
+                        <th className="text-black  text-left    md:px-3">Agency Name</th>
+                        <th className="text-black  text-left   md:px-3">Address</th>
+                        <th className="text-black  text-left   md:px-3">Register date</th>
+                        <th className="text-black  text-left   md:px-3">Status</th>
+                        <th className="text-black  text-left    md:px-3">Expire date</th>
+                        <th className="text-black  text-left   md:px-3">Edit</th>
+                        <th className="text-black  text-left   md:px-3">Delete</th>
                        
 
                     </tr>
