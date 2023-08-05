@@ -13,6 +13,7 @@ import AddAgency from "../pages/AddAgency/AddAgency";
 import AgencyCapability from "../pages/AgencyCapability/AgencyCapability";
 import AgencyInstruction from "../pages/AgencyInstruction/AgencyInstruction";
 import AgencyEquipment from "../pages/AgencyEquipment/AgencyEquipment"
+import UserList from "../pages/UserList/UserList";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -54,6 +55,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/agencyEquipment" element={<AgencyEquipment/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/userList" element={<UserList/>}/>
             </Routes>
         </BrowserRouter>
     )
