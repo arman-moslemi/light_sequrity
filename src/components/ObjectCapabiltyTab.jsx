@@ -83,7 +83,7 @@ const ObjectCapabilityTab = ({ data }) => {
                 // navigate("/tashakolRegister2",{
                 //   OrganizationID:data?.organizationId
                 // });
-                alert("Success")
+                setShowSuccessModal(true)
                 setRecheck(!reCheck)
             }
             else {
@@ -135,6 +135,7 @@ const ObjectCapabilityTab = ({ data }) => {
                                             type="checkbox"
                                             value=""
                                             id="checkBoxOne"
+                                            // checked={}
                                             onChange={(e) => submitEqu(e.target.checked, item.capabilityId, prio)}
 
                                         />
