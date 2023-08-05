@@ -172,7 +172,7 @@ const TextQuestionsTab = ({data}) => {
                                             className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                             type="button"
                                             onClick={() => setShowEditModal(false)}>
-                                            Continue
+                                            Add
                                         </button>
                                         <button
                                             className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -218,22 +218,22 @@ const TextQuestionsTab = ({data}) => {
     > <td className="py-4 text-sm text-left pl-10">
         {tableRow.number
 }
-    </td> < td className = "py-4 text-sm text-left px-4" > 
+    </td> < td className = "py-4 text-sm text-left px-2" > 
     <>
     {
         tableRow.question
     } 
     </>
     </td > 
-        < td className = "py-4 text-sm text-center px-4" > {
+        < td className = "py-4 text-sm text-center px-2" > {
         tableRow.contract
-    } </td > < td className = "py-4 text-sm text-center px-4" > {
+    } </td > < td className = "py-4 text-sm text-center px-2" > {
         tableRow.edit
     } </td>
-         <td className="py-4 text-sm text-center px-4">
+         <td className="py-4 text-sm text-center px-2">
         {tableRow.delete}
     </td >
-    <td className="py-4 text-sm text-center px-4">
+    <td className="py-4 text-sm text-center px-2">
         {tableRow.viewOtions}
     </td >
      </tr>
@@ -278,13 +278,13 @@ const TextQuestionsTab = ({data}) => {
     return (
         <div className="p-4">
             <div className=" pb-4">
-                <div className="flex justify-between items-center">
-                    <span className="text-[#000] font-bold text-base w-[80%]">
+                <div className="flex justify-between items-center md-sm:flex-col md-sm:items-start">
+                    <p className="text-[#000] font-bold text-base text-justify w-[80%] lg-md:w-[70%] md-sm:w-[100%]">
                         * You Can See The List Of All Questions In The Table Below
-                    </span>
+                    </p>
                     <button
                         onClick={() => setShowSuccessModal(true)}
-                        className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center">
+                        className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 mt-0 md-sm:mt-6 hover:bg-menuActive hover:text-green flex items-center">
 
                         + Add Question
 
@@ -422,7 +422,7 @@ const TextQuestionsTab = ({data}) => {
             </div>
             <div className="">
 
-                <div className="  w-full rounded-2xl  shadow-tableShadow mt-5">
+                <div className="  w-full rounded-2xl  shadow-tableShadow mt-5 overflow-x-auto">
 
                     <table class="table-auto w-full">
                         <thead
@@ -436,13 +436,13 @@ const TextQuestionsTab = ({data}) => {
                                 borderRadius: '20px'
                             }}>
 
-                                <th className="text-black  text-left   md:px-4 px-4">Number</th >
-                                <th className="text-black  text-left   md:px-4 px-4">Question / Answers</th>
+                                <th className="text-black  text-left   md:px-3 px-4">Number</th >
+                                <th className="text-black  text-left   md:px-3 px-4">Question / Answers</th>
                               
-                                <th className="text-black  text-center  md:px-4 px-4">Is For Contract ?</th >
-                                <th className="text-black  text-center  md:px-4 px-4">Edit</th>
-                                <th className="text-black  text-center  md:px-4 px-4">Delete</th>
-                                <th className="text-black  text-center  md:px-4 px-4">View Options</th>
+                                <th className="text-black  text-center  md:px-3 px-4">Is For Contract ?</th >
+                                <th className="text-black  text-center  md:px-3 px-4">Edit</th>
+                                <th className="text-black  text-center  md:px-3 px-4">Delete</th>
+                                <th className="text-black  text-center  md:px-3 px-4">View Options</th>
                             </tr >
                         </thead>
                         < tbody >
@@ -451,7 +451,8 @@ const TextQuestionsTab = ({data}) => {
                         </tbody>
 
                     </table >
-                    <div className=" w-full flex justify-end py-8 px-8">
+                    <div className=" w-full flex items-center xs:flex-col xs:items-start justify-end 719:justify-start py-8 px-8 xs:px-6">
+                        <div className="flex">
                         <p className="text-sm text-[#000] font-bold">
                             Row per pages :
                         </p>
@@ -468,7 +469,8 @@ const TextQuestionsTab = ({data}) => {
                             </select>
 
                         </form>
-                        <p className="text-sm font-medium text-[#000] ml-4">
+                        </div >
+                        <p className="text-sm font-medium text-[#000] ml-4 mt-0 xs:ml-0 xs:mt-2">
                             11-15 of 20
                         </p>
                         <div className="flex items-center ml-4"></div>

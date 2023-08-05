@@ -6,6 +6,7 @@ import QuestionIcon from "../assets/icon/question";
 import AgencyIcon from "../assets/icon/agencyIcon";
 import { Link ,useLocation } from "react-router-dom";
 import { ChevronLeftIcon,ChevronRightIcon } from '@heroicons/react/24/solid';
+import BulletIcon from "../assets/icon/bullet";
 import './components.css';
 const LeftMenu =(props) =>{
    
@@ -13,6 +14,7 @@ const LeftMenu =(props) =>{
     const { pathname } = location;
     const splitLocation = pathname.split("/");
     const [leftMenustyle, setLeftMenustyle] = useState(true);
+    const [showAgencyDropDown,setShowAgencyDropDown] = useState(false);
     const changeStyle = () => {
         console.log("you just clicked");
       
@@ -80,18 +82,85 @@ const LeftMenu =(props) =>{
                        </Link>
                     </li>
                     <li className="my-5">
-                    <Link to={'/agencyList'} className={leftMenustyle && splitLocation[1] ==="agencyList"   ?
-                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
+                     <div className={leftMenustyle && splitLocation[1] ==="agencyList"   ?
+                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive justify-between":
                        leftMenustyle && splitLocation[1]!=="agencyList" ?
-                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
+                       "flex flex-row  items-center  hover:bg-hoverBackground px-3 py-2 rounded-md justify-between":
                        !leftMenustyle &&  splitLocation[1] ==="agencyList"?
-                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
-                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
-                       <AgencyIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive justify-between"       
+                       : "flex flex-col justify-center items-center hover:bg-hoverBackground px-3 py-2 rounded-md"}>
+                        <div className="flex items-center">
+                        <AgencyIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
                         <span className={splitLocation[1] ==="agencyList" ? "  text-activeText font-bold " : " font-semibold text-base text-[#919eab]"}>
+                       Agency
+                        </span>
+                        </div>
+                       <button onClick={() =>setShowAgencyDropDown(!showAgencyDropDown)}>
+                       {
+                        showAgencyDropDown?
+                        <ChevronRightIcon className="w-[18px] h-[18px] rotate-90 text-[#919eab]"/>
+                        : 
+                        <ChevronRightIcon className="w-[18px] h-[18px] text-[#919eab]"/>
+                       }
+                       </button>
+                     </div>
+                    {
+                     showAgencyDropDown ? 
+                     <div className="w-full">
+                     <ul className="">
+                        <li>
+                           <Link to={'/agencyList'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
+                             {
+                              splitLocation[1] ==="agencyList" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                              
+                             }
+                             <span className={splitLocation[1] ==="agencyList" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
                        Agency List
                         </span>
-                       </Link>
+                           </Link>
+                        </li>
+                        <li>
+                           <Link to={'/agencyCapability'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
+                             {
+                              splitLocation[1] ==="agencyCapability" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyCapability" ? "#00a76f" : "#637381"}/>
+                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyCapability" ? "#00a76f" : "#637381"}/>
+                              
+                             }
+                             <span className={splitLocation[1] ==="agencyCapability" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
+                       Capability
+                        </span>
+                           </Link>
+                        </li>
+                        <li>
+                           <Link to={'/agencyInstruction'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
+                             {
+                              splitLocation[1] ==="agencyInstruction" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyInstruction" ? "#00a76f" : "#637381"}/>
+                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyInstruction" ? "#00a76f" : "#637381"}/>
+                              
+                             }
+                             <span className={splitLocation[1] ==="agencyInstruction" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
+                       Instructions
+                        </span>
+                           </Link>
+                        </li>
+                        <li>
+                           <Link to={'/agencyList'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
+                             {
+                              splitLocation[1] ==="agencyList" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyList" ? "#00a76f" : "#637381"}/>
+                              
+                             }
+                             <span className={splitLocation[1] ==="agencyList" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
+                       Equipment
+                        </span>
+                           </Link>
+                        </li>
+                     </ul>
+                    </div>
+                    :
+                    null
+                    }
                     </li>
                 </ul>
                 </div>

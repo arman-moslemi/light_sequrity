@@ -75,19 +75,19 @@ const ObjectShiftTab = ({data}) => {
                 }
        
     return (
-        <div className="flex p-4">
-            <div className="w-full  bg-white rounded-2xl shadow-object h-auto p-10">
+        <div className="flex p-4 xs:px-0">
+            <div className="w-full  bg-white rounded-2xl shadow-object h-auto p-10 xs:px-4 2xs:px-3">
                 <div className=" border-b-2 border-borderGray pb-4">
 
                     <span className="text-[#000] font-bold text-xl">
                         Object Shifts
                     </span>
 
-                    <div className="h-9"></div>
-                    <span className="text-[#000] font-bold text-base">
+                    <div className="h-7"></div>
+                    <p className="text-[#000] font-bold text-base text-justify">
                         *In this section, based on the type of shift, you can specify the time intervals
                         of each shift and assign it to this object.
-                    </span>
+                    </p>
 
                 </div>
                 <div className="flex justify-start flex-wrap w-full">
@@ -95,7 +95,7 @@ const ObjectShiftTab = ({data}) => {
                         shType?.map((item)=>{
                             return(
 <div
-                        className="w-[300px] bg-white rounded-2xl shadow-object h-max mr-5 my-5 p-5">
+                        className="w-[300px] bg-white rounded-2xl shadow-object h-max mr-5 my-5 p-5 sm-xs:mr-0 xs:px-2">
                         <div className="flex">
                             <span className="text-[#000] font-bold text-base mr-3">
                                 Shift Type :
