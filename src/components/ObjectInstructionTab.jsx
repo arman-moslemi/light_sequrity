@@ -12,6 +12,9 @@ import WhitePencil from "../assets/icon/whitePencil";
 import Trash from "../assets/icon/trash";
 import WhiteTrash from "../assets/icon/whiteTrash";
 import Cross from "../assets/icon/cross";
+import {apiUrl} from "../commons/inFormTypes";
+import axios from "axios";
+
 const ObjectInstructionTab = () => {
     const [showEditModal,
         setShowEditModal] = React.useState(false);
@@ -22,6 +25,7 @@ const ObjectInstructionTab = () => {
     const [AddInstruction,
         setAddInstruction] = React.useState(false);
     const [instru, setInstru] = useState([]);
+    const [objInstru, setObjInstru] = useState([]);
     const [title, setTitle] = useState();
     const [des, setDes] = useState();
     const params = useParams().id;
@@ -46,12 +50,18 @@ const ObjectInstructionTab = () => {
         }
     };
     const GetData = async () => {
-        const dataUser = await axiosReq("ObjectInstructions/"+params+"/instructions");
+        const dataUser = await axiosReq("Instructions");
         console.log(dataUser)
 
         setInstru(dataUser)
-        
 
+        const insUser = await axiosReq("Objects/" + params + "/instructions");
+        console.log(insUser)
+        var ss=[]
+        insUser.map((item)=>{
+            ss.push(item.instructionId)
+        })
+        setObjInstru(ss)
     }
     const addInstru = async () => {
         const cookies = new Cookies();
@@ -72,6 +82,50 @@ const ObjectInstructionTab = () => {
             alert("Please fill inputs")
         }
     }
+    const submitIns = async (check, insid) => {
+        const cookies = new Cookies();
+
+        if (check == true) {
+            const equi = await axiosReq("Objects/" + params + "/instructions", {
+                instructions: [
+                    {
+                        objectId: params,
+                        instructionId: insid,
+                    }
+                ]
+
+            });
+            if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+                // navigate("/tashakolRegister2",{
+                //   OrganizationID:data?.organizationId
+                // });
+                setShowSuccessModal(true)
+                setRecheck(!reCheck)
+            }
+            else {
+                console.log(equi?.Message)
+            }
+        }
+        else{
+            const delIns =
+            await axios.delete(apiUrl+"Objects/" + params + "/instructions",
+                {headers: {
+           Authorization: `Bearer ${cookies.get('token')}`
+                     
+}})
+            if (delIns?.status == 200 || delIns?.status == 204 || delIns?.status == 201) {
+                // navigate("/tashakolRegister2",{
+                //   OrganizationID:data?.organizationId
+                // });
+                setShowSuccessModal(true)
+                setRecheck(!reCheck)
+            }
+            else {
+                console.log(delIns?.Message)
+            }
+        }
+
+    }
     return (
         <div className="flex p-4">
 
@@ -82,11 +136,11 @@ const ObjectInstructionTab = () => {
                             Object Instructions
                         </span>
                         <div className="flex md-sm:hidden">
-                            <button
+                            {/* <button
                                 onClick={() => setShowSuccessModal(true)}
                                 className="w-max md:x-2p px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
-                                + Assign Instruction
-                            </button>
+                                + Add Instruction
+                            </button> */}
                             <button
                                 onClick={() => addInstru()}
                                 className="hidden md:block  md:ml-1 w-max px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
@@ -101,11 +155,11 @@ const ObjectInstructionTab = () => {
                         instruction to this job position.
                     </p>
                     <div className=" hidden md-sm:flex sm-xs:flex-col">
-                        <button
+                        {/* <button
                             onClick={() => setShowSuccessModal(true)}
                             className="w-max md:x-2p sm-xs:px-3 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                             + Assign Instruction
-                        </button>
+                        </button> */}
                         <button
                             onClick={() => setAddInstruction(true)}
                             className="hidden md:block  md:ml-1 sm-xs:ml-0 sm-xs:mt-1 sm-xs:pr-7 sm-xs:pl-3 w-max px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
@@ -117,90 +171,113 @@ const ObjectInstructionTab = () => {
 
                 <ul className="mt-6">
                     {
-                        instru?.map((item)=>{
-                            return(
+                        instru?.map((item) => {
+                            return (
                                 <li
-                                className="py-8 flex items-start border-b-2 border-borderGray border-dashed md-sm:pb-4">
-                                <input
-                                    className="largeCheckBox mr-5 mt-[10px] text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
-                                    type="checkbox"
-                                    value=""
-                                    id="checkBoxOne" />
-                                <div>
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-[#000] text-base mb-1">
-{item?.title}                                        </span>
-                                        <p className="font-normal text-[#000] text-sm text-justify">
-                                        {item?.description}   </p>
-                                    </div>
-                                    <div className="flex items-center flex-wrap my-4">
-                                        <button
-                                            className="mr-4 h-8 my-1 px-4 bg-lightGreen rounded-full flex justify-center items-center ">
-                                            <Pdf />
-                                            <span className="text-green font-bold text-sm ml-2">
-                                                instruction.pdf
-                                            </span>
-                                        </button>
-         
-                                        <button
-                                            className="mr-4 h-8 my-1 px-4 bg-lightBlue rounded-full flex justify-center items-center ">
-                                            <ImgIcon />
-                                            <span className="text-[#00b8d9] font-bold text-sm ml-2">
-                                                image2.png
-                                            </span>
-                                        </button>
-                                        <button
-                                            className="mr-4 h-8 my-1 px-4 bg-lightRed rounded-full flex justify-center items-center ">
-                                            <VideoIcon />
-                                            <span className="text-[#f50100] font-bold text-sm ml-2">
-                                                video.mp4
-                                            </span>
-                                        </button>
-                                        <button
+                                    className="py-8 flex items-start border-b-2 border-borderGray border-dashed md-sm:pb-4">
+                                    <input
+                                        className="largeCheckBox mr-5 mt-[10px] text-green w-8 h-8 bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
+                                        type="checkbox"
+                                        value=""
+                                        id="checkBoxOne"
+                                        checked={objInstru.includes(item.instructionId)}
+                                        onChange={(e) => submitIns(e.target.checked, item.instructionId)}
+
+                                    />
+                                    <div>
+                                        <div className="flex flex-col">
+                                            <span className="font-bold text-[#000] text-base mb-1">
+                                                {item?.title}                                        </span>
+                                            <p className="font-normal text-[#000] text-sm text-justify">
+                                                {item?.description}   </p>
+                                        </div>
+                                        <div className="flex items-center flex-wrap my-4">
+                                            {
+                                                item?.instructionFiles?.map((item2)=>{
+                                                    return(
+                                                        item2?.fileType.trim()==".pdf"?
+                                                        <button
+                                                        className="mr-4 h-8 my-1 px-4 bg-lightGreen rounded-full flex justify-center items-center ">
+                                                        <Pdf />
+                                                        <span className="text-green font-bold text-sm ml-2">
+                                                            {item2.fileName?.split('/')[3]}
+                                                        </span>
+                                                    </button>
+                                                    :
+                                                    item2?.fileType.trim()==".jpg"?
+                                                    <button
+                                                    className="mr-4 h-8 my-1 px-4 bg-lightBlue rounded-full flex justify-center items-center ">
+                                                    <ImgIcon />
+                                                    <span className="text-[#00b8d9] font-bold text-sm ml-2">
+                                                    {item2.fileName?.split('/')[3]}
+                                                    </span>
+                                                </button>
+                                                :
+                                                item2?.fileType.trim()==".mkv"||item2?.fileType.trim()==".mp4"?
+                                                <button
+                                                className="mr-4 h-8 my-1 px-4 bg-lightRed rounded-full flex justify-center items-center ">
+                                                <VideoIcon />
+                                                <span className="text-[#f50100] font-bold text-sm ml-2">
+                                                {item2.fileName?.split('/')[3]}
+                                                </span>
+                                            </button>
+                                            :
+                                            item2?.fileType.trim()==".mp3"?
+                                            <button
                                             className="mr-4 h-8 my-1 px-4 bg-lightOrange rounded-full flex justify-center items-center ">
                                             <VoiceIcon />
                                             <span className="text-[#faaf00] font-bold text-sm ml-2">
-                                                voice.mp3
+                                            {item2.fileName?.split('/')[3]}
                                             </span>
                                         </button>
+                                        :
+                                        null
+                                                    )
+                                                })
+                                            }
+                                     
+
+                                       
+                                        
+                                        
+                                        </div>
+                                        <div className="hidden items-center md-sm:flex mt-2">
+                                            <button
+                                                onClick={() => setShowEditModal(true)}
+                                                className="mr-2 pr-1 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#00b8d9]  duration-500 hover:bg-[#8beaf7] w-[110px] sm-xs:w-[50%] h-[35px] rounded-lg bg-[#00b8d9]  flex items-center justify-center">
+                                                <WhitePencil />
+                                                <span className="ml-2 font-bold text-base">Edit</span>
+                                            </button>
+                                            <button
+                                                onClick={() => setShowDelModal(true)}
+                                                className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#f50100] duration-500 hover:bg-[#ffc5b3] w-[110px] sm-xs:w-[50%] h-[35px] rounded-lg bg-[#f50100]  flex items-center justify-center">
+                                                <WhiteTrash />
+                                                <span className="ml-2 font-bold text-base">Delete</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="hidden items-center md-sm:flex mt-2">
+                                    {/* <div className="flex items-center md-sm:hidden">
                                         <button
                                             onClick={() => setShowEditModal(true)}
-                                            className="mr-2 pr-1 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#00b8d9]  duration-500 hover:bg-[#8beaf7] w-[110px] sm-xs:w-[50%] h-[35px] rounded-lg bg-[#00b8d9]  flex items-center justify-center">
-                                            <WhitePencil />
-                                            <span className="ml-2 font-bold text-base">Edit</span>
+                                            className="mr-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#8beaf7] w-[35px] h-[35px] rounded-full bg-lightBlue  flex items-center justify-center">
+                                            <BluePencil />
                                         </button>
                                         <button
                                             onClick={() => setShowDelModal(true)}
-                                            className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#f50100] duration-500 hover:bg-[#ffc5b3] w-[110px] sm-xs:w-[50%] h-[35px] rounded-lg bg-[#f50100]  flex items-center justify-center">
-                                            <WhiteTrash />
-                                            <span className="ml-2 font-bold text-base">Delete</span>
+                                            className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#ffc5b3] w-[35px] h-[35px] rounded-full bg-lightRed  flex items-center justify-center">
+                                            <Trash />
                                         </button>
-                                    </div>
-                                </div>
-                                <div className="flex items-center md-sm:hidden">
-                                    <button
-                                        onClick={() => setShowEditModal(true)}
-                                        className="mr-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#8beaf7] w-[35px] h-[35px] rounded-full bg-lightBlue  flex items-center justify-center">
-                                        <BluePencil />
-                                    </button>
-                                    <button
-                                        onClick={() => setShowDelModal(true)}
-                                        className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#ffc5b3] w-[35px] h-[35px] rounded-full bg-lightRed  flex items-center justify-center">
-                                        <Trash />
-                                    </button>
-                                </div>
-                            </li>
+                                    </div> */}
+                                </li>
                             )
                         })
                     }
-                 
-                 
+
+
                 </ul>
 
             </div>
-            <div className="md:hidden w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
+            <div className="block md:hidden w-[29%] ml-[1%] bg-white rounded-2xl shadow-object h-min p-6">
 
                 <span className="font-bold text-green text-base">
                     Add Instruction
@@ -221,11 +298,69 @@ const ObjectInstructionTab = () => {
                         class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="title"
                         type="text"
-                        onChange={(e)=>setTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value)}
                         placeholder="Type Instruction Title..." />
+                    <div class="w-full  mt-6">
+                        <label
+                            class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
+                            for="title">
+                            <span>
+                                Instruction Description
+                            </span>
+                            <span className="text-hoverDelBack mx-1">
+                                *
+                            </span>
+                        </label>
+                        <textarea
+                            rows="4"
+                            onChange={(e) => setTitle(e.target.value)}
+
+                            required="true"
+                            class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            id="title"
+                            type="text"
+                            placeholder="Type Instruction Description..." />
+
+                    </div>
+                    <div className="w-full  mt-6">
+                        {/* <label
+                        className=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2">
+                        Upload Files (picture,voice,video,file)
+                    </label>
+                    <label
+                        for="dropzone-file"
+                        className="mt-2 flex flex-col items-center justify-center w-[100%] md:w-full h-32 border border-borderGray border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <div
+                            className="flex flex-col items-center justify-center pt-5 pb-6 font-IRsans">
+                            <svg
+                                aria-hidden="true"
+                                class="w-8 h-8 mt-1 text-borderGray"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                            <p className="mb-0 text-xs text-gray-500 dark:text-gray-400">
+                                <span className="font-normal font-IRsans text-[#000]">Choose File</span>
+                            </p>
+
+                        </div>
+                        <input id="dropzone-file" type="file" className="hidden" />
+                    </label> */}
+                        <button
+                            onClick={() => addInstru()}
+                            className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            + Add Instruction
+                        </button>
+                    </div>
 
                 </div>
-              
+
             </div>
             {showEditModal
                 ? <> <div

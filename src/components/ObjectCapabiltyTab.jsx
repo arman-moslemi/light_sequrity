@@ -19,6 +19,7 @@ const ObjectCapabilityTab = ({ data }) => {
     const params = useParams().id;
     const [reCheck, setRecheck] = useState(false);
     let navigate = useNavigate();
+    const per = [1,2,3,4,5,6,7,8,9,10];
 
     useEffect(() => {
 
@@ -44,7 +45,11 @@ const ObjectCapabilityTab = ({ data }) => {
         setCap(dataUser)
         const capUser = await axiosReq("Objects/" + params + "/capabilities");
         console.log(capUser)
-
+        // var ss=[]
+        // capUser.map((item)=>{
+        //     ss.push(item.capabilityId)
+        // })
+        setUserCap(capUser)
     }
     const addCap = async () => {
         const cookies = new Cookies();
@@ -135,7 +140,10 @@ const ObjectCapabilityTab = ({ data }) => {
                                             type="checkbox"
                                             value=""
                                             id="checkBoxOne"
-                                            // checked={}
+                                            // checked={usercap?.includes(item.capabilityId)}
+                                            checked={usercap?.some(function(ele) {
+                                                return ele.capabilityId == item.capabilityId;
+                                            })}
                                             onChange={(e) => submitEqu(e.target.checked, item.capabilityId, prio)}
 
                                         />
@@ -156,20 +164,34 @@ const ObjectCapabilityTab = ({ data }) => {
                                         <select
                                             id="statusSelect"
                                             name="statusSelect"
-                                            value={item?.value}
+                                            // defaultValue=
                                             onChange={(e) => setPriority(e.target.value)}
                                             className="w-[80px] bg-white rounded-md border border-borderGray py-1 px-4">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
+                                            {/* <option value="0" selected={usercap?.some(function(ele) {
+                                                if (ele.capabilityId == item.capabilityId)
+                                                return ele.proirity
+                                            })}>0</option> */}
+                                            {
+                                              per?.map((item3)=>{
+                                                    return(
+                                                        <option value={item3} selected={usercap?.some(function(ele) {
+                                                            if (ele.proirity == item3 && ele.capabilityId == item.capabilityId)
+                                                            return true
+                                                        })}>{item3}</option>
+
+                                                    )
+                                                })
+                                            }
+                                            {/* <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
+                                            <option value="3" selected>3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                             <option value="6">6</option>
                                             <option value="7">7</option>
                                             <option value="8">8</option>
                                             <option value="9">9</option>
-                                            <option value="10">10</option>
+                                            <option value="10">10</option> */}
 
                                         </select>
                                     </div>
