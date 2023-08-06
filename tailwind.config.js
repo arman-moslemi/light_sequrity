@@ -26,6 +26,7 @@ module.exports = {
             publicSansBold: 'PublicSans-Bold'
         },
         screens: {
+            '2xl': {'max': '1410px'},
             'xl': {'max': '1300px'},
             'lg': {'max': '1200px'},
             'lg-md': {'max': '1045px'},
