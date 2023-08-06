@@ -34,31 +34,31 @@ function EventAgenda({ event }) {
      </div>
     )
   }
-const ObjectPlanningTab =()=> {
+const ObjectPlanningTab =({data})=> {
     const [events,
         setEvents] = useState([   {
-            start: moment().toDate(),
-            end: moment()
-                .add(0, "days")
-                .toDate(),
-            employeeName: "Ali Modanlou",
-            shift:"s1"
-        },
-        {
-            start: moment().toDate(),
-            end: moment()
-                .add(0, "days")
-                .toDate(),
-            employeeName: "Sohrab Pakzad",
-            shift:"s2"
-        },
-        {
-            start: moment().toDate(),
-            end: moment()
-                .add(0, "days")
-                .toDate(),
-            employeeName: "Sohrab Pakzad",
-            shift:"s2"
+        //     start: moment().toDate(),
+        //     end: moment()
+        //         .add(0, "days")
+        //         .toDate(),
+        //     employeeName: "Ali Modanlou",
+        //     shift:"s1"
+        // },
+        // {
+        //     start: moment().toDate(),
+        //     end: moment()
+        //         .add(0, "days")
+        //         .toDate(),
+        //     employeeName: "Sohrab Pakzad",
+        //     shift:"s2"
+        // },
+        // {
+        //     start: moment().toDate(),
+        //     end: moment()
+        //         .add(0, "days")
+        //         .toDate(),
+        //     employeeName: "Sohrab Pakzad",
+        //     shift:"s2"
         }
     ]);
 
@@ -173,11 +173,11 @@ const ObjectPlanningTab =()=> {
           },
           views: {
             month:true,
-            week: MyWeek,
+            // week: MyWeek,
           },
           max: dayjs().endOf('day').subtract(1, 'hours').toDate(),
           min: new Date(2015, 3, 7),
-          defaultDate: new Date,
+          defaultDate: data?.startDate,
 
           // defaultDate: new Date(2015, 3, 7),
         }),
@@ -187,8 +187,9 @@ const ObjectPlanningTab =()=> {
 
       const customDayPropGetter = (date) => {
         // if (date.getDate() === 7 || date.getDate() === 15)
-        var startDate = new Date(2023, 6, 20)
-        var endDate   = new Date(2023, 6, 31)
+        var startDate = data?.startDate
+        // var endDate   = new Date(2023, 7, 31)
+        var endDate   =  data?.endDate
         var range = moment(date).isBetween(startDate, endDate);
         if (!range)
         
@@ -212,7 +213,7 @@ const ObjectPlanningTab =()=> {
                           // slotPropGetter={customSlotPropGetter}
                     selectable={true}
                     localizer={localizer}
-                    // defaultDate={defaultDate}
+                    defaultDate={defaultDate}
                     defaultView="month"
                     events={events}                    
                     dayPropGetter={customDayPropGetter}

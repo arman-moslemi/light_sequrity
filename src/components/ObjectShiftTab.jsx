@@ -3,7 +3,8 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
 import { useParams } from "react-router-dom";
-const ObjectShiftTab = ({data}) => {
+import Trash from "../assets/icon/trash";
+const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
 
     const [showDailyShift,
         setShowDailyShift] = useState(false);
@@ -23,7 +24,7 @@ const ObjectShiftTab = ({data}) => {
                 });
                 const params = useParams().id;
             
-                const [reCheck, setRecheck] = useState(false);
+                // const [reCheck, setRecheck] = useState(false);
                 let navigate = useNavigate();
             
                 useEffect(() => {
@@ -45,7 +46,7 @@ const ObjectShiftTab = ({data}) => {
                 const GetData = async () => {
                     const obsh = await axiosReq("ObjectShiftTypes");
                     console.log(obsh)
-                    console.log(data)
+                    console.log(data?.shifts)
             
                     setShType(obsh)
               
@@ -211,23 +212,35 @@ const ObjectShiftTab = ({data}) => {
                         </button>
                         {/* {showDailyShift
                             ? */}
-                            <div
-                                    className="flex items-center my-5 justify-between bg-lightGreen p-2 rounded-md">
-                                    <label
-                                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
-                                        for="title">
-                                        <span class=" text-green text-lg font-bold">
-                                            S1
-                                        </span>
-
-                                    </label>
-                                    <div className="flex items-center">
-
-                                        <span class=" text-green text-base font-bold">
-                                            8:00 - 12:00
-                                        </span>
+                            {
+                                data?.shifts?.filter(x=>x.objectShiftTypeId==item.objectShiftTypeId)?.map((item2)=>{
+                                    return(
+                                        <div
+                                        className="flex items-center my-5 justify-between bg-lightGreen p-2 rounded-md">
+                                        <label
+                                            class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
+                                            for="title">
+                                            <span class=" text-green text-lg font-bold">
+                                                {item2?.title}
+                                            </span>
+    
+                                        </label>
+                                        <div className="flex items-center">
+    
+                                            <span class=" text-green text-base font-bold">
+                                                {item2?.startTime} - {item2?.endTime}
+                                            </span>
+                                        </div>
+                                        <button 
+                                        // onClick={() => removeShift()}
+                                        >
+                                <Trash />
+                            </button>
                                     </div>
-                                </div>
+                                    )
+                                })
+                            }
+                       
                             {/* : null
 } */}
                     </div>
