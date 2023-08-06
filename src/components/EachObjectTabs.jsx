@@ -96,10 +96,10 @@ const EachObjectTabs = () => {
                 <ObjectEquipmentTab data={data}/>
             </TabPanel>
             <TabPanel>
-                <ObjectShiftTab data={data}/>
+                <ObjectShiftTab data={data} reCheck={reCheck} setRecheck={setRecheck}/>
             </TabPanel>
             <TabPanel>
-                <ObjectPlanningTab data={data}/>
+                <ObjectPlanningTab data={data} />
             </TabPanel>
         </Tabs>
     )

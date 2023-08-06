@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
 import { useParams } from "react-router-dom";
 import Cross from "../assets/icon/cross";
-
+import {apiUrl} from "../commons/inFormTypes";
+import axios from "axios";
 const ObjectCapabilityTab = ({ data }) => {
     const [AddCapModal,
         setAddCapModal] = React.useState(false);
@@ -94,8 +95,26 @@ const ObjectCapabilityTab = ({ data }) => {
             else {
                 console.log(equi?.Message)
             }
+            
         }
-
+        else{
+            const delIns =
+            await axios.delete(apiUrl+"Objects/" + params + "/capabilities",
+                {headers: {
+           Authorization: `Bearer ${cookies.get('token')}`
+                     
+}})
+            if (delIns?.status == 200 || delIns?.status == 204 || delIns?.status == 201) {
+                // navigate("/tashakolRegister2",{
+                //   OrganizationID:data?.organizationId
+                // });
+                setShowSuccessModal(true)
+                setRecheck(!reCheck)
+            }
+            else {
+                console.log(delIns?.Message)
+            }
+        }
     }
     return (
         <div className="flex p-4 xs:px-1">
