@@ -14,6 +14,7 @@ import AgencyCapability from "../pages/AgencyCapability/AgencyCapability";
 import AgencyInstruction from "../pages/AgencyInstruction/AgencyInstruction";
 import AgencyEquipment from "../pages/AgencyEquipment/AgencyEquipment"
 import UserList from "../pages/UserList/UserList";
+import ViewUserDetail from "../pages/ViewUserDetail/ViewUserDetail";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -59,6 +60,10 @@ const MainRoutes = (props) => {
             <Routes>
                 <Route path="/userList" element={<UserList/>}/>
             </Routes>
+            <Routes>
+                <Route path="/viewUserDetail" element={<ViewUserDetail/>}/>
+            </Routes>
+      
         </BrowserRouter>
     )
 }
