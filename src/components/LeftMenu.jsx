@@ -165,51 +165,19 @@ const LeftMenu =(props) =>{
                     }
                     </li>
                     <li className="my-5">
-                     <div className={leftMenustyle && splitLocation[1] ==="userList"   ?
-                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive justify-between":
+                    <Link to={'/userList'} className={leftMenustyle && splitLocation[1] ==="userList"   ?
+                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
                        leftMenustyle && splitLocation[1]!=="userList" ?
-                       "flex flex-row  items-center  hover:bg-hoverBackground px-3 py-2 rounded-md justify-between":
+                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
                        !leftMenustyle &&  splitLocation[1] ==="userList"?
-                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive justify-between"       
-                       : "flex flex-col justify-center items-center hover:bg-hoverBackground px-3 py-2 rounded-md"}>
-                        <div className="flex items-center">
-                        <UserListIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="userList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="userList" ? "#00a76f" : "#637381"}/>
-                        <span className={splitLocation[1] ==="userList" ? "  text-activeText font-bold " : " font-semibold text-base text-[#919eab]"}>
-                      Users
+                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
+                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
+                       <UserListIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="userList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="userList" ? "#00a76f" : "#637381"}/>
+                        <span className={splitLocation[1] ==="userList" ? "  text-activeText font-bold" : " font-semibold text-base text-[#919eab]"}>
+                           User List
                         </span>
-                        </div>
-                       <button onClick={() =>setShowUserDropDown(!showUserDropDown)}>
-                       {
-                        showUserDropDown?
-                        <ChevronRightIcon className="w-[18px] h-[18px] rotate-90 text-[#919eab]"/>
-                        : 
-                        <ChevronRightIcon className="w-[18px] h-[18px] text-[#919eab]"/>
-                       }
-                       </button>
-                     </div>
-                    {
-                     showUserDropDown ? 
-                     <div className="w-full">
-                     <ul className="">
-                        <li>
-                           <Link to={'/userList'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
-                             {
-                              splitLocation[1] ==="userList" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="userList" ? "#00a76f" : "#637381"}/>
-                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="userList" ? "#00a76f" : "#637381"}/>
-                              
-                             }
-                             <span className={splitLocation[1] ==="userList" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
-                             Regular Users
-                        </span>
-                           </Link>
-                        </li>
-                   
-                     
-                     </ul>
-                    </div>
-                    :
-                    null
-                    }
+                       </Link>
+              
                     </li>
                 </ul>
                 </div>
