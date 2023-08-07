@@ -13,6 +13,12 @@ const TextQuestionsTab = () => {
         setShowEditModal] = useState(false);
     const [AddQuestionModal,
         setAddQuestionModal] = React.useState(false);
+    const [categoryModal,
+        setCategoryModal] = React.useState(false);
+    const [categoryList,
+        setCategoryList] = React.useState([]);
+    const [category,
+        setCategory] = React.useState();
     const [addOptionBox,
         setAddOptionBox] = React.useState(false);
     const [viewOption,
@@ -30,24 +36,38 @@ const TextQuestionsTab = () => {
         useEffect(() => {
     
             auth();
-        }, [reCheck]);
+        }, [reCheck,category]);
+        useEffect(() => {
+            GetCategories();
+          setCategoryModal(true)
+        }, []);
         const auth = async () => {
             const cookies = new Cookies();
             var token = cookies.get('token');
             console.log(token)
             if (!token) {
                 navigate("/login");
-            } else {
+            } else if(category) {
     
                 GetData()
     
             }
         };
         const GetData = async () => {
-            const dataUser = await axiosReq("Questions/1/questions");
+            const dataUser = await axiosReq("Questions/"+category+"/questions");
             console.log(dataUser)
     
             setData(dataUser)
+    
+            
+        }
+        const GetCategories = async () => {
+            const cookies = new Cookies();
+            var id = cookies.get('ID');
+            const dataUser = await axiosReq("QuestionCategories/"+id+"/Active");
+            console.log(dataUser)
+    
+            setCategoryList(dataUser)
     
             
         }
@@ -454,6 +474,7 @@ const TextQuestionsTab = () => {
                                                 class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                                 id="title"
                                                 type="text"
+                                                onChange={(e)=>setTitle(e.target.value)}
                                                 placeholder="Type Your Question Title Here..." />
 
                                         </div>
@@ -554,6 +575,69 @@ const TextQuestionsTab = () => {
                                     </div>
                                 </div>
                             </div> <div className="opacity-25 fixed inset-0 z-40 bg-black" > </div> </>
+                            : null}
+                                  {
+                        categoryModal
+                            ? <> <div
+                                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                                <div
+                                    className="relative w-[40%] lg-md:w-[50%] md:w-[70%] sm:w-[90%] sm-xs:w-[100%] xs:w-[100%] my-5 mx-auto max-w-5xl">
+
+                                    <div
+                                        className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+
+                                        <div className="flex items-centers justify-left  rounded-t">
+
+                                            <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+                                                Select Category
+                                            </span>
+
+                                        </div>
+                                    
+                                        <div className="flex xs:flex-col xs:items-start justify-between items-end mb-3">
+                                            <div class="flex flex-col flex-wrap">
+                                                <p
+                                                    className="my-2 text-black text-sm leading-relaxed break-words whitespace-normal font-bold">
+                                                    Select Your Category First
+                                                </p>
+                                                <select
+                                                    id="statusSelect"
+                                                    name="statusSelect"
+                                                    defaultValue={categoryList[0]?.questionCategoryId}
+                                                    onChange={(e) => setCategory(e.target.value)}
+                                                    className="w-full bg-white rounded border border-borderGray   text-[#000] py-3 px-4">
+                                                        <option value="">Choose Category</option>
+                                                {
+
+                                                    categoryList?.map((item2)=>{
+                                                        return(
+
+                                                            <option value={item2?.questionCategoryId}>{item2?.name}</option>
+                                                        )
+                                                    })
+                                                }
+
+                                                </select>
+
+                                            </div>
+                                 
+                                        </div>
+                                
+                                        <div
+                                            className="flex items-center justify-end  border-solid border-slate-200 rounded-b mt-5">
+                                            <button
+                                                className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                type="button"
+                                                onClick={() => {category?setCategoryModal(false):alert("choose category")}}>
+                                                submit
+                                            </button>
+                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
+                             </>
                             : null}
                 </div> </div> <div className="" > <div className="  w-full rounded-2xl  shadow-tableShadow mt-5 overflow-x-auto">
 
