@@ -489,10 +489,10 @@ const TextQuestionsTab = () => {
                                                     name="statusSelect"
                                                     onChange={(e) => console.log(e)}
                                                     className="w-full bg-white rounded border border-borderGray   text-[#000] py-3 px-4">
-                                                    <option value="2">Text</option>
-                                                    {/* <option value="blank">Fill In The Blank</option>
-                                                    <option value="singleChoice">Single Choice</option> */}
-                                                    <option value="1">Multiple Choice</option>
+                                                    <option value="Text">Text</option>
+                                                    {/* <option value="blank">Fill In The Blank</option>*/}
+                                                    <option value="Optional">Optional</option> 
+                                                    <option value="MultiChoice">Multiple Choice</option>
                                                 </select>
 
                                             </div>
