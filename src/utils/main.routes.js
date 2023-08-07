@@ -15,6 +15,8 @@ import AgencyInstruction from "../pages/AgencyInstruction/AgencyInstruction";
 import AgencyEquipment from "../pages/AgencyEquipment/AgencyEquipment"
 import UserList from "../pages/UserList/UserList";
 import ViewUserDetail from "../pages/ViewUserDetail/ViewUserDetail";
+import AgencyShiftType from "../pages/AgencyShiftType/AgencyShiftType";
+import TicketList from "../pages/Ticket/TicketList";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -63,7 +65,12 @@ const MainRoutes = (props) => {
             <Routes>
                 <Route path="/viewUserDetail" element={<ViewUserDetail/>}/>
             </Routes>
-      
+            <Routes>
+                <Route path="/agencyShiftType" element={<AgencyShiftType/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/ticketList" element={<TicketList/>}/>
+            </Routes>
         </BrowserRouter>
     )
 }

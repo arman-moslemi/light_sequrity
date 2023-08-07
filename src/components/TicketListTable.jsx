@@ -8,7 +8,7 @@ import Trash from "../assets/icon/trash";
 import Eye from "../assets/icon/eye";
 import Pencil from "../assets/icon/pencil";
 import { Link } from "react-router-dom";
-const UserListTable = () => {
+const TicketListTable = () => {
     const [showAction,
         setShowAction] = useState(false);
     const [showDelete,
@@ -246,4 +246,4 @@ return (
 )
 }
 
-export default UserListTable;
+export default TicketListTable;
