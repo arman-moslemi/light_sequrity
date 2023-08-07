@@ -489,10 +489,10 @@ const TextQuestionsTab = () => {
                                                     name="statusSelect"
                                                     onChange={(e) => console.log(e)}
                                                     className="w-full bg-white rounded border border-borderGray   text-[#000] py-3 px-4">
-                                                    <option value="text">Text</option>
-                                                    <option value="blank">Fill In The Blank</option>
-                                                    <option value="singleChoice">Single Choice</option>
-                                                    <option value="multipleChoice">Multiple Choice</option>
+                                                    <option value="2">Text</option>
+                                                    {/* <option value="blank">Fill In The Blank</option>
+                                                    <option value="singleChoice">Single Choice</option> */}
+                                                    <option value="1">Multiple Choice</option>
                                                 </select>
 
                                             </div>
@@ -502,7 +502,7 @@ const TextQuestionsTab = () => {
                                                     type="checkbox"
                                                     value=""
                                                     id="checkBoxOne" />
-                                                <div>
+                                                {/* <div>
                                                     <div className="flex flex-col">
                                                         <span className="font-bold text-[#000] text-sm">
                                                             Is For Contract ?
@@ -510,7 +510,7 @@ const TextQuestionsTab = () => {
 
                                                     </div>
 
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                         <div className="my-2">
