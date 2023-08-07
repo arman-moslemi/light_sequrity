@@ -8,6 +8,7 @@ import { Link ,useLocation } from "react-router-dom";
 import { ChevronLeftIcon,ChevronRightIcon } from '@heroicons/react/24/solid';
 import BulletIcon from "../assets/icon/bullet";
 import UserListIcon from "../assets/icon/userListIcon";
+import TicketsIcon from "../assets/icon/ticket";
 import './components.css';
 const LeftMenu =(props) =>{
    
@@ -158,6 +159,18 @@ const LeftMenu =(props) =>{
                         </span>
                            </Link>
                         </li>
+                        <li>
+                           <Link to={'/agencyShiftType'} className="font-medium text-sm flex items-center hover:bg-hoverBackground px-8 py-2 mt-2 rounded-md">
+                             {
+                              splitLocation[1] ==="agencyShiftType" ?  <BulletIcon className={leftMenustyle ? "mr-5" : "mr-0"}  headColor={splitLocation[1] ==="agencyShiftType" ? "#00a76f" : "#637381"}/>
+                              :  <BulletIcon className={leftMenustyle ? "mr-5 w-[15px] h-[15px]" : "mr-0 w-[15px] h-[15px]"}  headColor={splitLocation[1] ==="agencyShiftType" ? "#00a76f" : "#637381"}/>
+                              
+                             }
+                             <span className={splitLocation[1] ==="agencyShiftType" ? "  text-activeText font-bold text-sm" : " font-semibold text-sm text-[#919eab]"}>
+                       Shift Type
+                        </span>
+                           </Link>
+                        </li>
                      </ul>
                     </div>
                     :
@@ -178,6 +191,20 @@ const LeftMenu =(props) =>{
                         </span>
                        </Link>
               
+                    </li>
+                    <li className="my-5">
+                    <Link to={'/ticketList'} className={leftMenustyle && splitLocation[1] ==="ticketList"   ?
+                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
+                       leftMenustyle && splitLocation[1]!=="ticketList" ?
+                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
+                       !leftMenustyle &&  splitLocation[1] ==="ticketList"?
+                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
+                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
+                       <TicketsIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="ticketList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="ticketList" ? "#00a76f" : "#637381"}/>
+                        <span className={splitLocation[1] ==="ticketList" ? "  text-activeText font-bold" : " font-semibold text-base text-[#919eab]"}>
+                          Tickets
+                        </span>
+                       </Link>
                     </li>
                 </ul>
                 </div>
