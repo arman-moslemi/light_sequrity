@@ -66,11 +66,11 @@ const AddObj = () => {
   return (
     <div>
       <div className="mt-6">
-      <div className="flex justify-between  mx-4">
-      <span className="text-[#000] font-bold text-base  my-6">
+      <div className="flex justify-between md-sm:flex-col mx-4 md-sm:mx-0">
+      <span className="text-[#000] font-bold text-base  my-6 md-sm:mb-5 xs:mx-3">
           * You can edit any of the following fields
         </span>
-        <button onClick={()=>addObject()} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
+        <button onClick={()=>addObject()} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center md-sm:justify-center md-sm:w-[25%] sm:w-[35%] sm-xs:w-[90%]   md-sm:ml-6 sm-xs:ml-3" >
           
                       
           + Add
@@ -128,7 +128,7 @@ const AddObj = () => {
   }
       </div>
       </div>
-      <div className="w-[60%] mx-auto block h-[450px] overflow-y-auto my-5 shadow-grayShadow p-2 rounded-md">
+      <div className="w-[60%] lg-md:w-[70%] md-sm:w-[95%] mx-auto block h-[450px] overflow-y-auto my-5 shadow-grayShadow p-2 rounded-md">
         <div className="relative w-[80px] h-[80px] mx-auto">
           <img src={Img1} alt="avatar" className="w-[80px] h-[80px] rounded-full" />
           <button onClick={()=>addObject()} className="absolute bg-green w-[30px] h-[30px] rounded-full flex justify-center items-center shadow-greenShadow bottom-0.5 -right-3">
@@ -148,8 +148,8 @@ const AddObj = () => {
            focus:bg-white" id="title" type="text" placeholder="Tirajhe Complex" onChange={(e)=>setTitle(e.target.value)}/>
 
         </div>
-        <div className="flex">
-          <div class="w-1/2  px-3 mt-6">
+        <div className="flex sm-xs:flex-col">
+          <div class="w-1/2 sm-xs:w-[100%] px-3 mt-6">
             <label class="flex items-center tracking-wide text-[#000] text-xs font-bold mb-2" for="status">
               <span>
                 status
@@ -173,7 +173,7 @@ const AddObj = () => {
 
 
           </div>
-          <div class="w-1/2  px-3 mt-6">
+          <div class="w-1/2 sm-xs:w-[100%]  px-3 mt-6">
             <label class="flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
               <span>
                 telephone number
@@ -200,8 +200,8 @@ const AddObj = () => {
           <input required="true"  onChange={(e)=>setAddress(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="address" type="text" placeholder="Ashrafi HW,boustan St,No 123" />
 
         </div>
-        <div className="flex">
-          <div class="w-1/2  px-3 mt-6">
+        <div className="flex sm-xs:flex-col">
+          <div class="w-1/2 sm-xs:w-[100%]  px-3 mt-6">
             <label class="flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2" for="start-date">
 
 
@@ -217,7 +217,7 @@ const AddObj = () => {
             <input required="true"  onChange={(e)=>setStartDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="start-date" type="text" placeholder="7/19/2023" />
 
           </div>
-          <div class="w-1/2  px-3 mt-6">
+          <div class="w-1/2 sm-xs:w-[100%] px-3 mt-6">
             <label class="flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
               <span>
                 end date

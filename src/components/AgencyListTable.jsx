@@ -122,9 +122,9 @@ const AgencyListTable = () => {
                     id="checkBoxDelete"
                      />
          </td>
-      <td className="py-4 pl-9 text-sm text-left font-IRsans">{tableRow2.number}</td>
-      <td className="py-4 pl-2 pr-9 text-sm text-left font-IRsans">{tableRow2.name}</td>
-      <td className="py-4 px-5 text-sm text-left font-IRsans">{tableRow2.address}</td>
+      
+      <td className="py-4 pr-5 lg-md:px-6 text-sm text-left font-IRsans">{tableRow2.name}</td>
+      <td className="py-4 pr-5 lg-md:px-6 text-sm text-left font-IRsans">{tableRow2.address}</td>
       <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.registerDate}</td>
       <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.status}</td>
       <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.expireDate}</td>
@@ -207,14 +207,14 @@ return (
 
                             </div>
                         </th>
-                        <th className="text-black  text-left    md:px-3">Number</th>
-                        <th className="text-black  text-left    md:px-3">Agency Name</th>
-                        <th className="text-black  text-left   md:px-3">Address</th>
-                        <th className="text-black  text-left   md:px-3">Register date</th>
-                        <th className="text-black  text-left   md:px-3">Status</th>
-                        <th className="text-black  text-left    md:px-3">Expire date</th>
-                        <th className="text-black  text-left   md:px-3">Edit</th>
-                        <th className="text-black  text-left   md:px-3">Delete</th>
+                        
+                        <th className="text-black  text-left lg-md:px-6   px-3">Agency Name</th>
+                        <th className="text-black  text-left lg-md:px-6  px-3">Address</th>
+                        <th className="text-black  text-center   md:px-3">Register date</th>
+                        <th className="text-black  text-center   md:px-3">Status</th>
+                        <th className="text-black  text-center    md:px-3">Expire date</th>
+                        <th className="text-black  text-center   md:px-3">Edit</th>
+                        <th className="text-black  text-center   md:px-3">Delete</th>
                        
 
                     </tr>
