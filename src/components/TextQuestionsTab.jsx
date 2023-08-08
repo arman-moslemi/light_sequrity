@@ -23,6 +23,10 @@ const TextQuestionsTab = () => {
         setAddOptionBox] = React.useState(false);
     const [viewOption,
         setViewOption] = React.useState(false);
+        const [showSuccessModal,
+            setShowSuccessModal] = React.useState(false);
+            const [showErrorModal,
+                setShowErrorModal] = React.useState(false);
     const [opID,
         setOPID] = React.useState();
         const [data, setData] = useState([]);
@@ -72,7 +76,9 @@ const TextQuestionsTab = () => {
             
         }
 
+const addQuestions =() =>{
 
+}
 
 
     const tableRow = [
@@ -433,7 +439,26 @@ const TextQuestionsTab = () => {
                 : null
         } </>)
 
-
+        const addCap = async () => {
+            const cookies = new Cookies();
+            var id = cookies.get('ID');
+            console.log(id)
+            const equi = await axiosReq("Capability", {
+                
+                    "questionCategoryId": 0,
+                    "title": "string",
+                    "archived": true,
+                    "questionType": "MultiChoice"
+                  
+            });
+            if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+                setShowSuccessModal(true)
+                setRecheck(!reCheck)
+            }
+            else {
+                setShowErrorModal(true)
+            }
+        }
 
     return (
         <div className="p-4">
@@ -562,7 +587,7 @@ const TextQuestionsTab = () => {
                                             <button
                                                 className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                                 type="button"
-                                                onClick={() => setAddQuestionModal(false)}>
+                                                onClick={() => {addQuestions();setAddQuestionModal(false)}}>
                                                 Continue
                                             </button>
                                             <button

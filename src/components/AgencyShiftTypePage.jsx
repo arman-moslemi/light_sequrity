@@ -74,71 +74,17 @@ const AgencyShiftTypePage = ({data,reCheck,setRecheck}) => {
                                 placeholder="Daily,Nightly,..."/>
 
                         </div>
-                        <div className="flex items-center my-2 justify-between">
-                            <label
-                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
-                                for="title">
-                                <span>
-                                    Start Time :
-                                </span>
-                                <span className="text-hoverDelBack mx-1">
-                                    *
-                                </span>
-                            </label>
-                            <div className="flex items-center">
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
-                                    id="start Time"
-                                    type="text"
-                                    placeholder="00:00"
-                                  
-                                    />
-                                <span className="text-[#000] mx-1">
-                                    :
-                                </span>
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
-                                    id="start Time"
-                                    type="text"
-                                    placeholder="00:00"
-                                    
-                                 />
-                            </div>
-                        </div>
-                        <div className="flex items-center my-2 justify-between">
-                            <label
-                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
-                                for="title">
-                                <span>
-                                   End Time :
-                                </span>
-                                <span className="text-hoverDelBack mx-1">
-                                    *
-                                </span>
-                            </label>
-                            <div className="flex items-center">
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
-                                    id="end Time"
-                                    type="text"
-                                    placeholder="00:00"
-                                  
-                                    />
-                                <span className="text-[#000] mx-1">
-                                    :
-                                </span>
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
-                                    id="end Time"
-                                    type="text"
-                                    placeholder="00:00"
-                                    
-                                 />
-                            </div>
+                        <div class="flex flex-col flex-wrap  mt-2">
+                            <p
+                                className="mt-4 mb-2 text-black text-sm leading-relaxed break-words whitespace-normal font-bold">
+                                Shift Type Description
+                            </p>
+                            <textarea
+                                class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                id="title"
+                                type="text"
+                                placeholder="Daily,Nightly,..."/>
+
                         </div>
                         <div className="flex xs:flex-col xs:items-start justify-between items-end mb-3">
                           
