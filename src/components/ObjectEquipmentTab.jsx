@@ -267,7 +267,7 @@ console.log(equi?.Message)              }
         />
 
                         </div>
-                        <div className="flex my-4">
+                        {/* <div className="flex my-4">
                         <span className="font-bold text-[#000] text-base mr-2">
                         Used Count :
                                 </span>
@@ -281,7 +281,7 @@ console.log(equi?.Message)              }
 
         />
 
-                        </div>
+                        </div> */}
                         <div className="flex my-4">
                         <span className="font-bold text-[#000] text-base mr-2">
                         Consumable :  

@@ -239,7 +239,7 @@ const AgencyListTable = () => {
                                     </div>
                                 </th>
 
-                                <th className="text-black  text-left lg-md:px-6   px-3">Agency Name</th>
+                                <th className="text-black  text-left lg-md:px-6   px-3">Name</th>
                                 <th className="text-black  text-left lg-md:px-6  px-3">Address</th>
                                 <th className="text-black  text-center   md:px-3">Register date</th>
                                 <th className="text-black  text-center   md:px-3">Status</th>

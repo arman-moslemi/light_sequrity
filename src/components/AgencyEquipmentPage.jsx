@@ -47,25 +47,51 @@ const AgencyEquipmentPage = ({data}) => {
                 <ul className="mt-3">
 
                     <li
-                        className="py-8 sm:py-5 flex xl:flex-col xl:items-start lg:flex-row md:flex-col md:items-start sm:flex-row sm-xs:flex-col sm-xs:items-start justify-between items-center border-b-2 border-borderGray border-dashed">
-                        <div className="flex items-center mt-0 sm:mt-2">
+                        className="py-8 sm:py-5  xl:flex-col xl:items-start lg:flex-row md:flex-col md:items-start sm:flex-row sm-xs:flex-col sm-xs:items-start justify-between items-start border-b-2 border-borderGray border-dashed">
+                    <div className="flex justify-between">
+                    <div className="flex items-start  mt-0 sm:mt-2">
 
-                            <div>
-                                <div className="flex flex-row">
-                                    <span className="font-bold text-green text-base mr-4">
-                                        1)
-                                    </span>
-                                    <span className="font-bold text-[#000] text-base">
-                                        Salt
-                                    </span>
+<div>
+    <div className="flex flex-row mb-4">
+        <span className="font-bold text-green text-base mr-4">
+            1)
+        </span>
+        <span className="font-bold text-[#000] text-base">
+            Salt
+        </span>
 
-                                </div>
+    </div>
 
-                            </div>
-                        </div>
-                        <div
-                            className="flex items-center justify-between md-sm:flex-wrap  xl:mt-4 lg:mt-0 md:mt-4 sm:mt-0 ml-0 md-sm:ml-8">
-                            <div className="flex mr-2 mt-0 sm:mt-2">
+</div>
+</div>
+<div
+className="flex items-center justify-between md-sm:flex-wrap  xl:mt-4 lg:mt-0 md:mt-4 sm:mt-0 ml-0 md-sm:ml-8">
+
+<div className="flex flex-col">
+
+<div className="flex">
+    <span className="font-bold text-sm text-black mr-6">
+        Registered Date : 
+        <span className="font-medium">
+            2023/12-12
+        </span>
+    </span>
+    <span className="font-bold text-sm text-black">
+        Last Update Date : 
+        <span className="font-medium">
+            2023/12-12
+        </span>
+    </span>
+</div>
+
+
+
+</div>
+</div>
+                    </div>
+
+                        <div className="flex w-full">
+                              <div className="flex mr-2 mt-0 sm:mt-2 mb-2">
                                 <span className="font-bold text-[#000] text-base mr-2">
                                     Total Count :
                                 </span>
@@ -77,8 +103,8 @@ const AgencyEquipmentPage = ({data}) => {
                                     disabled={false}/>
 
                             </div>
-                            <div className="flex mr-2 mt-0 sm:mt-2 ">
-                                <span className="font-bold text-[#000] text-base mr-2">
+                            <div className="flex mb-2 mx-4">
+                              <span className="font-bold text-[#000] text-base mr-2">
                                     Used Count :
                                 </span>
                                 <input
@@ -87,9 +113,8 @@ const AgencyEquipmentPage = ({data}) => {
                                     id="title"
                                     type="number"
                                     disabled={false}/>
-
-                            </div>
-                            <div className="flex">
+                              </div>
+ <div className="flex mb-2 mx-4">
                                 <span className="font-bold text-[#000] text-base mr-2 mt-0 sm:mt-2 ">
                                     Consumable :
                                 </span>
@@ -101,7 +126,7 @@ const AgencyEquipmentPage = ({data}) => {
                                     id="checkBoxOne"/>
 
                             </div>
-                        </div>
+                              </div>
                     </li>
 
                 </ul>
@@ -155,7 +180,7 @@ const AgencyEquipmentPage = ({data}) => {
                                         placeholder="0"/>
 
                                 </div>
-                                <div className="flex my-4">
+                                {/* <div className="flex my-4">
                                     <span className="font-bold text-[#000] text-base mr-2">
                                         Used Count :
                                     </span>
@@ -166,9 +191,8 @@ const AgencyEquipmentPage = ({data}) => {
                                         type="number"
                                         placeholder="0"/>
 
-                                </div>
-                            </div>
-                            <div className="flex my-4">
+                                </div> */}
+                                  <div className="flex my-4">
                                 <span className="font-bold text-[#000] text-base mr-2">
                                     Consumable :
                                 </span>
@@ -179,6 +203,8 @@ const AgencyEquipmentPage = ({data}) => {
                                     id="checkBoxOne"/>
 
                             </div>
+                            </div>
+                          
 
                             <button
                                 onClick={() => {
@@ -190,7 +216,7 @@ const AgencyEquipmentPage = ({data}) => {
                         </div>
 
                     </div>
-                </div> < div className = "opacity-25 fixed inset-0 z-40 bg-black" > </div> < />
+                </div> < div className = "opacity-25 fixed inset-0 z-40 bg-black" > </div> </>
                 : null}
         </div>
     )

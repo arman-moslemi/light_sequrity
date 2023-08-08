@@ -171,7 +171,9 @@ const ObjectCapabilityTab = ({ data }) => {
                                                 <span className="font-bold text-[#000] text-base">
                                                     {item?.name}
                                                 </span>
-
+                                                <p className="font-medium text-[#000] text-sm">
+                                                    {item?.description}
+                                                </p>
                                             </div>
 
                                         </div>
@@ -244,10 +246,27 @@ const ObjectCapabilityTab = ({ data }) => {
                         id="title"
                         type="text"
                         onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Type Instruction Title..." />
+                        placeholder="Type Capability Title..." />
 
                 </div>
+                <div class="w-full mt-6">
+                    <label
+                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
+                        for="title">
+                        <span>
+                            Object Required Capability Description
+                        </span>
+                      
+                    </label>
+                    <textarea
+                        required="false"
+                        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="title"
+                        type="text"
+                       
+                        placeholder="Type Capablity Description..." />
 
+                </div>
                 <div className="w-full  mt-6">
                     <div className="flex items-center">
                         <span className="font-bold text-[#000] text-base mr-2">
@@ -354,12 +373,7 @@ const ObjectCapabilityTab = ({ data }) => {
                                     onClick={() => setShowSuccessModal(false)}>
                                     Continue
                                 </button>
-                                <button
-                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                    onClick={() => setShowSuccessModal(false)}>
-                                    Cancel
-                                </button>
+                             
                             </div>
                         </div>
                     </div>

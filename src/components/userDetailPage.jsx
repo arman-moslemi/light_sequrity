@@ -116,6 +116,17 @@ const UserDetailPage = () => {
                     </div>
                     <div className="flex sm:flex-col sm:items-start items-center my-4 sm:my-3">
                         <div className="flex">
+                        <StatusT/>
+                        <span className="font-bold text-black mr-4 ml-5">
+                            Situation :
+                        </span>
+                        </div>
+                        <span className="font-bold text-green sm:mt-2 sm:ml-11">
+                           
+                        </span>
+                    </div>
+                    <div className="flex sm:flex-col sm:items-start items-center my-4 sm:my-3">
+                        <div className="flex">
                         <CalendarT/>
                         <span className="font-bold text-black mr-4 ml-5">
                             Register Date :
