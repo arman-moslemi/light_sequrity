@@ -23,6 +23,10 @@ const TextQuestionsTab = () => {
         setAddOptionBox] = React.useState(false);
     const [viewOption,
         setViewOption] = React.useState(false);
+        const [showSuccessModal,
+            setShowSuccessModal] = React.useState(false);
+            const [showErrorModal,
+                setShowErrorModal] = React.useState(false);
     const [opID,
         setOPID] = React.useState();
         const [data, setData] = useState([]);
@@ -72,7 +76,9 @@ const TextQuestionsTab = () => {
             
         }
 
+const addQuestions =() =>{
 
+}
 
 
     const tableRow = [
