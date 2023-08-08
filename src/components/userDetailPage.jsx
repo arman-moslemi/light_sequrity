@@ -9,6 +9,7 @@ import LocationT from "../assets/icon/title/location"
 import CalendarT from "../assets/icon/title/calendar";
 import ContractT from "../assets/icon/title/contract";
 import ClockT from "../assets/icon/title/clock";
+import { Link } from "react-router-dom";
 const UserDetailPage = () => {
     const [showContract,
         setShowContract] = useState(false);
@@ -22,10 +23,10 @@ const UserDetailPage = () => {
                         className="mr-6 lg-md:block mt-0 770:mt-4 w-max sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                         View Contract
                     </button>
-                    <button
-                        className=" lg-md:block mt-0 770:mt-4 w-max sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                    <Link to={'/viewMission'}
+                        className="flex justify-center items-center lg-md:block mt-0 770:mt-4 w-max sm-xs:w-[100%] 2xs:px-1 px-4 h-[40px] rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                         View Mission
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="flex justify-between mt-6">

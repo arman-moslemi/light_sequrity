@@ -606,7 +606,7 @@ const addQuestions =() =>{
                             ? <> <div
                                 className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                                 <div
-                                    className="relative w-[40%] lg-md:w-[50%] md:w-[70%] sm:w-[90%] sm-xs:w-[100%] xs:w-[100%] my-5 mx-auto max-w-5xl">
+                                    className="relative w-[15%] lg-md:w-[50%] md:w-[70%] sm:w-[90%] sm-xs:w-[100%] xs:w-[100%] my-5 mx-auto max-w-5xl">
 
                                     <div
                                         className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
@@ -619,7 +619,7 @@ const addQuestions =() =>{
 
                                         </div>
                                     
-                                        <div className="flex xs:flex-col xs:items-start justify-between items-end mb-3">
+                                        <div className="flex xs:flex-col xs:items-start justify-between items-end mb-3 mt-6">
                                             <div class="flex flex-col flex-wrap">
                                                 <p
                                                     className="my-2 text-black text-sm leading-relaxed break-words whitespace-normal font-bold">
