@@ -65,12 +65,89 @@ const ObjectPlanningTab =({data})=> {
 
       }
   };
+  const  formatDateTime=(sDate,FormatType)=> {
+    var lDate = new Date(sDate)
+
+    var month=new Array(12);
+    month[0]="January";
+    month[1]="February";
+    month[2]="March";
+    month[3]="April";
+    month[4]="May";
+    month[5]="June";
+    month[6]="July";
+    month[7]="August";
+    month[8]="September";
+    month[9]="October";
+    month[10]="November";
+    month[11]="December";
+
+    var weekday=new Array(7);
+    weekday[0]="Sunday";
+    weekday[1]="Monday";
+    weekday[2]="Tuesday";
+    weekday[3]="Wednesday";
+    weekday[4]="Thursday";
+    weekday[5]="Friday";
+    weekday[6]="Saturday";
+
+    var hh = lDate.getHours() < 10 ? '0' + 
+        lDate.getHours() : lDate.getHours();
+    var mi = lDate.getMinutes() < 10 ? '0' + 
+        lDate.getMinutes() : lDate.getMinutes();
+    var ss = lDate.getSeconds() < 10 ? '0' + 
+        lDate.getSeconds() : lDate.getSeconds();
+
+    var d = lDate.getDate();
+    var dd = d < 10 ? '0' + d : d;
+    var yyyy = lDate.getFullYear();
+    var mon = eval(lDate.getMonth()+1);
+    var mm = (mon<10?'0'+mon:mon);
+    var monthName=month[lDate.getMonth()];
+    var weekdayName=weekday[lDate.getDay()];
+
+    if(FormatType==1) {
+       return mm+'/'+dd+'/'+yyyy+' '+hh+':'+mi;
+    } else if(FormatType==2) {
+       return weekdayName+', '+monthName+' '+ 
+            dd +', ' + yyyy;
+    } else if(FormatType==3) {
+       return mm+'/'+dd+'/'+yyyy; 
+    } 
+    // else if(FormatType==4) {
+    //    var dd1 = lDate.getDate();    
+    //    return dd1+'-'+Left(monthName,3)+'-'+yyyy;    
+    // } 
+    else if(FormatType==5) {
+        return mm+'/'+dd+'/'+yyyy+' '+hh+':'+mi+':'+ss;
+    } else if(FormatType == 6) {
+        return mon + '/' + d + '/' + yyyy + ' ' + 
+            hh + ':' + mi + ':' + ss;
+    } else if(FormatType == 7) {
+        return  yyyy + '-' + mm + 
+            '-' + dd + 'T' + hh + ':' + mi + ':' + ss;
+    }
+}
   const GetData = async () => {
       const miss = await axiosReq("Objects/"+params+"/missions");
       console.log(777)
       console.log(miss)
-
-      setMission(miss)
+var ss=[];
+      // setMission(miss)
+      miss?.map((item)=>{
+ss.push({
+  start:  moment(item?.date)
+  .toDate(),
+  end: moment(item?.date)
+      .add(0, "days")
+      .toDate(),
+  employeeName: item?.missions[0]?.firstName+" "+item?.missions[0]?.lastName,
+  shift:item?.shiftType?.title
+})
+      })
+      console.log(100)
+      console.log(ss)
+      setEvents(ss)
       const emp = await axiosReq("Objects/"+params+"/securityemployees");
       console.log(88)
 
@@ -87,7 +164,7 @@ const ObjectPlanningTab =({data})=> {
         missionWorkDayPlans:[
      {   employeeId: misEmp,
         objectShiftId: shift,
-        date: "2023-07-05T22:16:39.613Z",
+        date:date,
         dayOfWeek:(ss?.split('-')[2]%7).toString()
       }
         ]
@@ -100,6 +177,7 @@ const ObjectPlanningTab =({data})=> {
         console.log(777)
         console.log(miss)
         alert("success")
+        setRecheck(!reCheck)
         onCloseModal();
     }
     else {
@@ -208,69 +286,7 @@ const ObjectPlanningTab =({data})=> {
       }
      
 
-      const  formatDateTime=(sDate,FormatType)=> {
-        var lDate = new Date(sDate)
-    
-        var month=new Array(12);
-        month[0]="January";
-        month[1]="February";
-        month[2]="March";
-        month[3]="April";
-        month[4]="May";
-        month[5]="June";
-        month[6]="July";
-        month[7]="August";
-        month[8]="September";
-        month[9]="October";
-        month[10]="November";
-        month[11]="December";
-    
-        var weekday=new Array(7);
-        weekday[0]="Sunday";
-        weekday[1]="Monday";
-        weekday[2]="Tuesday";
-        weekday[3]="Wednesday";
-        weekday[4]="Thursday";
-        weekday[5]="Friday";
-        weekday[6]="Saturday";
-    
-        var hh = lDate.getHours() < 10 ? '0' + 
-            lDate.getHours() : lDate.getHours();
-        var mi = lDate.getMinutes() < 10 ? '0' + 
-            lDate.getMinutes() : lDate.getMinutes();
-        var ss = lDate.getSeconds() < 10 ? '0' + 
-            lDate.getSeconds() : lDate.getSeconds();
-    
-        var d = lDate.getDate();
-        var dd = d < 10 ? '0' + d : d;
-        var yyyy = lDate.getFullYear();
-        var mon = eval(lDate.getMonth()+1);
-        var mm = (mon<10?'0'+mon:mon);
-        var monthName=month[lDate.getMonth()];
-        var weekdayName=weekday[lDate.getDay()];
-    
-        if(FormatType==1) {
-           return mm+'/'+dd+'/'+yyyy+' '+hh+':'+mi;
-        } else if(FormatType==2) {
-           return weekdayName+', '+monthName+' '+ 
-                dd +', ' + yyyy;
-        } else if(FormatType==3) {
-           return mm+'/'+dd+'/'+yyyy; 
-        } 
-        // else if(FormatType==4) {
-        //    var dd1 = lDate.getDate();    
-        //    return dd1+'-'+Left(monthName,3)+'-'+yyyy;    
-        // } 
-        else if(FormatType==5) {
-            return mm+'/'+dd+'/'+yyyy+' '+hh+':'+mi+':'+ss;
-        } else if(FormatType == 6) {
-            return mon + '/' + d + '/' + yyyy + ' ' + 
-                hh + ':' + mi + ':' + ss;
-        } else if(FormatType == 7) {
-            return  yyyy + '-' + lDate.getMonth()+1 + 
-                '-' + dd + 'T' + hh + ':' + mi + ':' + ss;
-        }
-    }
+   
         return (
             <div className="App">
                 <Calendar
