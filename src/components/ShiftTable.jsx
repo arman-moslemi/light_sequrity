@@ -102,7 +102,7 @@ return (
                 
 
             
-       <div className="p-4 w-[80%] mx-auto">
+       <div className="p-4 w-[80%] md:w-[100%] mx-auto md:px-0">
        <table class="table-auto w-full   rounded-2xl  shadow-tableShadow mt-5">
                 <thead
                     className="bg-hoverBackground h-14 rounded-t-2xl w-full whitespace-nowrap overflow-x-scroll"

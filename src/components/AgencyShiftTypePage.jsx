@@ -19,7 +19,7 @@ const AgencyShiftTypePage = ({data,reCheck,setRecheck}) => {
             <div className="w-full  bg-white rounded-2xl shadow-object h-auto p-10 xs:px-4 2xs:px-3">
                 <div className=" border-b-2 border-borderGray pb-4">
 
-                   <div className="flex justify-between">
+                   <div className="flex 950:flex-col justify-between">
                     <div>
                     <span className="text-[#000] font-bold text-xl">
                        Shift Type
@@ -32,7 +32,7 @@ const AgencyShiftTypePage = ({data,reCheck,setRecheck}) => {
                     </div>
                     <button
                             onClick={()=>setShowAddShiftType(true)}
-                            className="px-4 h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            className="px-4 h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 w-48 sm-xs:w-[100%]">
                            + Add Shift Type
                         </button>
                    </div>
