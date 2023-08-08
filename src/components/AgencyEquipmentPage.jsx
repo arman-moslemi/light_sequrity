@@ -47,7 +47,7 @@ const AgencyEquipmentPage = ({data}) => {
                 <ul className="mt-3">
 
                     <li
-                        className="py-8 sm:py-5 flex xl:flex-col xl:items-start lg:flex-row md:flex-col md:items-start sm:flex-row justify-between items-center border-b-2 border-borderGray border-dashed">
+                        className="py-8 sm:py-5 flex xl:flex-col xl:items-start lg:flex-row md:flex-col md:items-start sm:flex-row sm-xs:flex-col sm-xs:items-start justify-between items-center border-b-2 border-borderGray border-dashed">
                         <div className="flex items-center mt-0 sm:mt-2">
 
                             <div>
@@ -64,7 +64,7 @@ const AgencyEquipmentPage = ({data}) => {
                             </div>
                         </div>
                         <div
-                            className="flex items-center justify-between sm:flex-wrap  xl:mt-4 lg:mt-0 md:mt-4 sm:mt-0 ml-0 sm:ml-7 xs:ml-5 2xs:ml-3">
+                            className="flex items-center justify-between md-sm:flex-wrap  xl:mt-4 lg:mt-0 md:mt-4 sm:mt-0 ml-0 md-sm:ml-8">
                             <div className="flex mr-2 mt-0 sm:mt-2">
                                 <span className="font-bold text-[#000] text-base mr-2">
                                     Total Count :

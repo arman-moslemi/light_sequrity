@@ -17,6 +17,7 @@ import UserList from "../pages/UserList/UserList";
 import ViewUserDetail from "../pages/ViewUserDetail/ViewUserDetail";
 import AgencyShiftType from "../pages/AgencyShiftType/AgencyShiftType";
 import TicketList from "../pages/Ticket/TicketList";
+import ViewMission from "../pages/ViewMission/ViewMission";
 const MainRoutes = (props) => {
     return (
         <BrowserRouter>
@@ -70,6 +71,9 @@ const MainRoutes = (props) => {
             </Routes>
             <Routes>
                 <Route path="/ticketList" element={<TicketList/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/viewMission" element={<ViewMission/>}/>
             </Routes>
         </BrowserRouter>
     )
