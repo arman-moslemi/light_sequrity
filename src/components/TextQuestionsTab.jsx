@@ -25,8 +25,11 @@ const TextQuestionsTab = () => {
         setViewOption] = React.useState(false);
     const [opID,
         setOPID] = React.useState();
+    const [queType,
+        setQueType] = React.useState();
         const [data, setData] = useState([]);
         const [title, setTitle] = useState();
+        const [optionTitle, setOptionTitle] = useState();
         const [des, setDes] = useState();
         const params = useParams().id;
     
@@ -56,8 +59,8 @@ const TextQuestionsTab = () => {
         const GetData = async () => {
             const dataUser = await axiosReq("Questions/"+category+"/questions");
             console.log(dataUser)
-    
             setData(dataUser)
+         
     
             
         }
@@ -69,7 +72,7 @@ const TextQuestionsTab = () => {
     
             setCategoryList(dataUser)
     
-            
+           
         }
 
 
@@ -433,24 +436,38 @@ const TextQuestionsTab = () => {
                 : null
         } </>)
 
-        const addCap = async () => {
+        const addQuestions = async () => {
             const cookies = new Cookies();
             var id = cookies.get('ID');
             console.log(id)
-            const equi = await axiosReq("Capability", {
+            const equi = await axiosReq("Questions", {
                 
-                    "questionCategoryId": 0,
-                    "title": "string",
-                    "archived": true,
-                    "questionType": "MultiChoice"
+                    questionCategoryId: category,
+                    title: title,
+                    archived: false,
+                    questionType:queType
                   
             });
             if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
-                setShowSuccessModal(true)
+                // setShowSuccessModal(true)
                 setRecheck(!reCheck)
+                alert("success")
+                const addOption = await axiosReq("Questions/options",{
+                    questionId: 0,
+                    value: "string",
+                    isAnswer: true
+                });
+                if (addOption?.status == 200 || addOption?.status == 204 || addOption?.status == 201) {
+                    console.log(addOption)
+                    // setShowSuccessModal(true)
+                    setRecheck(!reCheck)
+                }
+                else {
+                    // setShowErrorModal(true)
+                }
             }
             else {
-                setShowErrorModal(true)
+                // setShowErrorModal(true)
             }
         }
 
@@ -506,7 +523,7 @@ const TextQuestionsTab = () => {
                                                 <select
                                                     id="statusSelect"
                                                     name="statusSelect"
-                                                    onChange={(e) => console.log(e)}
+                                                    onChange={(e) => setQueType(e.target.value)}
                                                     className="w-full bg-white rounded border border-borderGray   text-[#000] py-3 px-4">
                                                     <option value="Text">Text</option>
                                                     {/* <option value="blank">Fill In The Blank</option>*/}
@@ -555,17 +572,21 @@ const TextQuestionsTab = () => {
                                                         id="checkBoxDelete" />
                                                 </div>
                                                 {addOptionBox
-                                                    ? <div className="w-full flex items-center justify-between mt-1">
+                                                    ? 
+                                                    <div className="w-full flex items-center justify-between mt-1">
                                                         <input
                                                             class="appearance-none block w-[85%] bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                                             id="title"
                                                             type="text"
+                                                            onChange={(e)=>setOptionTitle(e.target.value)}
                                                             placeholder="Type Your Option Here...." />
                                                         <input
                                                             className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor mr-2"
                                                             type="checkbox"
                                                             value=""
-                                                            id="checkBoxDelete" />
+                                                            onChange={(e)=>setOptionTitle(e.target.value)}
+                                                            id="checkBoxDelete"
+                                                             />
                                                     </div>
                                                     : null
                                                 }
