@@ -119,7 +119,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                             <div className="flex items-center">
                                 <input
                                     required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
                                     placeholder="00"
@@ -133,7 +133,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                 </span>
                                 <input
                                     required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
                                     placeholder="00"
@@ -158,10 +158,10 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                             <div className="flex items-center">
                                 <input
                                     required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
-                                    placeholder="00:00"
+                                    placeholder="00"
                                     onChange={(e)=>setEnd({
                                         hour:e.target.value,
                                         minute:end.minute
@@ -172,10 +172,10 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                 </span>
                                 <input
                                     required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-[60px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
-                                    placeholder="00:00"
+                                    placeholder="00"
                                     
                                     onChange={(e)=>setEnd({
                                         hour:end.hour,
@@ -197,11 +197,78 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                             <div className="flex items-center">
                                 <input
                                     required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-[150px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
-                                    onChange={(e)=>setTitle(e.target.value)}
+                                   
                                     placeholder="s1"/>
+
+                            </div>
+                        </div>
+                        <div className="flex items-center my-5 justify-between">
+                            <label
+                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
+                                for="title">
+                                <span>
+                                    Need Employee Count :
+                                </span>
+                                <span className="text-hoverDelBack mx-1">
+                                    *
+                                </span>
+                            </label>
+                            <div className="flex items-center">
+                                <input
+                                    required="true"
+                                    class="appearance-none block w-[70px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+                                    id="start Time"
+                                    type="number"
+                                    onChange={(e)=>setTitle(e.target.value)}
+                                    placeholder=""/>
+
+                            </div>
+                        </div>
+                        <div className="flex items-center my-5 justify-between">
+                            <label
+                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
+                                for="title">
+                                <span>
+                                    Time Fraction :
+                                </span>
+                                <span className="text-hoverDelBack mx-1">
+                                    *
+                                </span>
+                            </label>
+                            <div className="flex items-center">
+                                <input
+                                    required="true"
+                                    class="appearance-none block w-[100px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+                                    id="start Time"
+                                    type="text"
+                                    
+                                    placeholder=""/>
+
+                            </div>
+                        </div>
+                        <div className="flex items-center my-5 justify-between">
+                            <label
+                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
+                                for="title">
+                                <span>
+                                    
+                                    Force Employee Count :
+                                </span>
+                                <span className="text-hoverDelBack mx-1">
+                                    *
+                                </span>
+                            </label>
+                            <div className="flex items-center">
+                                <input
+                                    required="true"
+                                    class="appearance-none block w-[70px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
+                                    id="start Time"
+                                    type="number"
+                                   
+                                    placeholder=""/>
 
                             </div>
                         </div>
@@ -216,9 +283,10 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                 data?.shifts?.filter(x=>x.objectShiftTypeId==item.objectShiftTypeId)?.map((item2)=>{
                                     return(
                                         <div
-                                        className="flex items-center my-5 justify-between bg-lightGreen p-2 rounded-md">
+                                        className="flex items-start my-5 justify-between bg-lightGreen p-2 rounded-md">
+                                        <div className="flex flex-wrap">
                                         <label
-                                            class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
+                                            class=" flex items-center w-full  tracking-wide text-[#000] text-xs font-bold"
                                             for="title">
                                             <span class=" text-green text-lg font-bold">
                                                 {item2?.title}
@@ -227,10 +295,35 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                         </label>
                                         <div className="flex items-center">
     
-                                            <span class=" text-green text-base font-bold">
+                                            <span class=" text-green text-sm font-normal">
                                                 {item2?.startTime} - {item2?.endTime}
                                             </span>
                                         </div>
+                                        <label
+                                            class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
+                                            for="title">
+                                            <span class=" text-green text-sm font-normal">
+                                                Time Fraction : 1.5
+                                            </span>
+    
+                                        </label>
+                                        <label
+                                            class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
+                                            for="title">
+                                            <span class=" text-green text-sm font-normal">
+                                                Need Employee Count : 12
+                                            </span>
+    
+                                        </label>
+                                        <label
+                                            class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
+                                            for="title">
+                                            <span class=" text-green text-sm font-normal">
+                                                Force Employee Count : 2
+                                            </span>
+    
+                                        </label>
+                                            </div>
                                         <button 
                                         // onClick={() => removeShift()}
                                         >

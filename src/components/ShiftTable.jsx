@@ -11,19 +11,7 @@ import { apiUrl } from "../commons/inFormTypes";
 import axios from "axios";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import Cross from "../assets/icon/cross";
-export const truncate = (str, len) => {
-    // console.log("truncate", str, str.length, len);
-    if (str.length > len && str.length > 0) {
-        let new_str = str + " ";
-        new_str = str.substr(0, len);
-        new_str = str.substr(0, new_str.lastIndexOf(" "));
-        new_str = new_str.length > 0
-            ? new_str
-            : str.substr(0, len);
-        return new_str + "...";
-    }
-    return str;
-};
+
 
 const ShiftTypeTable = () => {
     const [showEditModal,
@@ -34,107 +22,72 @@ const ShiftTypeTable = () => {
    
   
 
-    const tableRow2 = [
-        {
-            id: '1',
-           title : 'Daily',
-           startHour:'08:00',
-           endHour:'13:00',
-
-            edit:<button onClick={()=>setShowEditModal(true)}>
-            <Pencil/>
-        </button>,
-            delete:<button onClick={()=>setShowDelModal(true)}>
-                <Trash/>
-            </button>
-
-        },   {
-            id: '1',
-           title : 'Nightly',
-           startHour:'20:00',
-           endHour:'24:00',
-           edit:<div className="flex justify-center">
-           <Link to={'/'} >
-           <Pencil/>
-       </Link>
-       </div>,
-       delete:<button>
-           <Trash/>
-       </button>
-
-        },
-        {
-            id: '1',
-           title : 'Weekend',
-           startHour:'08:00',
-           endHour:'13:00',
-           
-           edit:<div className="flex justify-center">
-           <Link to={'/'} >
-           <Pencil/>
-       </Link>
-       </div>,
-       delete:<button>
-           <Trash/>
-       </button>
-
-        },
-    ]
-    const tableBody = tableRow2.map((tableRow2) =>
-    <tr key={tableRow2.id} className="border-b border-b-borderGray">
-     
-      
-      <td className="py-4 pr-5 lg-md:px-6 text-sm text-left font-IRsans pl-8">{tableRow2.title}</td>
-      <td className="py-4 pr-5 lg-md:px-6 text-sm text-center font-IRsans">{tableRow2.startHour}</td>
-      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.endHour}</td>
-      
-      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.edit}</td>
-      <td className="py-4 px-5 text-sm text-center font-IRsans">{tableRow2.delete}</td>
-      </tr> 
-    )
+   
 
    
 return (
     <div className="">
-
-        <div className="  w-full overflow-x-auto whitespace-nowrap ">
-         
-                
-
-            
-       <div className="p-4 w-[80%] mx-auto">
-       <table class="table-auto w-full   rounded-2xl  shadow-tableShadow mt-5">
-                <thead
-                    className="bg-hoverBackground h-14 rounded-t-2xl w-full whitespace-nowrap overflow-x-scroll"
-                    style={{
-                        borderRadius: '20px'
-                    }}>
-                    <tr
-                        className="text-black  p-6 whitespace-nowrap overflow-x-scroll"
-                        style={{
-                            borderRadius: '20px'
-                        }}>
-                      
-                        
-                        <th className="text-black  text-left lg-md:px-6   px-3 pl-8">Shift Type Title</th>
-                        <th className="text-black  text-center lg-md:px-6  ">Start Hour</th>
-                        <th className="text-black  text-center   md:px-3">End Hour</th>
-                        <th className="text-black  text-center   md:px-3">Edit</th>
-                        <th className="text-black  text-center    md:px-3">Delete</th>
-                       
-                       
-
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableBody}
-
-                </tbody>
-
-            </table>
+       <div className="flex flex-wrap">
+       <div className="flex justify-between bg-lightGreen rounded-xl py-4 px-6 mr-4 my-4">
+         <div>
+         <span className="font-bold text-base text-green">
+                Daily
+            </span>
+            <br/>
+            <p className="font-medium text-sm text-black">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris 
+            </p>
+         </div>
+<div className="flex">
+<button onClick={()=>setShowEditModal(true)} className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-lightOrange mr-2">
+            <Pencil className=" fill-mainColor"/>
+        </button>
+         <button className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-lightRed" onClick={()=>setShowDelModal(true)}>
+                <Trash className=" fill-red"/>
+            </button>
+</div>
+            </div>
+            <div className="flex justify-between bg-lightGreen rounded-xl py-4 px-6 mr-4 my-4">
+         <div>
+         <span className="font-bold text-base text-green">
+                Nightly
+            </span>
+            <br/>
+            <p className="font-medium text-sm text-black">
+          Egestas purus viverra accumsan in nisl nisi ue mauris 
+            </p>
+         </div>
+<div className="flex">
+<button onClick={()=>setShowEditModal(true)} className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-lightOrange mr-2">
+            <Pencil className=" fill-mainColor"/>
+        </button>
+         <button className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-lightRed" onClick={()=>setShowDelModal(true)}>
+                <Trash className=" fill-red"/>
+            </button>
+</div>
+            </div>
+            <div className="flex justify-between bg-lightGreen rounded-xl py-4 px-6 mr-4 my-4">
+         <div>
+         <span className="font-bold text-base text-green">
+                Daily
+            </span>
+            <br/>
+            <p className="font-medium text-sm text-black">
+         a accumsan in nisl nisi Arcu cursus vitae congue mauris 
+            </p>
+         </div>
+<div className="flex">
+<button onClick={()=>setShowEditModal(true)} className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-lightOrange mr-2">
+            <Pencil className=" fill-mainColor"/>
+        </button>
+         <button className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-lightRed" onClick={()=>setShowDelModal(true)}>
+                <Trash className=" fill-red"/>
+            </button>
+</div>
+            </div>
        </div>
-      
-        </div>
+
+  
     
                      {showDelModal
                 ? <> <div
@@ -198,6 +151,7 @@ return (
                             </span>
 
                         </div>
+                   
                         <div class="flex flex-col flex-wrap  mt-6">
                             <p
                                 className="mt-4 mb-2 text-black text-sm leading-relaxed break-words whitespace-normal font-bold">
@@ -207,74 +161,20 @@ return (
                                 class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="title"
                                 type="text"
-                                placeholder="Daily"/>
+                                placeholder="Daily,Nightly,..."/>
 
                         </div>
-                        <div className="flex items-center my-2 justify-between">
-                            <label
-                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
-                                for="title">
-                                <span>
-                                    Start Time :
-                                </span>
-                                <span className="text-hoverDelBack mx-1">
-                                    *
-                                </span>
-                            </label>
-                            <div className="flex items-center">
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
-                                    id="start Time"
-                                    type="text"
-                                    placeholder="08"
-                                  
-                                    />
-                                <span className="text-[#000] mx-1">
-                                    :
-                                </span>
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
-                                    id="start Time"
-                                    type="text"
-                                    placeholder="00"
-                                    
-                                 />
-                            </div>
-                        </div>
-                        <div className="flex items-center my-2 justify-between">
-                            <label
-                                class=" flex items-center  tracking-wide text-[#000] text-sm font-bold"
-                                for="title">
-                                <span>
-                                   End Time :
-                                </span>
-                                <span className="text-hoverDelBack mx-1">
-                                    *
-                                </span>
-                            </label>
-                            <div className="flex items-center">
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
-                                    id="end Time"
-                                    type="text"
-                                    placeholder="12"
-                                  
-                                    />
-                                <span className="text-[#000] mx-1">
-                                    :
-                                </span>
-                                <input
-                                    required="true"
-                                    class="appearance-none block w-[50px] bg-white text-[#000] border border-borderGray rounded py-1 px-4  leading-tight focus:outline-none focus:bg-white"
-                                    id="end Time"
-                                    type="text"
-                                    placeholder="00"
-                                    
-                                 />
-                            </div>
+                        <div class="flex flex-col flex-wrap  mt-2">
+                            <p
+                                className="mt-4 mb-2 text-black text-sm leading-relaxed break-words whitespace-normal font-bold">
+                                Shift Type Description
+                            </p>
+                            <textarea
+                                class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                id="title"
+                                type="text"
+                                placeholder="Daily,Nightly,..."/>
+
                         </div>
                         <div className="flex xs:flex-col xs:items-start justify-between items-end mb-3">
                           
