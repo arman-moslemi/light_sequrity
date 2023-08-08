@@ -79,9 +79,40 @@ const TextQuestionsTab = () => {
            
         }
 
-const addQuestions =() =>{
-
-}
+        const addQuestions = async () => {
+            const cookies = new Cookies();
+            var id = cookies.get('ID');
+            console.log(id)
+            const equi = await axiosReq("Questions", {
+                
+                    questionCategoryId: category,
+                    title: title,
+                    archived: false,
+                    questionType:queType
+                  
+            });
+            if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+                // setShowSuccessModal(true)
+                setRecheck(!reCheck)
+                alert("success")
+                const addOption = await axiosReq("Questions/options",{
+                    questionId: 0,
+                    value: "string",
+                    isAnswer: true
+                });
+                if (addOption?.status == 200 || addOption?.status == 204 || addOption?.status == 201) {
+                    console.log(addOption)
+                    // setShowSuccessModal(true)
+                    setRecheck(!reCheck)
+                }
+                else {
+                    // setShowErrorModal(true)
+                }
+            }
+            else {
+                // setShowErrorModal(true)
+            }
+        }
 
 
     const tableRow = [
@@ -442,40 +473,7 @@ const addQuestions =() =>{
                 : null
         } </>)
 
-        const addQuestions = async () => {
-            const cookies = new Cookies();
-            var id = cookies.get('ID');
-            console.log(id)
-            const equi = await axiosReq("Questions", {
-                
-                    questionCategoryId: category,
-                    title: title,
-                    archived: false,
-                    questionType:queType
-                  
-            });
-            if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
-                // setShowSuccessModal(true)
-                setRecheck(!reCheck)
-                alert("success")
-                const addOption = await axiosReq("Questions/options",{
-                    questionId: 0,
-                    value: "string",
-                    isAnswer: true
-                });
-                if (addOption?.status == 200 || addOption?.status == 204 || addOption?.status == 201) {
-                    console.log(addOption)
-                    // setShowSuccessModal(true)
-                    setRecheck(!reCheck)
-                }
-                else {
-                    // setShowErrorModal(true)
-                }
-            }
-            else {
-                // setShowErrorModal(true)
-            }
-        }
+     
 
     return (
         <div className="p-4">
@@ -538,13 +536,13 @@ const addQuestions =() =>{
                                                 </select>
 
                                             </div>
-                                            <div className="flex items-center  ml-3 mb-4 xs:mt-3 ">
+                                            {/* <div className="flex items-center  ml-3 mb-4 xs:mt-3 ">
                                                 <input
                                                     className=" mr-2  text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                                                     type="checkbox"
                                                     value=""
                                                     id="checkBoxOne" />
-                                                {/* <div>
+                                                <div>
                                                     <div className="flex flex-col">
                                                         <span className="font-bold text-[#000] text-sm">
                                                             Is For Contract ?
@@ -552,8 +550,8 @@ const addQuestions =() =>{
 
                                                     </div>
 
-                                                </div> */}
-                                            </div>
+                                                </div>
+                                            </div> */}
                                         </div>
                                         <div className="my-2">
                                             <div className="flex justify-between">
