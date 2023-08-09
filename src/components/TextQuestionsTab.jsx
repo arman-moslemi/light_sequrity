@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
 import { useParams } from "react-router-dom";
-
+import Cross from "../assets/icon/cross";
 const TextQuestionsTab = () => {
     const [showEditModal,
         setShowEditModal] = useState(false);
@@ -252,9 +252,16 @@ const addQuestions =() =>{
             </td > < td className="py-4 text-sm  px-2 text-left" > <> {
                 tableRow.title
             } </>
-            </td > < td className="py-4 text-sm text-center px-2" > {
+           </td >
+            {/*  < td className="py-4 text-sm text-center px-2" > {
                 tableRow.contract
-            } </td > 
+            } </td >  */}
+             < td className="py-4 text-sm text-center px-2" > {
+                
+            } </td >
+            < td className="py-4 text-sm text-center px-2" > {
+                
+            } </td >
             < td className="py-4 text-sm text-center px-2" > <> <button onClick={() => setShowEditModal(true)}>
             <Pencil />
         </button>
@@ -466,9 +473,39 @@ const addQuestions =() =>{
                 <div className="flex justify-between items-center md-sm:flex-col md-sm:items-start">
                     <p className="text-[#000] font-bold text-base text-justify w-[80%] lg-md:w-[70%] md-sm:w-[100%]">
                         * You Can See The List Of All Questions In The Table Below
-                    </p > <button
+                    </p > 
+
+                    <div className="flex items-center">
+
+                    <div className="flex items-center">
+
+
+                        <label className="font-bold text-black text-sm w-max mr-3">
+                            Select Category
+                        </label>
+                        <select
+                                                    id="statusSelect"
+                                                    name="statusSelect"
+                                                    defaultValue={categoryList[0]?.questionCategoryId}
+                                                  
+                                                    className="w-max bg-green h-[45px]  rounded-lg shadow-greenShadow font-bold text-white py-3 px-2">
+                                                        <option value="">Choose Category</option>
+                                                {
+
+                                                    categoryList?.map((item2)=>{
+                                                        return(
+
+                                                            <option value={item2?.questionCategoryId}>{item2?.name}</option>
+                                                        )
+                                                    })
+                                                }
+
+                                                </select>
+                    </div>
+
+                    <button
                         onClick={() => setAddQuestionModal(true)}
-                        className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 mt-0 md-sm:mt-6 hover:bg-menuActive hover:text-green flex items-center">
+                        className="bg-green rounded-lg shadow-greenShadow w-max text-white ml-4 font-bold h-[45px] px-7 mt-0 md-sm:mt-6 hover:bg-menuActive hover:text-green flex items-center">
 
                         + Add Question
 
@@ -495,7 +532,7 @@ const addQuestions =() =>{
                                                 className="mt-4 mb-2 text-black text-sm leading-relaxed break-words whitespace-normal font-bold">
                                                 Question Title
                                             </p>
-                                            <input
+                                            <textarea
                                                 class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                                 id="title"
                                                 type="text"
@@ -522,11 +559,11 @@ const addQuestions =() =>{
 
                                             </div>
                                             <div className="flex items-center  ml-3 mb-4 xs:mt-3 ">
-                                                <input
+                                                {/* <input
                                                     className=" mr-2  text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                                                     type="checkbox"
                                                     value=""
-                                                    id="checkBoxOne" />
+                                                    id="checkBoxOne" /> */}
                                                 {/* <div>
                                                     <div className="flex flex-col">
                                                         <span className="font-bold text-[#000] text-sm">
@@ -611,12 +648,14 @@ const addQuestions =() =>{
                                     <div
                                         className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
 
-                                        <div className="flex items-centers justify-left  rounded-t">
+                                        <div className="flex items-centers justify-between  rounded-t">
 
                                             <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
                                                 Select Category
                                             </span>
-
+                                            <button onClick={()=>setCategoryModal(false)}>
+                                                <Cross className="h-[15px] w-[15px]"/>
+                                            </button>
                                         </div>
                                     
                                         <div className="flex xs:flex-col xs:items-start justify-between items-end mb-3 mt-6">
@@ -664,6 +703,7 @@ const addQuestions =() =>{
                             <div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
                              </>
                             : null}
+                    </div>
                 </div> </div> <div className="" > <div className="  w-full rounded-2xl  shadow-tableShadow mt-5 overflow-x-auto">
 
                     <table class="table-auto w-full">
@@ -678,10 +718,10 @@ const addQuestions =() =>{
                                     borderRadius: '20px'
                                 }}>
 
-                                <th className="text-black  text-left   md:px-3 px-4">Number</th >
+                     
                                 <th className="text-black  text-left   md:px-3 px-4">Question / Answers</th>
-
-                                <th className="text-black  text-center  md:px-3 px-4">Is For Contract ?</th >
+                                <th className="text-black  text-left   md:px-3 px-4">Question Type</th>
+                                <th className="text-black  text-left   md:px-3 px-4">Archive</th>
                                 <th className="text-black  text-center  md:px-3 px-4">Edit</th>
                                 <th className="text-black  text-center  md:px-3 px-4">Delete</th>
                                 <th className="text-black  text-center  md:px-3 px-4">View Options</th>

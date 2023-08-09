@@ -68,6 +68,8 @@ const AllObjectTable = ({ data,reCheck,setRecheck }) => {
             telephone: '+98997853255',
             assigner: 'Alica alane',
             lastUpdate: '2023/05/02',
+            startDate: '2023/05/02',
+            endDate: '2023/05/02',
             action: <div className="relative">
                 < button onClick={() => setShowAction(!showAction)}>
                     <Bullet />
@@ -129,6 +131,8 @@ const AllObjectTable = ({ data,reCheck,setRecheck }) => {
             telephone: '+98997853255',
             assigner: 'Alica alane',
             lastUpdate: '2023/05/02',
+            startDate: '2023/05/02',
+            endDate: '2023/05/02',
             action: <div className="relative">
                 < button >
                     <Bullet />
@@ -154,6 +158,8 @@ const AllObjectTable = ({ data,reCheck,setRecheck }) => {
             telephone: '+98997853255',
             assigner: 'Alica alane',
             lastUpdate: '2023/05/02',
+            startDate: '2023/05/02',
+            endDate: '2023/05/02',
             action: <div className="relative">
                 < button >
                     <Bullet />
@@ -179,6 +185,8 @@ const AllObjectTable = ({ data,reCheck,setRecheck }) => {
             telephone: '+98997853255',
             assigner: 'Alica alane',
             lastUpdate: '2023/05/02',
+            startDate: '2023/05/02',
+            endDate: '2023/05/02',
             action: <div className="relative">
                 < button >
                     <Bullet />
@@ -214,29 +222,31 @@ const AllObjectTable = ({ data,reCheck,setRecheck }) => {
         }
     ]
     const tableBody = data?.map((tableRow, index) => <tr key={tableRow.objectId} className="border-b border-b-borderGray">
-        <td className="py-4 pl-4">
+        {/* <td className="py-4 pl-4">
             <div class=" block">
-                <input
+                {/* <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"
                     type="checkbox"
                     value=""
                     id="checkBoxDelete"
-                    onChange={handleCheckBoxChecked} />
+                    onChange={handleCheckBoxChecked} /> 
 
             </div>
-        </td>
-        <td className="py-4 text-sm text-center">{index + 1}</td>
-        <td className="py-4 text-sm text-left ">
+        </td> */}
+      
+        <td className="py-4 text-sm text-left pl-6">
 
             {tableRow.title}
 
         </td>
         <td className="py-4 text-sm text-left">{tableRow.address}</td>
         <td className="py-4 text-sm text-left">{tableRow.registerDate}</td>
+        <td className="py-4 text-sm text-left">{tableRow.startDate}</td>
+        <td className="py-4 text-sm text-left">{tableRow.endDate}</td>
         <td className="py-4 text-sm text-left">{tableRow.status}</td>
         <td className="py-4 text-sm text-left">{tableRow.telephoneNumber}</td>
         <td className="py-4 text-sm text-left">{tableRow.assigner}</td>
-        <td className="py-4 text-sm text-left">{tableRow.lastUpdate}</td>
+     
         <td className="py-4 text-sm text-center"><div className="relative">
             < button onClick={() => showAct(tableRow.objectId)}>
                 <Bullet />
@@ -370,7 +380,7 @@ return (
                         style={{
                             borderRadius: '20px'
                         }}>
-                        <th className="text-black  text-left pl-4   md:px-4">
+                        {/* <th className="text-black  text-left pl-4   md:px-4">
                             <div class=" block">
                                 <input
                                     className="text-green bg-white border-borderGray border-1 focus:ring-mainColor checked:bg-mainColor"
@@ -379,15 +389,17 @@ return (
                                     id="checkAll" />
 
                             </div>
-                        </th>
-                        <th className="text-black  text-left   md:px-4">Num</th>
-                        <th className="text-black  text-left   md:px-4">Title</th>
+                        </th> */}
+                     
+                        <th className="text-black  text-left   md:px-4 pl-6">Name</th>
                         <th className="text-black  text-left   md:px-4">Address</th>
                         <th className="text-black  text-left  md:px-4">Register date</th>
+                        <th className="text-black  text-left  md:px-4">Start date</th>
+                        <th className="text-black  text-left  md:px-4">End date</th>
                         <th className="text-black  text-left  md:px-4">Status</th>
                         <th className="text-black  text-left   md:px-4">Telephone</th>
                         <th className="text-black  text-left  md:px-4">Assigner</th>
-                        <th className="text-black  text-left  md:px-4">Update Date</th>
+                   
                         <th className="text-black  text-center  md:px-4">
                             Action
                         </th>

@@ -84,11 +84,13 @@ const AgencyInstructionPage = () => {
                         ?.map((item,index) =>{
                             return(
                                 <li
-                                className="py-8 flex items-start border-b-2 border-borderGray border-dashed md-sm:pb-4">
-                                <span className="text-green font-bold mr-3">
+                                className="py-8 flex items-start justify-between border-b-2 border-borderGray border-dashed md-sm:pb-4">
+                            
+                                <div>
+                                       <div className="flex">
+                                       <span className="text-green font-bold mr-3">
                                     {index+1})
                                 </span>
-                                <div>
                                     <div className="flex flex-col">
                                         <span className="font-bold text-[#000] text-base mb-1">
                                         {item.title}
@@ -97,6 +99,7 @@ const AgencyInstructionPage = () => {
                                         {item.description}
                                         </p>
                                     </div>
+                                       </div>
                                     <div className="flex items-center flex-wrap my-4">
                                     {
                                                 item?.instructionFiles?.map((item2)=>{
@@ -403,7 +406,7 @@ const AgencyInstructionPage = () => {
                             <div class="flex flex-wrap  mt-6">
                                 <p
                                     className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
-                                    Are you sure to delete the selected option?
+                                    Are you sure to delete the selected instruction?
                                 </p>
 
                             </div>
