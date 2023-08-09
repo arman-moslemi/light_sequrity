@@ -56,21 +56,6 @@ const LeftMenu =(props) =>{
                         </span>
                        </Link>
                     </li>
-                <li className="my-5">
-                    <Link to={'/userList'} className={leftMenustyle && splitLocation[1] ==="userList"   ?
-                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
-                       leftMenustyle && splitLocation[1]!=="userList" ?
-                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
-                       !leftMenustyle &&  splitLocation[1] ==="userList"?
-                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
-                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
-                       <UserListIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="userList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="userList" ? "#00a76f" : "#637381"}/>
-                        <span className={splitLocation[1] ==="userList" ? "  text-activeText font-bold" : " font-semibold text-base text-[#919eab]"}>
-                           User List
-                        </span>
-                       </Link>
-              
-                    </li>
                     <li className="my-5">
                      <div className={leftMenustyle && splitLocation[1] ==="agencyList"   ?
                        "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive justify-between":
@@ -192,6 +177,24 @@ const LeftMenu =(props) =>{
                         </span>
                        </Link>
                     </li>
+                <li className="my-5">
+                    <Link to={'/userList'} className={leftMenustyle && splitLocation[1] ==="userList"   ?
+                       "flex flex-row items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive ":
+                       leftMenustyle && splitLocation[1]!=="userList" ?
+                       "flex flex-row  items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md":
+                       !leftMenustyle &&  splitLocation[1] ==="userList"?
+                       "flex flex-col items-center hover:bg-hoverBackground px-3 py-2 rounded-md bg-menuActive "       
+                       : "flex flex-col justify-center items-center align-middle hover:bg-hoverBackground px-3 py-2 rounded-md"}>
+                       <UserListIcon className={leftMenustyle ? "mr-5" : "mr-0"} bodyColor={splitLocation[1] ==="userList" ? "#00a76f" : "#919eab"} headColor={splitLocation[1] ==="userList" ? "#00a76f" : "#637381"}/>
+                        <span className={splitLocation[1] ==="userList" ? "  text-activeText font-bold" : " font-semibold text-base text-[#919eab]"}>
+                           User List
+                        </span>
+                       </Link>
+              
+                    </li>
+                   
+                   
+              
                  
                   
                     <li className="my-5">
