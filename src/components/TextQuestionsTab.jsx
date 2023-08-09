@@ -727,7 +727,7 @@ const TextQuestionsTab = () => {
 
                     <table class="table-auto w-full">
                         <thead
-                            className="bg-hoverBackground h-14  w-full whitespace-nowrap overflow-x-scroll"
+                            className="bg-hoverBackgrousnd h-14  w-full whitespace-nowrap overflow-x-scroll"
                             style={{
                                 borderRadius: '20px'
                             }}>
