@@ -11,6 +11,8 @@ import WhiteCheck from "../assets/icon/whiteCheck";
 
 // import Map from "./Map";
 const AddAgencyPage = () => {
+  const [showSuccessModal,
+    setShowSuccessModal] = React.useState(false);
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const [Glocation, setGlocation] = useState();
@@ -86,31 +88,46 @@ const AddAgencyPage = () => {
     console.log(token)
     if(!token){
      navigate("/login");
-    }else{
-
-   GetData()
-
     }
-  };
-  const GetData=async()=>{
-   console.log(1234)
-  const dataUser = await axiosReq("Objects/"+params);
-  console.log(dataUser)
-  setStartDate(dataUser?.startDate)
-  setEndDate(dataUser?.endDate)
-  setGlocation(dataUser?.glocation)
-  setDescription(dataUser?.description)
-  setAddress(dataUser?.address)
-  setTitle(dataUser?.title)
-  setTelephoneNumber(dataUser?.telephoneNumber)
-  setHasMicrowave(dataUser?.hasMicrowave)
-  setHasBuffet(dataUser?.hasBuffet)
-  setHasCoffeMachine(dataUser?.hasCoffeMachine)
-  setHasMicrowave(dataUser?.hasMicrowave)
-  setHasSecurityRom(dataUser?.hasSecurityRom)
-  setStatus(dataUser?.status)
-setData(dataUser)
-  }
+   };
+   const addAgency = async () => {
+    const cookies = new Cookies();
+    var id = cookies.get('ID');
+    console.log(id)
+    const equi = await axiosReq("ObjectInstructions", {
+        // title: title,
+        // description: des,
+    });
+    if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+        // navigate("/tashakolRegister2",{
+        //   OrganizationID:data?.organizationId
+        // });
+        setShowSuccessModal(true)
+        setRecheck(!reCheck)
+    }
+    else {
+        alert("Please fill inputs")
+    }
+}
+//   const GetData=async()=>{
+//    console.log(1234)
+//   const dataUser = await axiosReq("Objects/"+params);
+//   console.log(dataUser)
+//   setStartDate(dataUser?.startDate)
+//   setEndDate(dataUser?.endDate)
+//   setGlocation(dataUser?.glocation)
+//   setDescription(dataUser?.description)
+//   setAddress(dataUser?.address)
+//   setTitle(dataUser?.title)
+//   setTelephoneNumber(dataUser?.telephoneNumber)
+//   setHasMicrowave(dataUser?.hasMicrowave)
+//   setHasBuffet(dataUser?.hasBuffet)
+//   setHasCoffeMachine(dataUser?.hasCoffeMachine)
+//   setHasMicrowave(dataUser?.hasMicrowave)
+//   setHasSecurityRom(dataUser?.hasSecurityRom)
+//   setStatus(dataUser?.status)
+// setData(dataUser)
+//   }
     return (
         <div>
         <div className="mt-6">
@@ -144,6 +161,7 @@ setData(dataUser)
     
                     
       <select
+      onChange={(e)=>setStatus(e.target.value)}
                             id="statusSelect"
                             name="statusSelect"
                             className="w-full bg-white rounded-sm border border-borderGray py-3 px-4">
@@ -169,14 +187,14 @@ setData(dataUser)
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       House Number
       </label>
-      <input  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
+      <input value={title} onChange={(e)=>setTitle(e.target.value)}   class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
       
     </div>
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Email
       </label>
-      <input  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="email" type="text" placeholder="info@gmail.com"/>
+      <input value={title} onChange={(e)=>setTitle(e.target.value)}  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="email" type="text" placeholder="info@gmail.com"/>
       
     </div>
     </div>
@@ -186,14 +204,14 @@ setData(dataUser)
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Website Address
       </label>
-      <input  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="info.com"/>
+      <input value={title} onChange={(e)=>setTitle(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="info.com"/>
       
     </div>
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Code
       </label>
-      <input  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="16682454"/>
+      <input value={title} onChange={(e)=>setTitle(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="16682454"/>
       
     </div>
    </div>
@@ -289,6 +307,50 @@ setData(dataUser)
     
 
       </div>
+      {showSuccessModal
+                ? <> <div
+                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="relative w-[30%] md:w-[40%] sm:w-[50%] sm-xs:w-[60%] xs:w-[80%] my-5 mx-auto max-w-5xl">
+
+                        <div
+                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+
+                            <div className="flex items-centers justify-left  rounded-t">
+
+                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+                                    successful
+                                </span>
+
+                            </div>
+
+                            <div class="flex flex-wrap  mt-6">
+                                <p
+                                    className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
+                                    Add instruction successfully
+                                </p>
+
+                            </div>
+
+                            <div
+                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b mt-5">
+                                <button
+                                    className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => setShowSuccessModal(false)}>
+                                    Continue
+                                </button>
+                                <button
+                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => setShowSuccessModal(false)}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> < div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
+                </>
+                : null}
         </div>
     )
 

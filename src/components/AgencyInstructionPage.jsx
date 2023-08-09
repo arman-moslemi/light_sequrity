@@ -12,6 +12,8 @@ import Trash from "../assets/icon/trash";
 import WhiteTrash from "../assets/icon/whiteTrash";
 import Cross from "../assets/icon/cross";
 const AgencyInstructionPage = () => {
+    const [showSuccessModal,
+        setShowSuccessModal] = useState(false);
     const [showAddModal,
         setShowAddModal] = React.useState(false);
     const [reCheck,
@@ -23,6 +25,9 @@ const AgencyInstructionPage = () => {
         setShowDelModal] = React.useState(false);
     const [data,
         setData] = React.useState([]);
+    const [title, setTitle] = React.useState();
+    const [des, setDes] = React.useState();
+
     useEffect(() => {
 
         auth();
@@ -42,11 +47,31 @@ const AgencyInstructionPage = () => {
     let navigate = useNavigate();
 
     const GetData = async() => {
-        const dataUser = await axiosReq("Instructions");
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        const dataUser = await axiosReq("Agencies/"+id+"/instructions");
         console.log(dataUser)
 
         setData(dataUser)
 
+    }
+    const addInstru = async () => {
+        const cookies = new Cookies();
+        var id = cookies.get('ID');
+        console.log(id)
+        const equi = await axiosReq("Instructions", {
+            agencyId:id,
+            title: title,
+            description: des,
+        });
+        if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+            setShowAddModal(false);
+            setShowSuccessModal(true)
+            setRecheck(!reCheck)
+        }
+        else {
+            alert("Please fill inputs")
+        }
     }
 
     return (
@@ -211,6 +236,7 @@ const AgencyInstructionPage = () => {
                                 class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="title"
                                 type="text"
+                                onChange={(e) => setTitle(e.target.value)}
                                 placeholder="Type Instruction Title Here ..."/>
 
                         </div>
@@ -231,6 +257,7 @@ const AgencyInstructionPage = () => {
                                 class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="title"
                                 type="text"
+                                onChange={(e) => setDes(e.target.value)}
                                 placeholder="Type Instruction Description..."/>
 
                         </div>
@@ -265,7 +292,8 @@ const AgencyInstructionPage = () => {
                                 <input id="dropzone-file" type="file" className="hidden"/>
                             </label>
                             <button
-                                onClick={() => setShowAddModal(false)}
+                                onClick={() =>  addInstru()  }
+                                
                                 className="w-full h-[50px] rounded-lg shadow-grayShadow font-bold bg-green  text-white mt-5 hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                                 + Add Instruction
                             </button>
@@ -429,6 +457,50 @@ const AgencyInstructionPage = () => {
                         </div>
                     </div>
                 </div> < div className = "opacity-25 fixed inset-0 z-40 bg-black" > </div> </>
+                : null}
+                {showSuccessModal
+                ? <> <div
+                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="relative w-[30%] md:w-[40%] sm:w-[50%] sm-xs:w-[60%] xs:w-[80%] my-5 mx-auto max-w-5xl">
+
+                        <div
+                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+
+                            <div className="flex items-centers justify-left  rounded-t">
+
+                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+                                    successful
+                                </span>
+
+                            </div>
+
+                            <div class="flex flex-wrap  mt-6">
+                                <p
+                                    className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
+                                    Add instruction successfully
+                                </p>
+
+                            </div>
+
+                            <div
+                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b mt-5">
+                                <button
+                                    className="text-white bg-green hover:shadow-greenShadow hover:bg-green shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => setShowSuccessModal(false)}>
+                                    Continue
+                                </button>
+                                <button
+                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => setShowSuccessModal(false)}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> < div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
+                </>
                 : null}
 
         </div>
