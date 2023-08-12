@@ -8,6 +8,19 @@ import Trash from "../assets/icon/trash";
 import Eye from "../assets/icon/eye";
 import Pencil from "../assets/icon/pencil";
 import { Link } from "react-router-dom";
+export const truncate = (str, len) => {
+    // console.log("truncate", str, str.length, len);
+    if (str.length > len && str.length > 0) {
+        let new_str = str + " ";
+        new_str = str.substr(0, len);
+        new_str = str.substr(0, new_str.lastIndexOf(" "));
+        new_str = new_str.length > 0
+            ? new_str
+            : str.substr(0, len);
+        return new_str + "...";
+    }
+    return str;
+};
 const TicketListTable = () => {
     const [showAction,
         setShowAction] = useState(false);
@@ -25,73 +38,19 @@ const TicketListTable = () => {
         {
             id: '1',
       
-            avatar: 
-                <img
-                    src={Img1}
-                    alt="objectImg"
-                    className="w-[45px] h-[45px] rounded-full" />
-                
-            ,  
-             username:'Ali@H1345',
-            fullname: 'Ali Reza Taher Zadeh',
-            
-         mobileNumber:'+989123658974',
-        email:'alitaherzadeh1324@yahoo.com',
-           gender:      <img
-                    src={Man}
-                    alt="objectImg"
-                    className="w-[45px] h-[45px] rounded-full block mx-auto" />,
-           
-           
-           
-           
-         
-           
-           isEmployee:<span className="font-bold text-green">
-            Yes
-           </span>,
-            action:<div className="relative">
-            < button onClick={() => setShowAction(!showAction)}>
-                <Bullet />
-            </button>
-            {showAction
-                ? <div className="z-50  absolute  right-[55px] top-[2px]">
-                    <div className="triangleRight"></div>
-                    <div
-                        className="z-50 w-[135px] h-auto  bg-white shadow-whiteShodow  rounded-lg mBg">
-                        <Link
-                            to={'/viewUserDetail'}
-                            className="flex items-center px-4 w-full py-3 hover:bg-hoverBackground">
-
-                            <Eye className="text-[#000] mr-3" />
-                            <span className="font-medium text-[#000]">
-                                View
-                            </span>
-
-                        </Link>
-                        <Link to={'/'}
-
-                            className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
-
-                            <Pencil className="text-[#000] mr-3" />
-                            <span className="font-medium text-[#000]">
-                                Edit
-                            </span>
-                        </Link>
-                        <button
-                            onClick={actionMini}
-                            className="flex items-center px-4 w-full  py-3 hover:bg-hoverBackground">
-
-                            <Trash className="text-[#b71d18] mr-3" />
-                            <span className="font-medium text-[#b71d18]">
-                                Delete
-                            </span>
-                        </button>
-
-                    </div>
-                </div>
-                : <></>}
-        </div>
+            title:truncate("change password",25),
+            priority:'low',
+            status:<div className="h-[30px] rounded-full flex justify-center items-center bg-lightOrange">
+                <span className="font-bold text-mainColor"> waiting</span>
+            </div>,
+            registeredDate:'2023/10/12',
+            lastUpdateDate:'2023/12/12',
+            ticketCategory:'technical department',
+            action:<div className="flex justify-center">
+                <Link to={'/viewTicket'}>
+                <Eye/>
+            </Link>
+            </div>
             
 
         },
@@ -102,17 +61,17 @@ const TicketListTable = () => {
        
      
 
-      <td className="py-4  text-sm text-left font-IRsans pl-6">{tableRow2.avatar}</td>
+      <td className="py-4  text-sm text-left font-IRsans pl-6">{tableRow2.title}</td>
 
+      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.ticketCategory}</td>
+
+      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.priority}</td>
+      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.status}</td>
+      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.registeredDate}</td>
       
-      <td className="py-4  text-sm text-left font-IRsans">{tableRow2.username}</td>
-      <td className="py-4  text-sm text-left font-IRsans">{tableRow2.fullname}</td>
-      <td className="py-4  text-sm text-left font-IRsans">{tableRow2.mobileNumber}</td>
-      
-      <td className="py-4  text-sm text-left font-IRsans">{tableRow2.email}</td>
-      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.gender}</td>
-      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.isEmployee}</td>
-      <td className="py-4  text-sm text-center font-IRsans pr-6">{tableRow2.action}</td>
+      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.lastUpdateDate}</td>
+     
+      <td className="py-4  text-sm text-center font-IRsans">{tableRow2.action}</td>
      
       </tr> 
     )
@@ -184,17 +143,17 @@ return (
                        
                       
                  
-                        <th className="text-black  text-left   md:px-3 pl-6">Avatar</th>
+                        <th className="text-black  text-left   md:px-3 pl-6">Title</th>
                         
+                        <th className="text-black  text-center  md:px-3">Ticket Category</th>
+                        <th className="text-black  text-center   md:px-3">Priority</th>
+                        <th className="text-black  text-center   md:px-3">Status</th>
+                        <th className="text-black  text-center   md:px-3">Registered Date</th>
                        
-                        <th className="text-black  text-left   md:px-3">User Name</th>
-                        <th className="text-black  text-left   md:px-3">Full Name</th>
-                        <th className="text-black  text-left   md:px-3">Mobile</th>
-                       
-                        <th className="text-black  text-left   md:px-3">Email</th>
-                        <th className="text-black  text-center  md:px-3">Gender</th>
-                        <th className="text-black  text-center  md:px-3">Is Employee ?</th>
-                        <th className="text-black  text-center   md:px-3 pr-6">Action</th>
+                        <th className="text-black  text-lefcentert   md:px-3">Last Update</th>
+                    
+                   
+                        <th className="text-black  text-center   md:px-3 pr-2 pl-2">Action</th>
                         
                        
 
