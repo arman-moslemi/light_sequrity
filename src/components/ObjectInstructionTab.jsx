@@ -313,7 +313,7 @@ const ObjectInstructionTab = () => {
                         </label>
                         <textarea
                             rows="4"
-                            onChange={(e) => setTitle(e.target.value)}
+                            onChange={(e) => setDes(e.target.value)}
 
                             required="true"
                             class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
