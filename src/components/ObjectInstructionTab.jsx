@@ -14,6 +14,8 @@ import WhiteTrash from "../assets/icon/whiteTrash";
 import Cross from "../assets/icon/cross";
 import {apiUrl} from "../commons/inFormTypes";
 import axios from "axios";
+import CheckMark from "../assets/icon/Check";
+import FileUpload from "../components/FileUpload";
 
 const ObjectInstructionTab = () => {
     const [showEditModal,
@@ -28,6 +30,7 @@ const ObjectInstructionTab = () => {
     const [objInstru, setObjInstru] = useState([]);
     const [title, setTitle] = useState();
     const [des, setDes] = useState();
+    const [id, setID] = useState();
     const params = useParams().id;
 
     const [reCheck, setRecheck] = useState(false);
@@ -108,7 +111,7 @@ const ObjectInstructionTab = () => {
         }
         else{
             const delIns =
-            await axios.delete(apiUrl+"Objects/" + params + "/instructions",
+            await axios.delete(apiUrl+"Objects/" + params + "/instructions/"+insid,
                 {headers: {
            Authorization: `Bearer ${cookies.get('token')}`
                      
@@ -126,6 +129,7 @@ const ObjectInstructionTab = () => {
         }
 
     }
+  
     return (
         <div className="flex p-4">
 
@@ -204,7 +208,7 @@ const ObjectInstructionTab = () => {
                                                         </span>
                                                     </button>
                                                     :
-                                                    item2?.fileType.trim()==".jpg"?
+                                                    item2?.fileType.trim()==".jpg" ||item2?.fileType.trim()==".png" ?
                                                     <button
                                                     className="mr-4 h-8 my-1 px-4 bg-lightBlue rounded-full flex justify-center items-center ">
                                                     <ImgIcon />
@@ -256,18 +260,18 @@ const ObjectInstructionTab = () => {
                                             </button>
                                         </div>
                                     </div>
-                                    {/* <div className="flex items-center md-sm:hidden">
+                                    <div className="flex items-center md-sm:hidden">
                                         <button
-                                            onClick={() => setShowEditModal(true)}
+                                            onClick={() => {setShowEditModal(true);setID(item.instructionId)}}
                                             className="mr-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#8beaf7] w-[35px] h-[35px] rounded-full bg-lightBlue  flex items-center justify-center">
                                             <BluePencil />
                                         </button>
-                                        <button
+                                        {/* <button
                                             onClick={() => setShowDelModal(true)}
                                             className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500 hover:bg-[#ffc5b3] w-[35px] h-[35px] rounded-full bg-lightRed  flex items-center justify-center">
                                             <Trash />
-                                        </button>
-                                    </div> */}
+                                        </button> */}
+                                    </div>
                                 </li>
                             )
                         })
@@ -379,7 +383,7 @@ const ObjectInstructionTab = () => {
                             </div>
 
                             <div class="flex flex-wrap  mt-6">
-                                <div class="w-full mt-6">
+                                {/* <div class="w-full mt-6">
                                     <label
                                         class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
                                         for="title">
@@ -417,7 +421,7 @@ const ObjectInstructionTab = () => {
                                         type="text"
                                         placeholder="Type Instruction Description..." />
 
-                                </div>
+                                </div> */}
                                 <div className="w-full  mt-6">
                                     <label
                                         className=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2">
@@ -426,7 +430,7 @@ const ObjectInstructionTab = () => {
                                     <label
                                         for="dropzone-file"
                                         className="mt-2 flex flex-col items-center justify-center w-[100%] md:w-full h-32 border border-borderGray border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div
+                                        {/* <div
                                             className="flex flex-col items-center justify-center pt-5 pb-6 font-IRsans">
                                             <svg
                                                 aria-hidden="true"
@@ -445,7 +449,9 @@ const ObjectInstructionTab = () => {
                                                 <span className="font-normal font-IRsans text-[#000]">Choose File</span>
                                             </p>
 
-                                        </div>
+                                        </div> */}
+                                                <FileUpload img={CheckMark} setRecheck={setRecheck} reCheck={reCheck} id={id}/>
+
                                         <input id="dropzone-file" type="file" className="hidden" />
                                     </label>
 
@@ -461,12 +467,12 @@ const ObjectInstructionTab = () => {
                                     onClick={() => setShowEditModal(false)}>
                                     Edit
                                 </button>
-                                <button
+                                {/* <button
                                     className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                     type="button"
                                     onClick={() => setShowEditModal(false)}>
                                     Cancel
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>

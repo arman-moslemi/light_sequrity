@@ -99,7 +99,7 @@ const ObjectCapabilityTab = ({ data }) => {
         }
         else{
             const delIns =
-            await axios.delete(apiUrl+"Objects/" + params + "/capabilities",
+            await axios.delete(apiUrl+"Objects/" + params + "/capabilities/"+capid,
                 {headers: {
            Authorization: `Bearer ${cookies.get('token')}`
                      
