@@ -32,7 +32,7 @@ const TicketList = () =>{
           
  
             </div>
-              
+              <TicketListTable/>
              
             </div>
 
@@ -41,3 +41,5 @@ const TicketList = () =>{
 }
 
 export default TicketList;
+
+
