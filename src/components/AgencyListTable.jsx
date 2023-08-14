@@ -141,8 +141,7 @@ const AgencyListTable = () => {
 
         }
     ]
-    const tableBody = data
-        ?.map((item) => <tr key={tableRow2.id} className="border-b border-b-borderGray">
+    const tableBody = data?.map((item) => <tr key={tableRow2.id} className="border-b border-b-borderGray">
             <td className="py-4 text-sm text-left pr-4 font-IRsans px-4">
                 <input
                     className="text-green bg-white border-borderGray focus:ring-mainColor checked:bg-mainColor"

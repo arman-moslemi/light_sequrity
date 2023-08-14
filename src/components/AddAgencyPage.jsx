@@ -8,6 +8,7 @@ import { apiUrl } from "../commons/inFormTypes";
 import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
 import WhiteCheck from "../assets/icon/whiteCheck";
+import ImageUpload from "../components/ImageUpload";
 
 // import Map from "./Map";
 const AddAgencyPage = () => {
@@ -22,47 +23,45 @@ const AddAgencyPage = () => {
   const [data, setData] = useState();
   const [Description, setDescription] = useState();
   const [title, setTitle] = useState();
-  const [HasCoffeMachine, setHasCoffeMachine] = useState(false);
-  const [HasBuffet, setHasBuffet] = useState(false);
-  const [HasMicrowave, setHasMicrowave] = useState(false);
-  const [HasSecurityRom, setHasSecurityRom] = useState(false);
-  const [HasVendingMachine, setHasVendingMachine] = useState(false);
+  const [houseNumber, setHouseNumber] = useState();
+  const [Email, setEmail] = useState();
+  const [website, setWebsite] = useState();
+  const [phone, setPhone] = useState();
+  const [codes, setCode] = useState();
+  const [street, setStreet] = useState();
+  const [city, setCity] = useState();
+  const [zip, setZip] = useState();
+
   const [status, setStatus] = useState();
   const params = useParams().id;
   console.log(params)
+  const [file, setFile] = useState();
 
-  const editObject = async () => {
-    // if(title==""||StartDate==""||EndDate==""||Glocation==""||Address==""||TelephoneNumber==""||
-    // title==""){
-
-    // }
-    // else{
+  const addAgency = async () => {
+   
+  
     const cookies = new Cookies();
-    var id = cookies.get('ID');
 
-    var Objects = await axios.put(apiUrl+"Objects/"+params, {
-      AgencyId:parseInt(id),
+    var Objects =await axiosReq("Agencies", {
       objectId:params,
-      AssignerId:null,
-      Title: title,
-      StartDate: StartDate,
-      EndDate: EndDate,
+      Name: title,
+      ExpireDate: EndDate,
       Address: Address,
       Description: Description,
-      TelephoneNumber: TelephoneNumber,
-      HasCoffeMachine: HasCoffeMachine,
-      HasVendingMachine: HasVendingMachine,
-      HasBuffet: HasBuffet,
-      HasMicrowave: HasMicrowave,
-      HasSecurityRom: HasSecurityRom,
+      MobileNumber: TelephoneNumber,
+      EmailAddress: Email,
+      HouseNumber:houseNumber,
+      PhoneNumber:phone,
+      WebsiteAddress:website,
       Status:status,
+      Logo:file,
+      City:city,
+      Street:street,
+      ZipCode:zip,
+      Code:codes,
       Glocation:"37.56"
 
-    },{
-      headers: {
-          Authorization: `Bearer ${cookies.get('token')}`,
-                    }
-       });
+    },"multipart/form-data");
     if (Objects?.status == 200 || Objects?.status == 204|| Objects?.status == 201) {
       // navigate("/tashakolRegister2",{
       //   OrganizationID:data?.organizationId
@@ -90,7 +89,7 @@ const AddAgencyPage = () => {
      navigate("/login");
     }
    };
-   const addAgency = async () => {
+   const addAgency1 = async () => {
     const cookies = new Cookies();
     var id = cookies.get('ID');
     console.log(id)
@@ -109,25 +108,7 @@ const AddAgencyPage = () => {
         alert("Please fill inputs")
     }
 }
-//   const GetData=async()=>{
-//    console.log(1234)
-//   const dataUser = await axiosReq("Objects/"+params);
-//   console.log(dataUser)
-//   setStartDate(dataUser?.startDate)
-//   setEndDate(dataUser?.endDate)
-//   setGlocation(dataUser?.glocation)
-//   setDescription(dataUser?.description)
-//   setAddress(dataUser?.address)
-//   setTitle(dataUser?.title)
-//   setTelephoneNumber(dataUser?.telephoneNumber)
-//   setHasMicrowave(dataUser?.hasMicrowave)
-//   setHasBuffet(dataUser?.hasBuffet)
-//   setHasCoffeMachine(dataUser?.hasCoffeMachine)
-//   setHasMicrowave(dataUser?.hasMicrowave)
-//   setHasSecurityRom(dataUser?.hasSecurityRom)
-//   setStatus(dataUser?.status)
-// setData(dataUser)
-//   }
+
     return (
         <div>
         <div className="mt-6">
@@ -141,16 +122,18 @@ const AddAgencyPage = () => {
         </div>
       <div className="w-[60%] mx-auto block h-[450px] overflow-y-auto my-5 shadow-grayShadow p-2 rounded-md">
         <div className="relative w-[80px] h-[80px] mx-auto">
-        <img src={Img1} alt="avatar" className="w-[80px] h-[80px] rounded-full"/>
+        {/* <img src={Img1} alt="avatar" className="w-[80px] h-[80px] rounded-full"/>
         <button className="absolute bg-green w-[30px] h-[30px] rounded-full flex justify-center items-center shadow-greenShadow bottom-0.5 -right-3">
             <Pencil className="fill-white w-[15px] h-[15px]"/>
-        </button>
+        </button> */}
+               <ImageUpload img={Img1} file={file} setFile={setFile}/>
+
         </div>
       <div class="w-full  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="title">
     Name
       </label>
-      <input value={title} onChange={(e)=>setTitle(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="title" type="text" placeholder="Tirajhe Complex"/>
+      <input  onChange={(e)=>setTitle(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="title" type="text" placeholder="Tirajhe Complex"/>
       
     </div>
     <div className="flex">
@@ -177,7 +160,14 @@ const AddAgencyPage = () => {
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Mobile Number
       </label>
-      <input value={TelephoneNumber} onChange={(e)=>setTelephoneNumber(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
+      <input  onChange={(e)=>setTelephoneNumber(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
+      
+    </div>
+    <div class="w-1/2  px-3 mt-6">
+      <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
+      Phone Number
+      </label>
+      <input  onChange={(e)=>setPhone(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
       
     </div>
     </div>
@@ -187,14 +177,14 @@ const AddAgencyPage = () => {
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       House Number
       </label>
-      <input value={title} onChange={(e)=>setTitle(e.target.value)}   class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
+      <input  onChange={(e)=>setHouseNumber(e.target.value)}   class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="+9889011457575"/>
       
     </div>
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Email
       </label>
-      <input value={title} onChange={(e)=>setTitle(e.target.value)}  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="email" type="text" placeholder="info@gmail.com"/>
+      <input  onChange={(e)=>setEmail(e.target.value)}  class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="email" type="text" placeholder="info@gmail.com"/>
       
     </div>
     </div>
@@ -204,36 +194,76 @@ const AddAgencyPage = () => {
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Website Address
       </label>
-      <input value={title} onChange={(e)=>setTitle(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="info.com"/>
+      <input value={title} onChange={(e)=>setWebsite(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="info.com"/>
       
     </div>
     <div class="w-1/2  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
       Code
       </label>
-      <input value={title} onChange={(e)=>setTitle(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="16682454"/>
+      <input onChange={(e)=>setCode(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="16682454"/>
       
     </div>
+   </div>
+   <div className="flex w-full">
+  
+    <div class="w-1/2  px-3 mt-6">
+      <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
+Street      </label>
+      <input  onChange={(e)=>setStreet(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="rand"/>
+      
+    </div>
+    <div class="w-1/2  px-3 mt-6">
+      <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
+      City
+      </label>
+      <input onChange={(e)=>setCity(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="tokyo"/>
+      
+    </div>
+  
    </div>
 
     <div class="w-full  px-3 mt-6">
       <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="address">
        Address
       </label>
-      <input value={Address} onChange={(e)=>setAddress(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="address" type="text" placeholder="Ashrafi HW,boustan St,No 123"/>
+      <input  onChange={(e)=>setAddress(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="address" type="text" placeholder="Ashrafi HW,boustan St,No 123"/>
       
     </div>
+    <div className="flex items-center">
+    <div class="w-1/2  px-3 mt-6">
+      <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="phone">
+      Zip Code
+      </label>
+      <input onChange={(e)=>setZip(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="phone" type="text" placeholder="tokyo"/>
+      
+    </div>
+<div class="w-1/2  px-3 mt-6">
+  <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
+    Expired Date Date
+  </label>
+  <input  onChange={(e)=>setEndDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="end-date" type="text" placeholder="5/19/2023"/>
+  
+</div>
+</div>
  <div className="flex items-center">
 
-    <div class="w-1/2  px-3 mt-6">
-      <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
-        Expired Date Date
+    
+    <div className="w-full mb-7 px-3 mt-6">
+    <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="description">
+        Description
       </label>
-      <input value={EndDate} onChange={(e)=>setEndDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="end-date" type="text" placeholder="5/19/2023"/>
+    <textarea value={Description} onChange={(e)=>setDescription(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="
+    Security management for the entry of people from the west door of Tiraje shopping center
+    "/>
       
     </div>
-    <div class="w-1/2  px-3 mt-6">
-    <button onClick={()=>setShowNewModal(true)} className="bg-green rounded-lg float-right shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
+  
+ </div>
+
+
+ <div class="w-1/2  px-3 mt-6">
+    <button onClick={()=>addAgency()} className="bg-green rounded-lg float-right shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center" >
             <WhiteCheck className="mr-2 w-6 h-6 text-white hover:text-green"/>
                       <span className="mr-3 text-base font-bold font-IRsans text-white text-left hover:text-green">
                       Save
@@ -290,20 +320,10 @@ const AddAgencyPage = () => {
                 null
             }
       </div>
- </div>
-
  {/* <div className="w-full mb-7">
         <Map/>
     </div> */}
-    {/* <div className="w-full mb-7 px-3 mt-6">
-    <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="description">
-        Description
-      </label>
-    <textarea value={Description} onChange={(e)=>setDescription(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="
-    Security management for the entry of people from the west door of Tiraje shopping center
-    "/>
-      
-    </div> */}
+   
     
 
       </div>

@@ -1,17 +1,138 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import WhitePencil from "../assets/icon/whitePencil";
 import WhiteTrash from "../assets/icon/whiteTrash";
-
-const AgencyInstruction = ({ data }) => {
+import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
+import { axiosReq } from "../commons/axiosReq";
+import { useParams } from "react-router-dom";
+import {apiUrl} from "../commons/inFormTypes";
+import axios from "axios";
+const AgencyCapability = ({ data }) => {
     const [showAddModal,
-        setShowAddModal] = React.useState(false);
+        setShowAddModal] = useState(false);
        
 
         const [showEditModal,
-            setShowEditModal] = React.useState(false);
+            setShowEditModal] = useState(false);
         const [showDelModal,
-            setShowDelModal] = React.useState(false);
-   
+            setShowDelModal] = useState(false);
+            const [AddCapModal,
+                setAddCapModal] = useState(false);
+                const [showSuccessModal,
+                    setShowSuccessModal] = useState(false);
+                    const [showErrorModal,
+                        setShowErrorModal] = useState(false);
+            const [cap, setCap] = useState([]);
+            const [title, setTitle] = useState();
+            const [des, setDes] = useState();
+            const [editTitle, setEditTitle] = useState();
+            const [editDes, setEditDes] = useState();
+            const [id, setID] = useState();
+            const [prio, setPriority] = useState(0);
+            const [usercap, setUserCap] = useState([]);
+            const params = useParams().id;
+            const [reCheck, setRecheck] = useState(false);
+            let navigate = useNavigate();
+            const per = [1,2,3,4,5,6,7,8,9,10];
+        
+            useEffect(() => {
+        
+                auth();
+            }, [reCheck]);
+            const auth = async () => {
+                const cookies = new Cookies();
+                var token = cookies.get('token');
+                console.log(token)
+                if (!token) {
+                    navigate("/login");
+                } else {
+        
+                    GetData()
+        
+                }
+            };
+            const GetData = async () => {
+                console.log("AllCap")
+                const dataUser = await axiosReq("Capability");
+                console.log(dataUser)
+        
+                setCap(dataUser)
+            
+            }
+            const addCap = async () => {
+                const cookies = new Cookies();
+                var id = cookies.get('ID');
+                console.log(id)
+                const equi = await axiosReq("Capability", {
+                    agencyId: id,
+                    name: title,
+                    value: prio.toString(),
+                    description: des,
+                    
+                });
+                if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
+                    setShowSuccessModal(true)
+                    setRecheck(!reCheck)
+                    setShowAddModal(false)
+                }
+                else {
+                    setShowErrorModal(true)
+                }
+            }
+
+        const editCap = async () => {
+            const cookies = new Cookies();
+            var ids = cookies.get('ID');
+            console.log(id)
+  
+            const delIns =
+            await axios.put(apiUrl+"Capability/" + id ,
+            {
+                agencyId: ids,
+                name: editTitle,
+                description: editDes,
+                value: prio.toString(),
+                capabilityId:id
+            },
+                {headers: {
+           Authorization: `Bearer ${cookies.get('token')}`
+                     
+}})
+            if (delIns?.status == 200 || delIns?.status == 204 || delIns?.status == 201) {
+                // setShowSuccessModal(true)
+                setRecheck(!reCheck)
+                alert("success")
+          
+            setEditTitle();
+            setEditDes();
+            setShowEditModal(false)
+            }
+            else {
+                // setShowErrorModal(true)
+            }
+        }
+        const deleteCap = async () => {
+            const cookies = new Cookies();
+            var id = cookies.get('ID');
+            console.log(id)
+         
+            const delIns =
+            await axios.delete(apiUrl+"Capability/" + id ,
+          
+                {headers: {
+           Authorization: `Bearer ${cookies.get('token')}`
+                     
+}})
+            if (delIns?.status == 200 || delIns?.status == 204 || delIns?.status == 201) {
+                // setShowSuccessModal(true)
+                setRecheck(!reCheck)
+                alert("success")
+        
+            }
+            else {
+                // setShowErrorModal(true)
+            }
+        }
     return (
         <div className="flex p-4 xs:px-1 mt-4">
             <div
@@ -44,188 +165,149 @@ const AgencyInstruction = ({ data }) => {
 
                 </div>
                <ul className="mt-6">
-                <li className="flex items-center justify-between w-full py-4 border-b border-dashed border-borderGray my-3">
-                    <div className="flex">
-                    <span className="font-bold text-green mr-6 sm-xs:w-[11%]">
-                        1 )
-                    </span>
-                    <div className="flex flex-col">
-                    <span className="font-semibold text-[#000] text-base sm-xs:w-[89%]">
-                    Having a second-level driver's license
-                                                </span>
-                                                <p className="font-medium text-[#000] text-base sm-xs:w-[89%]"> description......</p>
-                    </div>
-                    </div>
+                {
+                    cap?.map((item)=>{
+                        return(
+                            <li className="flex items-center justify-between w-full py-4 border-b border-dashed border-borderGray my-3">
+                            <div className="flex">
+                         
+                            <div className="flex flex-col">
+                            <span className="font-semibold text-[#000] text-base sm-xs:w-[89%]">
+{item?.name}                                                        </span>
+                                                        <p className="font-medium text-[#000] text-base sm-xs:w-[89%]"> {item?.description}</p>
+                            </div>
+                            </div>
+        
+                            <div className="flex">
+                            <button
+                                                        onClick={() => {setShowEditModal(true);setID(item?.capabilityId);
+                                                            setEditTitle(item?.name);setEditDes(item?.description)}}
+                                                        className="mr-2 pr-1 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#00b8d9]  duration-500  w-[40px] h-[40px]  sm-xs:w-[30px]  sm-xs:h-[30px] rounded-full bg-lightOrange flex items-center justify-center">
+                                                        <WhitePencil  className="fill-mainColor"/>
+                                                        
+                                                    </button>
+                                                    <button
+                                                        onClick={() => {setShowDelModal(true);setID(item?.capabilityId)}}
+                                                        className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#f50100] duration-500  w-[40px] h-[40px]  sm-xs:w-[30px]  sm-xs:h-[30px] rounded-full bg-red  flex items-center justify-center">
+                                                        <WhiteTrash />
+                                                      
+                                                    </button>    {showEditModal && id==item?.capabilityId
+                        ? <>
+                    <> <div
+                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="relative w-[30%] bg-white rounded-md p-8 md:w-[40%] sm:w-[50%] sm-xs:w-[60%] xs:w-[80%] my-5 mx-auto max-w-5xl">
 
-                    <div className="flex">
+                       
+                <span className="font-bold text-green text-base">
+                    Edit  Required Capability
+                </span>
+                <div class="w-full mt-6">
+                    <label
+                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
+                        for="title">
+                        <span>
+                             Required Capability Title
+                        </span>
+                        <span className="text-hoverDelBack mx-1">
+                            *
+                        </span>
+                    </label>
+                    <input
+                        required="true"
+                        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="title"
+                        type="text"
+                        value={editTitle}
+                        onChange={(e)=>setEditTitle(e.target.value)}
+                        placeholder="Type Required Cabability Title Here..." />
+                        <div className="flex flex-col mt-4">
+                        <label
+                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
+                        for="title">
+                        <span>
+                             Required Capability Description
+                        </span>
+                        <span className="text-hoverDelBack mx-1">
+                            *
+                        </span>
+                    </label>
+                    <textarea
+                        required="true"
+                        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="des"
+                        type="text"
+                        onChange={(e)=>setEditDes(e.target.value)}
+                        value={editDes}
+
+                        placeholder="Type Required Cabability Description Here..." />
+                        </div>
+                    <div className="flex justify-end items-center">
                     <button
-                                                onClick={() => setShowEditModal(true)}
-                                                className="mr-2 pr-1 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#00b8d9]  duration-500  w-[40px] h-[40px]  sm-xs:w-[30px]  sm-xs:h-[30px] rounded-full bg-lightOrange flex items-center justify-center">
-                                                <WhitePencil className="fill-mainColor"/>
-                                                
-                                            </button>
-                                            <button
-                                                onClick={() => setShowDelModal(true)}
-                                                className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100 text-[#fff] hover:text-[#f50100] duration-500  w-[40px] h-[40px]  sm-xs:w-[30px]  sm-xs:h-[30px] rounded-full bg-red  flex items-center justify-center">
-                                                <WhiteTrash />
-                                              
-                                            </button>    {showEditModal
-                ? <> <div
-                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                    <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
-
-                        <div
-                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
-
-                            <div className="flex items-centers justify-left  rounded-t">
-
-                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
-                                    Edit Instruction
-                                </span>
-
-                            </div>
-
-                            <div class="flex flex-wrap  mt-6">
-                                <div class="w-full mt-6">
-                                    <label
-                                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
-                                        for="title">
-                                        <span>
-                                            Instruction Title
-                                        </span>
-                                        <span className="text-hoverDelBack mx-1">
-                                            *
-                                        </span>
-                                    </label>
-                                    <input
-                                        required="true"
-                                        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                        id="title"
-                                        type="text"
-                                        placeholder="Type Instruction Title..." />
-
-                                </div>
-                                <div class="w-full  mt-6">
-                                    <label
-                                        class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2"
-                                        for="title">
-                                        <span>
-                                            Instruction Description
-                                        </span>
-                                        <span className="text-hoverDelBack mx-1">
-                                            *
-                                        </span>
-                                    </label>
-                                    <textarea
-                                        rows="4"
-                                        required="true"
-                                        class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                        id="title"
-                                        type="text"
-                                        placeholder="Type Instruction Description..." />
-
-                                </div>
-                                <div className="w-full  mt-6">
-                                    <label
-                                        className=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2">
-                                        Upload Files (picture,voice,video,file)
-                                    </label>
-                                    <label
-                                        for="dropzone-file"
-                                        className="mt-2 flex flex-col items-center justify-center w-[100%] md:w-full h-32 border border-borderGray border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div
-                                            className="flex flex-col items-center justify-center pt-5 pb-6 font-IRsans">
-                                            <svg
-                                                aria-hidden="true"
-                                                class="w-8 h-8 mt-1 text-borderGray"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                            </svg>
-                                            <p className="mb-0 text-xs text-gray-500 dark:text-gray-400">
-                                                <span className="font-normal font-IRsans text-[#000]">Choose File</span>
-                                            </p>
-
-                                        </div>
-                                        <input id="dropzone-file" type="file" className="hidden" />
-                                    </label>
-
-                                </div>
-
-                            </div>
-
-                            <div
-                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b mt-5">
-                                <button
-                                    className="text-white bg-[#00b8d9] hover:shadow-hoverShadow hover:bg-[#0a95ad] shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                    onClick={() => setShowEditModal(false)}>
-                                    Edit
-                                </button>
-                                <button
-                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                    onClick={() => setShowEditModal(false)}>
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
+    onClick={() => editCap()}
+                                    className="px-3 py-2 mb-1 rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+                            + Edit
+                        </button>
+                        <button
+                            onClick={() => setShowEditModal(false)}
+                            className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg font-IRsans float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            >Cancel
+                        </button>
+                    </div>
+                </div>
                     </div>
                 </div> < div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
-                </>
-                : null}
-            {showDelModal
-                ? <> <div
-                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                    <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
-
-                        <div
-                            className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
-
-                            <div className="flex items-centers justify-left  rounded-t">
-
-                                <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
-                                    Delete Instruction
-                                </span>
-
+                </>    </>
+                        : null}
+                    {showDelModal
+                        ? <> <div
+                            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                            <div className="relative w-[30%] my-5 mx-auto max-w-5xl">
+        
+                                <div
+                                    className="border-0 rounded-lg  shadow-lg relative flex flex-col w-full p-6 bg-white outline-none focus:outline-none">
+        
+                                    <div className="flex items-centers justify-left  rounded-t">
+        
+                                        <span className="mr-3 text-base font-bold font-IRsans text-black text-left">
+                                            Delete Capality
+                                        </span>
+        
+                                    </div>
+        
+                                    <div class="flex flex-wrap  mt-6">
+                                        <p
+                                            className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
+                                            Are you sure to delete the selected option?
+                                        </p>
+        
+                                    </div>
+        
+                                    <div
+                                        className="flex items-center justify-end  border-solid border-slate-200 rounded-b mt-5">
+                                        <button
+                                            className="text-white bg-red hover:shadow-hoverShadow hover:bg-[#aa0d0d] shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                            type="button"
+                                            onClick={() =>{deleteCap() ;setShowDelModal(false)}}>
+                                            Delete
+                                        </button>
+                                        <button
+                                            className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                            type="button"
+                                            onClick={() => setShowDelModal(false)}>
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="flex flex-wrap  mt-6">
-                                <p
-                                    className="my-4 text-black text-sm leading-relaxed break-words whitespace-normal font-IRsans">
-                                    Are you sure to delete the selected option?
-                                </p>
-
+                        </div> < div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
+                        </>
+                        : null}
                             </div>
-
-                            <div
-                                className="flex items-center justify-end  border-solid border-slate-200 rounded-b mt-5">
-                                <button
-                                    className="text-white bg-red hover:shadow-hoverShadow hover:bg-[#aa0d0d] shadow-blueShadow rounded-lg  float-left background-transparent font-bold  px-5 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                    onClick={() => setShowDelModal(false)}>
-                                    Delete
-                                </button>
-                                <button
-                                    className="text-[#000] bg-whiteshadow-blueShadow border hover:border-[#000] hover:bg-hoverBackground border-borderGray ml-3 rounded-lg  float-left background-transparent font-bold  px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                    onClick={() => setShowDelModal(false)}>
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div> < div className="opacity-25 fixed inset-0 z-40 bg-black" > </div>
-                </>
-                : null}
-                    </div>
-                </li>
+                        </li>
+                        )
+                    })
+                }
+              
              
                </ul>
             </div>
@@ -255,7 +337,7 @@ const AgencyInstruction = ({ data }) => {
                         class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="title"
                         type="text"
-                        
+                        onChange={(e)=>setTitle(e.target.value)}
                         placeholder="Type Required Cabability Title Here..." />
                         <div className="flex flex-col mt-4">
                         <label
@@ -273,13 +355,14 @@ const AgencyInstruction = ({ data }) => {
                         class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="des"
                         type="text"
-                        
+                        onChange={(e)=>setDes(e.target.value)}
+
                         placeholder="Type Required Cabability Description Here..." />
                         </div>
                     <div className="flex justify-end items-center">
                     <button
-                            onClick={() => setShowAddModal(false)}
-                            className="px-3 py-2 mb-1 rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
+    onClick={() => addCap()}
+                                    className="px-3 py-2 mb-1 rounded-lg shadow-grayShadow text-sm font-bold bg-green  text-white  hover:bg-[#008a5c] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-100  duration-500">
                             + Add
                         </button>
                         <button
@@ -299,4 +382,4 @@ const AgencyInstruction = ({ data }) => {
     )
 }
 
-export default AgencyInstruction;
+export default AgencyCapability;

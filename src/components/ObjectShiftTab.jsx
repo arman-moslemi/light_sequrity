@@ -14,6 +14,9 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                 setShowDisabledShift] = useState(false);
                 const [shType, setShType] = useState([]);
                 const [title, setTitle] = useState();
+                const [need, setNeed] = useState();
+                const [frac, setFrac] = useState();
+                const [force, setForce] = useState();
                 const [start, setStart] = useState({
                     hour:"00",
                     minute:"00"
@@ -60,7 +63,10 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                         ObjectId: params,
                         Title:title,
                         StartTime:start.hour+":"+start.minute,
-                        EndTime:end.hour+":"+end.minute
+                        EndTime:end.hour+":"+end.minute,
+                        NeedEmployeeCount:need,
+                        ForceOnSiteEmployeeCount:force,
+                        TimeFraction:frac
                     },"multipart/form-data");
                     if (sht?.status == 200 || sht?.status == 204 || sht?.status == 201) {
                         // navigate("/tashakolRegister2",{
@@ -200,7 +206,8 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                     class="appearance-none block w-[150px] bg-white text-[#000] border border-borderGray rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
-                                   
+                                    onChange={(e)=>setTitle(e.target.value)}
+
                                     placeholder="s1"/>
 
                             </div>
@@ -222,7 +229,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                     class="appearance-none block w-[70px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="number"
-                                    onChange={(e)=>setTitle(e.target.value)}
+                                    onChange={(e)=>setNeed(e.target.value)}
                                     placeholder=""/>
 
                             </div>
@@ -244,7 +251,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                     class="appearance-none block w-[100px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="text"
-                                    
+                                    onChange={(e)=>setFrac(e.target.value)}
                                     placeholder=""/>
 
                             </div>
@@ -267,7 +274,8 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                     class="appearance-none block w-[70px] bg-white text-[#000] border border-borderGray rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white"
                                     id="start Time"
                                     type="number"
-                                   
+                                    onChange={(e)=>setForce(e.target.value)}
+
                                     placeholder=""/>
 
                             </div>
@@ -303,7 +311,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                             class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
                                             for="title">
                                             <span class=" text-green text-sm font-normal">
-                                                Time Fraction : 1.5
+                                                Time Fraction : {item2?.timeFraction}
                                             </span>
     
                                         </label>
@@ -311,7 +319,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                             class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
                                             for="title">
                                             <span class=" text-green text-sm font-normal">
-                                                Need Employee Count : 12
+                                                Need Employee Count :  {item2?.needEmployeeCount}
                                             </span>
     
                                         </label>
@@ -319,7 +327,7 @@ const ObjectShiftTab = ({data,reCheck,setRecheck}) => {
                                             class=" flex items-center  tracking-wide text-[#000] text-xs font-bold"
                                             for="title">
                                             <span class=" text-green text-sm font-normal">
-                                                Force Employee Count : 2
+                                                Force Employee Count : {item2?.forceOnSiteEmployeeCount}
                                             </span>
     
                                         </label>

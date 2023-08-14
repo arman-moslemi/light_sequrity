@@ -7,6 +7,8 @@ import { apiUrl } from "../commons/inFormTypes";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { axiosReq } from "../commons/axiosReq";
+import ImageUpload from "../components/ImageUpload";
+
 const AddObj = () => {
 
   const [check, setCheck] = useState(false);
@@ -24,6 +26,7 @@ const AddObj = () => {
   const [HasMicrowave, setHasMicrowave] = useState(false);
   const [HasSecurityRom, setHasSecurityRom] = useState(false);
   const [HasVendingMachine, setHasVendingMachine] = useState(false);
+  const [file, setFile] = useState();
 
   const addObject = async () => {
     // if(title==""||StartDate==""||EndDate==""||Glocation==""||Address==""||TelephoneNumber==""||
@@ -48,6 +51,7 @@ const AddObj = () => {
       HasBuffet: HasBuffet.toString(),
       HasMicrowave: HasMicrowave.toString(),
       HasSecurityRom: HasSecurityRom.toString(),
+      AppearanceCoverPicture:file,
       Glocation:"37.56"
 
     },"multipart/form-data");
@@ -75,10 +79,12 @@ const AddObj = () => {
       </div>
       <div className="w-[60%] lg-md:w-[70%] md-sm:w-[95%] mx-auto block h-[450px] overflow-y-auto my-5 shadow-grayShadow p-2 rounded-md">
         <div className="relative w-[80px] h-[80px] mx-auto">
-          <img src={Img1} alt="avatar" className="w-[80px] h-[80px] rounded-full" />
+          {/* <img src={Img1} alt="avatar" className="w-[80px] h-[80px] rounded-full" />
           <button onClick={()=>addObject()} className="absolute bg-green w-[30px] h-[30px] rounded-full flex justify-center items-center shadow-greenShadow bottom-0.5 -right-3">
             <Pencil className="fill-white w-[15px] h-[15px]" />
-          </button>
+          </button> */}
+       <ImageUpload img={Img1} file={file} setFile={setFile}/>
+
         </div>
         <div class="w-full  px-3 mt-6">
           <label class=" flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2" for="title">
