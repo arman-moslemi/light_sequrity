@@ -75,10 +75,10 @@ const TicketDetail = () => {
                         <span className="font-IRSans text-black font-semibold text-base ml-2">
                             Type your massage here
                         </span>
-                        <div className="flex w-full h-auto items-center justify-between mb-4   px-2  ">
+                        <div className="flex w-full h-auto items-center justify-between mb-4  px-2">
                             
                                 <textarea
-                                    className="w-[85%] px-2 py-1 min-h-[50px] overflow-y-auto resize-none border border-borderGray mt-2 rounded-md"
+                                    className="w-[85%] px-2 py-1 min-h-[100px] overflow-y-auto resize-none border border-borderGray mt-2 rounded-md"
                                     placeholder="Enter message here..."/>
 
                                 <button

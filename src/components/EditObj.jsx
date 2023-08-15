@@ -8,13 +8,19 @@ import {apiUrl} from "../commons/inFormTypes";
 import {useNavigate} from "react-router-dom";
 import {axiosReq} from "../commons/axiosReq";
 import WhiteCheck from "../assets/icon/whiteCheck";
+import DatePicker from "react-datepicker";
+import './components.css'
+import "react-datepicker/dist/react-datepicker.css";
+
 
 // import Map from "./Map";
 const EditObj = () => {
-    const [StartDate,
-        setStartDate] = useState();
-    const [EndDate,
-        setEndDate] = useState();
+    const [EndDate, setEndDate] = useState(new Date());
+    const [StartDate, setStartDate] = useState(new Date());
+    // const [StartDate,
+    //     setStartDate] = useState();
+    // const [EndDate,
+    //     setEndDate] = useState();
     const [Glocation,
         setGlocation] = useState();
     const [Address,
@@ -282,14 +288,9 @@ const EditObj = () => {
                             for="start-date">
                             Start Date
                         </label>
-                        <input
-                            value={StartDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="start-date"
-                            type="text"
-                            placeholder="7/19/2023"/>
-
+                        <div class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        <DatePicker className="red-border" selected={new Date()} onChange={(date) => setStartDate(date)} />
+                        </div>
                     </div>
                     <div class="w-1/2 sm-xs:w-[100%]  px-3 mt-6">
                         <label
@@ -297,13 +298,9 @@ const EditObj = () => {
                             for="end-date">
                             End Date
                         </label>
-                        <input
-                            value={EndDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="end-date"
-                            type="text"
-                            placeholder="5/19/2023"/>
+                        <div class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        <DatePicker className="red-border" selected={new Date()} onChange={(date) => setEndDate(date)} />
+                        </div>
 
                     </div>
 

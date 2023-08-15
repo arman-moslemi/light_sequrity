@@ -205,3 +205,14 @@ input[type=checkbox] {
   .rbc-event{
     background-color: transparent !important;
   }
+  .red-border{
+    width: 100%;
+    color: #8e8e8e;
+ 
+  }
+  .red-border:focus-visible{
+    outline: none;
+  }
+  .react-datepicker-wrapper{
+    width: 100%;
+  }

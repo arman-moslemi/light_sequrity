@@ -9,13 +9,16 @@ import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
 import WhiteCheck from "../assets/icon/whiteCheck";
 import ImageUpload from "../components/ImageUpload";
+import DatePicker from "react-datepicker";
+import './components.css'
+import "react-datepicker/dist/react-datepicker.css";
 
 // import Map from "./Map";
 const EditAgencyPage = () => {
   const [showSuccessModal,
     setShowSuccessModal] = React.useState(false);
   const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  const [EndDate, setEndDate] = useState(new Date());
   const [Glocation, setGlocation] = useState();
   const [Address, setAddress] = useState();
   const [TelephoneNumber, setTelephoneNumber] = useState();
@@ -282,11 +285,12 @@ Street      </label>
       
     </div>
 <div class="w-1/2  px-3 mt-6">
-  <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
-    Expired Date Date
+<label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
+    Expired Date 
   </label>
-  <input value={EndDate}  onChange={(e)=>setEndDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="end-date" type="text" placeholder="5/19/2023"/>
-  
+  <div class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+  <DatePicker className="red-border" selected={new Date()} onChange={(date) => setEndDate(date)} />
+   </div>
 </div>
 </div>
  <div className="flex items-center">
