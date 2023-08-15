@@ -47,7 +47,7 @@ const MainRoutes = (props) => {
                 <Route path="/agencyList" element={<AgencyList/>}/>
             </Routes>
             <Routes>
-                <Route path="/editAgency" element={<EditAgency/>}/>
+                <Route path="/editAgency/:id" element={<EditAgency/>}/>
             </Routes>
             <Routes>
                 <Route path="/addAgency" element={<AddAgency/>}/>

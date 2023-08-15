@@ -3,7 +3,7 @@ import React from "react";
 import LeftMenu from "../../components/LeftMenu";
 import Header from "../../components/Header";
 import AddAgencyPage from "../../components/AddAgencyPage";
-import EditAgencyTitleSection from "../../components/EditAgencyTitleSection";
+import AddAgencyTitleSection from "../../components/AddAgencyTitleSection";
 const AddAgency = () =>{
 
     return(
@@ -11,7 +11,7 @@ const AddAgency = () =>{
         <LeftMenu/>
         <div className="w-full px-4">
             <Header className="w-[90%] mx-auto"/>
-            <EditAgencyTitleSection className="mb-6"/>
+            <AddAgencyTitleSection className="mb-6"/>
             <AddAgencyPage className="mt-6  ml-4"/>
             
         </div>

@@ -8,12 +8,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { axiosReq } from "../commons/axiosReq";
 import ImageUpload from "../components/ImageUpload";
+import DatePicker from "react-datepicker";
+import './components.css'
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const AddObj = () => {
-
+  const [EndDate, setEndDate] = useState(new Date());
+  const [StartDate, setStartDate] = useState(new Date());
   const [check, setCheck] = useState(false);
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  // const [StartDate, setStartDate] = useState();
+  // const [EndDate, setEndDate] = useState();
   const [Glocation, setGlocation] = useState();
   const [Address, setAddress] = useState();
   const [TelephoneNumber, setTelephoneNumber] = useState();
@@ -166,8 +171,9 @@ const AddObj = () => {
                 *
               </span>
             </label>
-            <input required="true"  onChange={(e)=>setStartDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="start-date" type="text" placeholder="7/19/2023" />
-
+            <div class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <DatePicker className="red-border" selected={StartDate} onChange={(date) => setStartDate(date)} />
+            </div>
           </div>
           <div class="w-1/2 sm-xs:w-[100%] px-3 mt-6">
             <label class="flex items-center  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
@@ -179,8 +185,9 @@ const AddObj = () => {
                 *
               </span>
             </label>
-            <input required="true"  onChange={(e)=>setEndDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="end-date" type="text" placeholder="5/19/2023" />
-
+            <div class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <DatePicker className="red-border" selected={EndDate} onChange={(date) => setEndDate(date)} />
+            </div>
           </div>
 
         </div>

@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import React,{useState} from "react";
 import LeftMenu from "../../components/LeftMenu";
 import Header from "../../components/Header";
@@ -30,7 +30,12 @@ const TicketList = () =>{
                 </div>
             </div>
           
- 
+            <Link to={'/ViewTicket'} className="bg-green rounded-lg shadow-greenShadow text-white font-bold h-[40px] px-7 hover:bg-menuActive hover:text-green flex items-center mt-0 xs:mt-6 xs:w-[100%] xs:justify-evenly" >
+          
+                      
+            + Add Ticket
+         
+            </Link>
             </div>
               <TicketListTable/>
              

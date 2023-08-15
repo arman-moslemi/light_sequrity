@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, {useState,useEffect,forwardRef} from "react";
 import Img1 from "../assets/img/objectLogo.png"
 import Pencil from "../assets/icon/pencil";
 import axios from "axios";
@@ -9,13 +9,17 @@ import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../commons/axiosReq";
 import WhiteCheck from "../assets/icon/whiteCheck";
 import ImageUpload from "../components/ImageUpload";
+import DatePicker from "react-datepicker";
+import './components.css'
+import "react-datepicker/dist/react-datepicker.css";
 
 // import Map from "./Map";
 const AddAgencyPage = () => {
+  const [EndDate, setEndDate] = useState(new Date());
   const [showSuccessModal,
     setShowSuccessModal] = React.useState(false);
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  // const [StartDate, setStartDate] = useState();
+  // const [EndDate, setEndDate] = useState();
   const [Glocation, setGlocation] = useState();
   const [Address, setAddress] = useState();
   const [TelephoneNumber, setTelephoneNumber] = useState();
@@ -38,14 +42,13 @@ const AddAgencyPage = () => {
   const [file, setFile] = useState();
 
   const addAgency = async () => {
-   
   
     const cookies = new Cookies();
 
     var Objects =await axiosReq("Agencies", {
       objectId:params,
       Name: title,
-      ExpireDate: EndDate,
+      ExpireDate:(formatDateTime(EndDate,7).split('T')[0]),
       Address: Address,
       Description: Description,
       MobileNumber: TelephoneNumber,
@@ -81,6 +84,69 @@ const AddAgencyPage = () => {
   
     auth();
   }, [reCheck]);
+  const  formatDateTime=(sDate,FormatType)=> {
+    var lDate = new Date(sDate)
+
+    var month=new Array(12);
+    month[0]="January";
+    month[1]="February";
+    month[2]="March";
+    month[3]="April";
+    month[4]="May";
+    month[5]="June";
+    month[6]="July";
+    month[7]="August";
+    month[8]="September";
+    month[9]="October";
+    month[10]="November";
+    month[11]="December";
+
+    var weekday=new Array(7);
+    weekday[0]="Sunday";
+    weekday[1]="Monday";
+    weekday[2]="Tuesday";
+    weekday[3]="Wednesday";
+    weekday[4]="Thursday";
+    weekday[5]="Friday";
+    weekday[6]="Saturday";
+
+    var hh = lDate.getHours() < 10 ? '0' + 
+        lDate.getHours() : lDate.getHours();
+    var mi = lDate.getMinutes() < 10 ? '0' + 
+        lDate.getMinutes() : lDate.getMinutes();
+    var ss = lDate.getSeconds() < 10 ? '0' + 
+        lDate.getSeconds() : lDate.getSeconds();
+
+    var d = lDate.getDate();
+    var dd = d < 10 ? '0' + d : d;
+    var yyyy = lDate.getFullYear();
+    var mon = eval(lDate.getMonth()+1);
+    var mm = (mon<10?'0'+mon:mon);
+    var monthName=month[lDate.getMonth()];
+    var weekdayName=weekday[lDate.getDay()];
+
+    if(FormatType==1) {
+       return mm+'/'+dd+'/'+yyyy+' '+hh+':'+mi;
+    } else if(FormatType==2) {
+       return weekdayName+', '+monthName+' '+ 
+            dd +', ' + yyyy;
+    } else if(FormatType==3) {
+       return mm+'/'+dd+'/'+yyyy; 
+    } 
+    // else if(FormatType==4) {
+    //    var dd1 = lDate.getDate();    
+    //    return dd1+'-'+Left(monthName,3)+'-'+yyyy;    
+    // } 
+    else if(FormatType==5) {
+        return mm+'/'+dd+'/'+yyyy+' '+hh+':'+mi+':'+ss;
+    } else if(FormatType == 6) {
+        return mon + '/' + d + '/' + yyyy + ' ' + 
+            hh + ':' + mi + ':' + ss;
+    } else if(FormatType == 7) {
+        return  yyyy + '-' + mm + 
+            '-' + dd + 'T' + hh + ':' + mi + ':' + ss;
+    }
+}
   const auth=async()=>{
     const cookies = new Cookies();
     var token= cookies.get('token');
@@ -89,25 +155,7 @@ const AddAgencyPage = () => {
      navigate("/login");
     }
    };
-   const addAgency1 = async () => {
-    const cookies = new Cookies();
-    var id = cookies.get('ID');
-    console.log(id)
-    const equi = await axiosReq("ObjectInstructions", {
-        // title: title,
-        // description: des,
-    });
-    if (equi?.status == 200 || equi?.status == 204 || equi?.status == 201) {
-        // navigate("/tashakolRegister2",{
-        //   OrganizationID:data?.organizationId
-        // });
-        setShowSuccessModal(true)
-        setRecheck(!reCheck)
-    }
-    else {
-        alert("Please fill inputs")
-    }
-}
+ 
 
     return (
         <div>
@@ -239,11 +287,14 @@ Street      </label>
       
     </div>
 <div class="w-1/2  px-3 mt-6">
+
+
   <label class="block  tracking-wide text-[#000] text-xs font-bold mb-2" for="end-date">
-    Expired Date Date
+    Expired Date 
   </label>
-  <input  onChange={(e)=>setEndDate(e.target.value)} class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="end-date" type="text" placeholder="5/19/2023"/>
-  
+  <div class="appearance-none block w-full bg-white text-[#000] border border-borderGray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+  <DatePicker className="red-border" selected={EndDate} onChange={(date) => setEndDate(date)} />
+   </div>
 </div>
 </div>
  <div className="flex items-center">
