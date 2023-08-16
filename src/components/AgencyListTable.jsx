@@ -156,7 +156,7 @@ const AgencyListTable = () => {
             <td className="py-4 px-5 text-sm text-center font-IRsans">{item.status}</td>
             <td className="py-4 px-5 text-sm text-center font-IRsans">{item.expireDate}</td>
             <td className="py-4 px-5 text-sm text-center font-IRsans">
-                <Link to={'/editAgency/'+item.agencyId}>
+                <Link className="py-4 px-5 text-sm text-center font-IRsans flex justify-center" to={'/editAgency/'+item.agencyId}>
                     <Pencil/>
                 </Link>
             </td>
